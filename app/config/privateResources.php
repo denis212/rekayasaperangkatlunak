@@ -1,0 +1,100 @@
+<?php
+
+use Phalcon\Config;
+use Phalcon\Logger;
+
+return new Config([
+    'privateResources' => [
+        'users' => [
+            'index',
+            'search',
+            'edit',
+            'create',
+            'delete',
+            'changePassword',
+            'accountInfo'
+        ],
+        'profiles' => [
+            'index',
+            'search',
+            'edit',
+            'create',
+            'delete'
+        ],
+        'permissions' => [
+            'index'
+        ],
+        'campaign' => [
+          'index',
+          'search',
+          'edit',
+          'create',
+          'delete',
+          'new',
+          'save',
+          'view',
+          'deletegbr120x600',
+          'deletegbr160x600',
+          'deletegbr250x250',
+          'deletegbr300x50',
+          'deletegbr300x100',
+          'deletegbr300x250',
+          'deletegbr300x600',
+          'deletegbr305x99',
+          'deletegbr315x300',
+          'deletegbr320x50',
+          'deletegbr320x100',
+          'deletegbr320x250',
+          'deletegbr320x416',
+          'deletegbr320x480',
+          'deletegbr336x280',
+          'deletegbr468x60',
+          'deletegbr640x960',
+          'deletegbr728x90',
+          'deletegbr800x440',
+          'deletegbr1024x7',
+          'downgbr1024x768',
+          'downgbr800x440',
+          'downgbr728x90',
+          'downgbr640x960',
+          'downgbr468x60',
+          'downgbr336x280',
+          'downgbr320x480',
+          'downgbr320x416',
+          'downgbr320x250',
+          'downgbr320x100',
+          'downgbr320x50',
+          'downgbr315x300',
+          'downgbr305x99',
+          'downgbr300x600',
+          'downgbr300x100',
+          'downgbr300x250',
+          'downgbr300x50',
+          'downgbr250x250',
+          'downgbr160x600',
+          'downgbr120x600',
+          'downgbrloop',
+          'activateout',
+          'activateview',
+          'viewdownload'
+        ],
+        'adspace'=> [
+          'index',
+          'search',
+          'edit',
+          'create',
+          'delete',
+          'new',
+          'save',
+          'view',
+          'activate',
+        ],
+        'confirm'=> [
+          'index',
+          'create',
+          'search',
+          'approve',
+          'unapprove',
+        ],
+    ]
+]);
