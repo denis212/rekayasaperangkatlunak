@@ -272,5 +272,5 @@ if( !empty($_GET['cp_id']) && $_GET['cp_id'] <> "--" ) {
       </div>
 	  <!-- CONTENT -->
 <?php
-// include "footer.php";
+// include "footer.php"; lalalallalala
 ?>
