@@ -58,6 +58,7 @@
                 <ul class="dropdown-menu">
                   <li>{{ link_to('campaign/create', 'Create Campaign') }}</li>
                   <li>{{ link_to('campaign/search', 'Search Campaign') }}</li>
+                  <li>{{ link_to('campaign/dailyreport', 'Daily Report') }}</li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -103,6 +104,7 @@
                   <ul class="dropdown-menu">
                     <li>{{ link_to('campaign/create', 'Create Campaign') }}</li>
                     <li>{{ link_to('campaign/search', 'Search Campaign') }}</li>
+                    <li>{{ link_to('campaign/dailyreport', 'Daily Report') }}</li>
                   </ul>
                 </li>
                 <li class="dropdown">

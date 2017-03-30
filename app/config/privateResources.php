@@ -76,7 +76,8 @@ return new Config([
           'downgbrloop',
           'activateout',
           'activateview',
-          'viewdownload'
+          'viewdownload',
+          'dailyreport',
         ],
         'adspace'=> [
           'index',
