@@ -42,10 +42,10 @@
                     {{ form.messages("lastname") }}
                 </div>
 
-                <div class="clearfix">
+                <!-- <div class="clearfix">
                     <label for="suspended">Suspended?</label>
                     {{ form.render("suspended",['class':'form-control']) }}
-                </div>
+                </div> -->
                 <div class="clearfix">
                     <label for="type">Type</label>
                     {{ form.render("type",['class':'form-control']) }}
@@ -68,15 +68,15 @@
                     {{ form.messages("email") }}
                 </div>
 
-                <div class="clearfix">
+                <!-- <div class="clearfix">
                     <label for="banned">Banned?</label>
                     {{ form.render("banned",['class':'form-control']) }}
-                </div>
+                </div> -->
 
-                <div class="clearfix">
+                <!-- <div class="clearfix">
                     <label for="active">Confirmed?</label>
                     {{ form.render("active",['class':'form-control']) }}
-                </div>
+                </div> -->
                 <div class="clearfix">
                     <label for="skype">Skype</label>
                     {{ form.render("skype",['class':'form-control']) }}

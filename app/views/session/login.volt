@@ -12,7 +12,7 @@
         {{ form() }}
             <fieldset>
                 <div class="form-group">
-                    <label for="email">Username/Email</label>
+                    <label for="email">Email</label>
                     <div class="controls">
 												{{ form.render('email',['class':'form-control']) }}
                     </div>

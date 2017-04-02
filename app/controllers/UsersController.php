@@ -244,6 +244,9 @@ class UsersController extends ControllerBase
           'edit' => true
       ]);
       $profilesId = $user->profilesId;
+      // $banned = $user->banned;
+      // $suspended = $user->suspended;
+      // $active = $user->active;
       if ($this->request->isPost()) {
 
         if ($form->isValid($this->request->getPost()) != false) {
@@ -253,9 +256,9 @@ class UsersController extends ControllerBase
               'lastname' => $this->request->getPost('lastname', 'striptags'),
               // 'profilesId' => $this->request->getPost('profilesId', 'int'),
               'email' => $this->request->getPost('email', 'email'),
-              'banned' => $this->request->getPost('banned'),
-              'suspended' => $this->request->getPost('suspended'),
-              'active' => $this->request->getPost('active'),
+              // 'banned' => $this->request->getPost('banned'),
+              // 'suspended' => $this->request->getPost('suspended'),
+              // 'active' => $this->request->getPost('active'),
               'type' => $this->request->getPost('type'),
               'skype' => $this->request->getPost('skype'),
               'phone' => $this->request->getPost('phone'),

@@ -29,13 +29,13 @@ return new Config([
     ],
     'mail' => [
         'fromName' => 'GamanAds',
-        'fromEmail' => 'denis.setianto@gmail.com',
+        'fromEmail' => 'noreply@gamanads.co.id',
         'smtp' => [
-            'server' => 'smtp.mailtrap.io',
+            'server' => 'mail.mobiwin.co.id',
             'port' => 465,
-            'security' => '',
-            'username' => '05675e7c3afd7f',
-            'password' => 'ba5ab15959b5e4'
+            'security' => 'SSL',
+            'username' => 'denis.setianto@mobiwin.co.id',
+            'password' => 'Denis2016'
         ]
     ],
     'amazon' => [
