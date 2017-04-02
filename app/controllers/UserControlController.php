@@ -84,12 +84,14 @@ class UserControlController extends ControllerBase
             ]);
         }
 
-        $this->flash->success('The email was successfully confirmed');
-
-        return $this->dispatcher->forward([
-            'controller' => 'index',
-            'action' => 'index'
-        ]);
+        // $this->flash->success('The email was successfully confirmed');
+        $this->flashSess->success("The email was successfully confirmed ");
+        $this->view->disable();
+        return $this->response->redirect('session/logout');
+        // return $this->dispatcher->forward([
+        //     'controller' => 'index',
+        //     'action' => 'index'
+        // ]);
     }
 
     public function resetPasswordAction()

@@ -53,7 +53,7 @@ class SessionController extends ControllerBase
             if($this->security->checkToken())
             {
             if ($form->isValid($this->request->getPost()) != false) {
-
+                $tampemail = $this->request->getPost('email');
                 $user = new Users([
                     'name' => $this->request->getPost('name', 'striptags'),
                     'lastname' => $this->request->getPost('lastname', 'striptags'),
@@ -70,10 +70,9 @@ class SessionController extends ControllerBase
                 ]);
 
                 if ($user->save()) {
-                    return $this->dispatcher->forward([
-                        'controller' => 'index',
-                        'action' => 'index'
-                    ]);
+                  $this->flashSess->success("A confirmation mail has been sent to ".$tampemail);
+                  $this->view->disable();
+                  return $this->response->redirect('');
                 }
 
                 $this->flash->error($user->getMessages());

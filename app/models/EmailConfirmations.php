@@ -45,7 +45,7 @@ class EmailConfirmations extends Model
     public function beforeValidationOnCreate()
     {
         // Timestamp the confirmation
-        $this->createdAt = new RawValue('now()');//time();
+        $this->createdAt = time();
 
         // Generate a random confirmation code
         $this->code = preg_replace('/[^a-zA-Z0-9]/', '', base64_encode(openssl_random_pseudo_bytes(24)));
@@ -60,7 +60,7 @@ class EmailConfirmations extends Model
     public function beforeValidationOnUpdate()
     {
         // Timestamp the confirmation
-        $this->modifiedAt = new RawValue('now()');//time();
+        $this->modifiedAt = time();
     }
 
     /**

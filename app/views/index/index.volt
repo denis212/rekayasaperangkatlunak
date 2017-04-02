@@ -1,7 +1,7 @@
  <title>Home - GamanAds</title>
 
 {{ content() }}
-
+<p><?php $this->flashSess->output() ?></p>
 <section id="main-slider" class="no-margin">
     <div class="carousel slide">
         <ol class="carousel-indicators">
