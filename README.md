@@ -1,4 +1,6 @@
-Vökuró
+GamanAds with phalcon template Vökuró
+
+sample real project with some customize for meet the requirements. happy coding ^^
 ======
 
 Phalcon is a web framework delivered as a C extension providing high performance and lower resource consumption.
