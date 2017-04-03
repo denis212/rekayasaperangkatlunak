@@ -1,5 +1,5 @@
 <title>Search Campaign - GamanAds</title>
-
+<?php $this->assets->outputCss(); ?>
 <?php
 /**
  * @var \Phalcon\Mvc\View\Engine\Php $this
@@ -794,3 +794,4 @@ td
    }
 </script>
 </div>
+<?php $this->assets->outputJs(); ?>

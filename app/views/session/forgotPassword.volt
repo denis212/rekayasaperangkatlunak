@@ -1,5 +1,5 @@
 <title>Forgot Password - GamanAds</title>
-
+<?php $this->assets->outputCss(); ?>
 {{ content() }}
 <div class="container">
 <div align="center" class="well">
@@ -30,3 +30,4 @@
 
 </div>
 </div>
+<?php $this->assets->outputJs(); ?>

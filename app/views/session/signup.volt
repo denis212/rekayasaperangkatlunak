@@ -1,5 +1,7 @@
 <title>SignUp - GamanAds</title>
 
+  <?php $this->assets->outputCss(); ?>
+
 {{ content() }}
 
 <div class="container" style="margin-top:30px;">
@@ -113,3 +115,4 @@
 
 </div>
 </div>
+<?php $this->assets->outputJs(); ?>

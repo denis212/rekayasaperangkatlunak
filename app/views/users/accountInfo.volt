@@ -1,5 +1,7 @@
 <title>Info Users - GamanAds</title>
 
+<?php $this->assets->outputCss(); ?>
+
 <div class="container">
 <form method="post" autocomplete="off">
 
@@ -181,3 +183,5 @@
     </form>
 </div>
 </div>
+
+<?php $this->assets->outputJs(); ?>

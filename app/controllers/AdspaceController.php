@@ -18,6 +18,23 @@ class AdspaceController extends ControllerBase
      {
         //  $this->view->setTemplateBefore('private');
            $this->view->setTemplateBefore('cobaprivate');
+
+           // Add some local CSS resources
+          $this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+          $this->assets->addCss("css/font-awesome.min.css");
+          $this->assets->addCss("css/animate.min.css");
+          $this->assets->addCss("css/prettyPhoto.css");
+          $this->assets->addCss("css/main.css");
+          $this->assets->addCss("css/responsive.css");
+
+          // And some local JavaScript resources
+          $this->assets->addJs("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
+          $this->assets->addJs("js/jquery.js");
+          $this->assets->addJs("js/bootstrap.min.js");
+          $this->assets->addJs("js/main.js");
+          $this->assets->addJs("js/jquery.prettyPhoto.js");
+          $this->assets->addJs("js/jquery.isotope.min.js");
+          $this->assets->addJs("js/wow.min.js");
      }
 
     public function indexAction()
@@ -171,6 +188,7 @@ class AdspaceController extends ControllerBase
       $this->view->user = $adspace;
       $this->view->form = $form;
 
+
     }
 
     /**
@@ -229,6 +247,7 @@ class AdspaceController extends ControllerBase
       }
 
         $this->view->form = $form;
+
 
     }
 

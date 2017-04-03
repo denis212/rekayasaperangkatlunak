@@ -1,4 +1,5 @@
 <title>Confirmation - GamanAds</title>
+<?php $this->assets->outputCss(); ?>
 {{ content() }}
 
 <div class="container" style="margin-top:20px;">
@@ -46,3 +47,5 @@
 
 </div>
 </div>
+
+ <?php $this->assets->outputJs(); ?>

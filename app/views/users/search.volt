@@ -1,5 +1,5 @@
 <title>Search Users - GamanAds</title>
-
+<?php $this->assets->outputCss(); ?>
 {{ content() }}
 <div class="container">
 <ul class="pager">
@@ -62,3 +62,4 @@
     No users are recorded
 {% endfor %}
 </div>
+ <?php $this->assets->outputJs(); ?>

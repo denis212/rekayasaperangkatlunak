@@ -1,5 +1,5 @@
 <title>Search Payment - GamanAds</title>
-
+<?php $this->assets->outputCss(); ?>
 <?php
 /**
  * @var \Phalcon\Mvc\View\Engine\Php $this
@@ -88,3 +88,4 @@
     </div>
 </div>
 </div>
+ <?php $this->assets->outputJs(); ?>

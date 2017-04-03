@@ -1,5 +1,5 @@
 <title>Create Campaign - GamanAds</title>
-
+<?php $this->assets->outputCss(); ?>
 {{ content() }}
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -11,7 +11,7 @@
 <link href="https://select2.github.io/dist/css/select2.min.css" rel="stylesheet"/>
 
 <div class="container">
-  
+
 <div class="row">
     <nav>
         <ul class="pager">
@@ -1710,3 +1710,5 @@ $("#cp_target").select2();
 $("#cp_tag").select2();
 </script>
 </div>
+
+<?php $this->assets->outputJs(); ?>

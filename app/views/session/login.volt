@@ -1,5 +1,5 @@
 <title>Login - GamanAds</title>
-
+<?php $this->assets->outputCss(); ?>
 
 {{ content() }}
 <div class="container">
@@ -53,3 +53,5 @@
 </div>
 
 </div>
+
+ <?php $this->assets->outputJs(); ?>

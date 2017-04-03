@@ -1,5 +1,5 @@
 <title>Edit Campaign - GamanAds</title>
-
+ <?php $this->assets->outputCss(); ?>
 <p><?php $this->flashSess->output() ?></p>
 
 {{ content() }}
@@ -1891,3 +1891,4 @@ $('#cp_country').on('change', function(){
 
 </script>
 </div>
+<?php $this->assets->outputJs(); ?>

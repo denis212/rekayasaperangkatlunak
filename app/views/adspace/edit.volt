@@ -1,5 +1,5 @@
 <title>Edit Ad Space - GamanAds</title>
-
+<?php $this->assets->outputCss(); ?>
 <p><?php $this->flashSess->output() ?></p>
 
 {{ content() }}
@@ -77,3 +77,4 @@
 
 </div>
 </div>
+<?php $this->assets->outputJs(); ?>

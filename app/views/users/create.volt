@@ -1,4 +1,5 @@
 <title>Create Users - GamanAds</title>
+ <?php $this->assets->outputCss(); ?>
 <div class="container">
 <ul class="pager">
     <li class="previous pull-left">
@@ -84,3 +85,4 @@
 
 </form>
 <div>
+<?php $this->assets->outputJs(); ?>

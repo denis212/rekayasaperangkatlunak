@@ -1,3 +1,5 @@
+ <?php $this->assets->outputCss(); ?>
+ 
 {{ content() }}
 <div class="container">
 <form method="post" class="form-horizontal" autocomplete="off" action="{{ url("users/changePassword") }}">
@@ -32,3 +34,4 @@
 
 </form>
 </div>
+<?php $this->assets->outputJs(); ?>

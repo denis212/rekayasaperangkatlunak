@@ -1,5 +1,6 @@
 <title>Users - GamanAds</title>
 
+
 {{ content() }}
 <div class="container">
 <div class="site-signup" style=" margin-left:80px;margin-right:80px;">
