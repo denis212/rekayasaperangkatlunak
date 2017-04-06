@@ -1,6 +1,6 @@
 <title>Login - GamanAds</title>
 <?php $this->assets->outputCss(); ?>
-
+<p><?php $this->flashSess->output() ?></p>
 {{ content() }}
 <div class="container">
 <div class="row">

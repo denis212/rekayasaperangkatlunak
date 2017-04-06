@@ -18,8 +18,13 @@ class UsersController extends ControllerBase
 
     public function initialize()
     {
-        // $this->view->setTemplateBefore('private');
-          $this->view->setTemplateBefore('cobaprivate');
+        if ($this->session->has('auth-identity')) {
+            // $this->view->setTemplateBefore('private');
+              $this->view->setTemplateBefore('cobaprivate');
+        }else {
+          // $this->view->setTemplateBefore('public');
+          $this->view->setTemplateBefore('coba');
+        }
 
           // Add some local CSS resources
          $this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
@@ -212,6 +217,7 @@ class UsersController extends ControllerBase
      */
     public function changePasswordAction()
     {
+        $this->view->setTemplateBefore('coba');
         $form = new ChangePasswordForm();
 
         if ($this->request->isPost()) {
@@ -237,9 +243,15 @@ class UsersController extends ControllerBase
                     $this->flash->error($passwordChange->getMessages());
                 } else {
 
-                    $this->flash->success('Your password was successfully changed');
+                    // $this->flash->success('Your password was successfully changed');
 
                     Tag::resetInput();
+
+                    $this->flashSess->success("Your password was successfully changed");
+                    $this->view->disable();
+                    $this->auth->remove();
+
+                    return $this->response->redirect('session/login');
                 }
             }
         }

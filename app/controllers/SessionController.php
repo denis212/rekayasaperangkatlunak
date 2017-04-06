@@ -148,8 +148,10 @@ class SessionController extends ControllerBase
     {
         $form = new ForgotPasswordForm();
 
-        if ($this->request->isPost()) {
-
+        if ($this->request->isPost())
+        {
+          if($this->security->checkToken())
+          {
             // Send emails only is config value is set to true
             if ($this->getDI()->get('config')->useMail) {
 
@@ -167,7 +169,10 @@ class SessionController extends ControllerBase
                         $resetPassword = new ResetPasswords();
                         $resetPassword->usersId = $user->id;
                         if ($resetPassword->save()) {
-                            $this->flash->success('Success! Please check your messages for an email reset password');
+                            // $this->flash->success('Success! Please check your messages for an email reset password');
+                            $this->flashSess->success("Success! Please check your messages for an email reset password");
+                            $this->view->disable();
+                            return $this->response->redirect('');
                         } else {
                             foreach ($resetPassword->getMessages() as $message) {
                                 $this->flash->error($message);
@@ -179,7 +184,10 @@ class SessionController extends ControllerBase
                 $this->flash->warning('Emails are currently disabled. Change config key "useMail" to true to enable emails.');
             }
         }
-
+        else {
+            $this->flash->error('CSRF Validation is Failed');
+        }
+      }
         $this->view->form = $form;
     }
 
