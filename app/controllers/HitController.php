@@ -34,6 +34,11 @@ class HitController extends ControllerBase
 
     $connection = new Mysql($config);
 
+    $sal_awal = 0;
+    $cost_per = 0;
+    $clientid = '';
+    $sal_akhir = 0;
+
     if(!empty($this->dispatcher->getParam('cid')))
     {
       $cid = $this->dispatcher->getParam('cid');
@@ -57,7 +62,7 @@ class HitController extends ControllerBase
     $useragent = $request->getServer("HTTP_USER_AGENT");
     $useragent = $request->getServer("HTTP_USER_AGENT");
 
-    $resultset = $connection->query('SELECT id,status,count(id) as jumlah FROM '.$database.'.campaign WHERE id = '.$cid);
+    $resultset = $connection->query('SELECT c.id,c.status,count(c.id) as jumlah, c.cp_cpmcpa as cost_per, c.client_id, sal.cur_saldo as saldo FROM '.$database.'.campaign c, '.$database.'.saldo sal WHERE c.client_id = sal.user_id AND c.id = '.$cid);
 
     while($result = $resultset->fetchArray())
     {
@@ -72,6 +77,11 @@ class HitController extends ControllerBase
           die();
         }
       }
+      $sal_awal = $result['saldo'];
+      $cost_per = $result['cost_per'];
+      $clientid = $result['client_id'];
+      $sal_akhir = $sal_awal - $cost_per;
+      // print_r($result['saldo'].' '.$result['cost_per'].' '.$result['client_id']);
     }
 
     $s_id = date("YmdHis").rand(0,99999);
@@ -94,6 +104,11 @@ class HitController extends ControllerBase
     // $sqli =
     $connection->execute("INSERT INTO ".$database.".c_daily_hit_".date("Ym")." (campaign_id,hit_date,jumlah,entry_date) VALUES (".$cid.",NOW(),1,NOW()) ON DUPLICATE KEY UPDATE jumlah = jumlah+1");
     // mysql_query($sqli);
+
+    //query potong saldo awal
+    $connection->execute("UPDATE ".$database.".saldo
+                          SET  cur_saldo = ".$sal_akhir."
+                          WHERE user_id = ".$clientid);
 
     // IP Daily Hit
     // $sqli =

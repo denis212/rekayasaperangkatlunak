@@ -78,6 +78,8 @@ return new Config([
           'activateview',
           'viewdownload',
           'dailyreport',
+          'dashboardcamp',
+          'dailyrptdw',
         ],
         'adspace'=> [
           'index',

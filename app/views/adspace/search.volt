@@ -121,6 +121,9 @@
                   echo $this->tag->linkTo(["adspace/activate/" . $adspace->id.'/'.$page->current, "<i class='glyphicon glyphicon-stop'></i> Deactivate", "class"=>"btn btn-default"]);
                   ?>
                 </td>
+                <?php } else { ?>
+                <td>
+                </td>
                 <?php } ?>
             </tr>
         <?php endforeach; ?>

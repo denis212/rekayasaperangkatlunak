@@ -536,6 +536,36 @@ class CampaignForm extends Form
         ]);
 
         $this->add($cp_namesearch);
+
+        //type hari
+        $typedashboard = new select('period', ['today'=>'Today','yesterday'=>'Yesterday','last_7d' => 'Last 7 days',
+            'last_1m' => 'Last 30 days'],
+            ['onchange' => 'this.form.submit()']);
+        $this->add($typedashboard);
+
+        //report daily startdate, enddate, campaignname
+
+        $rpt_daily_startdate = new Text('rpt_startdate', [
+            'placeholder' => 'ex: 01-01-2017',
+            'style' =>'width:250px',
+        ]);
+        $rpt_daily_startdate->setLabel('Start Date');
+        $this->add($rpt_daily_startdate);
+
+        $rpt_daily_enddate = new Text('rpt_enddate', [
+            'placeholder' => 'ex: 01-01-2017',
+            'style' =>'width:250px',
+        ]);
+        $rpt_daily_enddate->setLabel('End Date');
+        $this->add($rpt_daily_enddate);
+
+        $rpt_cp_name = new Text('rpt_cp_name', [
+            'placeholder' => 'Campaign Name'
+        ]);
+        $rpt_cp_name->setLabel('Campaign Name');
+        $this->add($rpt_cp_name);
+
+
     }
 
     public function messages($name)

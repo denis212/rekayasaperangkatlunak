@@ -122,7 +122,7 @@ class Confirmation extends Model
          // Only send the confirmation email if emails are turned on in the config
          $this->getDI()
              ->getMail()
-             ->send(["admin@gamanads.com" => "Admin GamanAds"],"New Confirmation Payment", 'confirmpayment',
+             ->send(["denis.setianto@mobiwin.co.id" => "Admin GamanAds"],"New Confirmation Payment", 'confirmpayment',
                  [ 'emailBody'=> "Payment from Client Id : <b>$this->user_id</b><br>
                   Client Name: <b>$this->username</b><br>
                   Bank Name : $this->bankname <br>

@@ -7,6 +7,14 @@ use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
 use Vokuro\Models\Campaign;
 use Vokuro\Forms\CampaignForm;
+use Phalcon\Db\Adapter\Pdo\Mysql;
+use Phalcon\Http\Request;
+use Phalcon\Db as Assoc;
+
+
+use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
+use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
 
 class CampaignController extends ControllerBase
@@ -14,7 +22,7 @@ class CampaignController extends ControllerBase
     public function initialize()
     {
         // $this->view->setTemplateBefore('private');
-          $this->view->setTemplateBefore('cobaprivate');
+          // $this->view->setTemplateBefore('cobaprivate');
           // Add some local CSS resources
          $this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
          $this->assets->addCss("css/font-awesome.min.css");
@@ -37,6 +45,7 @@ class CampaignController extends ControllerBase
      */
     public function indexAction()
     {
+        $this->view->setTemplateBefore('cobaprivate');
         $this->persistent->parameters = null;
         $this->view->form = new CampaignForm();
     }
@@ -46,7 +55,7 @@ class CampaignController extends ControllerBase
      */
     public function searchAction()
     {
-
+        $this->view->setTemplateBefore('cobaprivate');
         $form = new CampaignForm();
         $numberPage = 1;
         $addParam = '';
@@ -143,6 +152,7 @@ class CampaignController extends ControllerBase
      */
     public function editAction($id,$page)
     {
+      $this->view->setTemplateBefore('cobaprivate');
       $green = 0;
       $campaign = Campaign::findFirstByid($id);
       if (!$campaign) {
@@ -432,6 +442,7 @@ class CampaignController extends ControllerBase
      */
      public function viewAction($id,$page)
      {
+       $this->view->setTemplateBefore('cobaprivate');
          $numberPage = 1;
 
          if ($this->request->isPost()) {
@@ -518,6 +529,7 @@ class CampaignController extends ControllerBase
      */
     public function saveAction()
     {
+      $this->view->setTemplateBefore('cobaprivate');
 
         if (!$this->request->isPost()) {
             $this->dispatcher->forward([
@@ -594,6 +606,7 @@ class CampaignController extends ControllerBase
      */
     public function deleteAction($id,$page)
     {
+        $this->view->setTemplateBefore('cobaprivate');
         $campaign = Campaign::findFirstByid($id);
         if (!$campaign) {
             $this->flash->error("campaign was not found");
@@ -631,6 +644,7 @@ class CampaignController extends ControllerBase
     //create Action
     public function createAction()
     {
+        $this->view->setTemplateBefore('cobaprivate');
         $form = new CampaignForm();
         $form->profilesId = $this->auth->getProfilesId();
         $form->cid = $this->auth->getId();
@@ -826,6 +840,7 @@ class CampaignController extends ControllerBase
 
     public function ActivateviewAction($id)
     {
+        $this->view->setTemplateBefore('cobaprivate');
         $campaign = Campaign::findFirstByid($id);
         if($campaign->status == 'N')
         { $campaign->status = 'A';
@@ -842,6 +857,7 @@ class CampaignController extends ControllerBase
 
     public function ActivateoutAction($id,$page)
     {
+        $this->view->setTemplateBefore('cobaprivate');
         $campaign = Campaign::findFirstByid($id);
         if($campaign->status == 'N')
         { $campaign->status = 'A';
@@ -856,6 +872,8 @@ class CampaignController extends ControllerBase
 
     public function Deletegbr120x600Action($id)
     {
+        $this->view->setTemplateBefore('cobaprivate');
+        $this->view->setTemplateBefore('cobaprivate');
         $campaign = Campaign::findFirstByid($id);
         $campaign->gbr120x600 = '';
         $campaign->save();
@@ -865,6 +883,8 @@ class CampaignController extends ControllerBase
 
     public function Deletegbr160x600Action($id)
     {
+        $this->view->setTemplateBefore('cobaprivate');
+        $this->view->setTemplateBefore('cobaprivate');
         $campaign = Campaign::findFirstByid($id);
         $campaign->gbr160x600 = '';
         $campaign->save();
@@ -874,6 +894,7 @@ class CampaignController extends ControllerBase
 
     public function Deletegbr250x250Action($id)
     {
+        $this->view->setTemplateBefore('cobaprivate');
         $campaign = Campaign::findFirstByid($id);
         $campaign->gbr250x250 = '';
         $campaign->save();
@@ -883,6 +904,7 @@ class CampaignController extends ControllerBase
 
     public function Deletegbr300x50Action($id)
     {
+        $this->view->setTemplateBefore('cobaprivate');
         $campaign = Campaign::findFirstByid($id);
         $campaign->gbr300x50 = '';
         $campaign->save();
@@ -892,6 +914,7 @@ class CampaignController extends ControllerBase
 
     public function Deletegbr300x100Action($id)
     {
+        $this->view->setTemplateBefore('cobaprivate');
         $campaign = Campaign::findFirstByid($id);
         $campaign->gbr300x100 = '';
         $campaign->save();
@@ -1032,59 +1055,6 @@ class CampaignController extends ControllerBase
         $campaign->save();
 
         return $this->response->redirect('campaign/edit/'.$id.'/1');
-    }
-
-    public function DowngbrloopAction($id)
-    {
-      $campaign = Campaign::findFirstByid($id);
-      // $files = array($campaign->gbr1024x768);
-      // $zipname = 'file.zip';
-      // $zip = new \ZipArchive;
-      // $zip->open($zipname, ZipArchive::CREATE);
-      // foreach ($files as $file) {
-      //   $zip->addFile($file);
-      // }
-      // $zip->close();
-      //
-      // header('Content-Type: application/zip');
-      // header('Content-disposition: attachment; filename='.$zipname);
-      // header('Content-Length: ' . filesize($zipname));
-      // readfile($zipname);
-
-      $path = $campaign->gbr1024x768;
-      $clientname = $campaign->client_name;
-      $clientid = $campaign->client_id;
-      $campaignname = $campaign->cp_name;
-      $size = '1024x768';
-
-      $this->view->disable();
-  		$file = $path;
-    		// get mime
-    		$info = finfo_open(FILEINFO_MIME_TYPE);
-    		$mime = finfo_file($info, $file);
-    		finfo_close($info);
-
-    		if ( ! ob_get_level()) ob_start();
-
-    		// set headers
-    		header('Set-Cookie: token=download; path=/');
-    		header("Pragma: public");
-    		header("Expires: 0");
-    		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-    		header("Cache-Control: public");
-    		header("Content-Description: File Transfer");
-    		header("Content-Type: image/png");
-    		header("Content-Disposition: attachment; filename=\"".$clientid.'-'.$clientname.'-'.$campaignname.'-'.$size.$tipe."\"");
-    		header("Content-Transfer-Encoding: binary");
-    		header("Content-Length: ".filesize($file));
-    		if (($stream = fopen($file, 'rb'))) {
-    			while( ! feof($stream)) {
-    				echo fread($stream, 2014);
-    				ob_flush();
-    				flush();
-    			}
-    		}
-    		ob_end_clean();
     }
 
     public function Downgbr1024x768Action($id)
@@ -1948,5 +1918,554 @@ class CampaignController extends ControllerBase
           }
         }
         ob_end_clean();
+    }
+
+    public function dashboardcampAction()
+    {
+      $this->view->setTemplateBefore('cobaprivate');
+      $form = new CampaignForm();
+      $request = new Request();
+      $database = 'vokuro';
+
+      $config = [
+      	'adapter' => 'Mysql',
+      	'host' => '127.0.0.1',
+      	'username' => 'root',
+      	'password' => '',
+      	'dbname' => $database
+      ];
+
+      $connection = new Mysql($config);
+      if(!empty($this->request->getPost("period")))
+      {
+        $period = $this->request->getPost("period");
+      }
+
+      $id = $this->auth->getId();
+
+      $sql_saldo = "SELECT cur_saldo AS saldo, currency FROM ".$database.".saldo WHERE 1 AND user_id='".$id."'";
+      $current_saldo = $connection->query($sql_saldo);
+      $current_saldo->setFetchMode(
+          \Phalcon\Db::FETCH_ASSOC
+      );
+
+      $row_saldo= $current_saldo->fetchArray();
+      if( $row_saldo['saldo'] == NULL )
+      {
+        $total_saldo = 0;
+        $curr = $row_saldo['currency'];
+      }
+      else
+      {
+        $total_saldo = $row_saldo['saldo'];
+        $curr = $row_saldo['currency'];
+      }
+
+      $this->view->dash_saldo = $total_saldo.' '.$curr;
+
+      if( !isset($period) )
+      {
+      	$tgl = date("Y-m-d");
+
+      	$sql_click = "SELECT sum( jumlah ) AS jclick FROM ".$database.".c_daily_hit_".date("Ym")."
+        WHERE 1 AND hit_date='".$tgl."'";
+        $tanda1 = 'A';
+      }
+      else
+      {
+      	switch( $period ) {
+      		case "yesterday" :
+      			$date	= mktime(0,0,0,date("m"),date("d")-1,date("Y"));
+      			$yesterday	= date("Y-m-d",$date);
+
+      			$tabel = date("Ym",$date);
+
+      			$sql_click = "SELECT sum( jumlah ) AS jclick FROM ".$database.".c_daily_hit_".$tabel."
+            WHERE 1 AND hit_date='".$yesterday."'";
+            $tanda1 = 'B';
+      		break;
+      		case "last_7d" :
+      			$date_awal	= mktime(0,0,0,date("m"),date("d")-6,date("Y"));
+      			$tgl_awal	= date("Y-m-d",$date_awal);
+      			$tabel_awal	= date("Ym",$date_awal);
+
+      			$bln_awal = date("m",$date_awal);
+
+      			$sql_click = "SELECT sum(jumlah) as jclick
+      							FROM (
+      							SELECT campaign_id, hit_date, jumlah
+      							FROM (
+      							SELECT campaign_id, hit_date, jumlah
+      							FROM ".$database.".c_daily_hit_".$tabel_awal."
+      							)x
+      							WHERE hit_date
+      							BETWEEN '".$tgl_awal."'
+      							AND '".date("Y-m-d")."')y";
+                $tanda1 = 'C';
+      		break;
+      		case "last_1m" :
+      			$date_awal	= mktime(0,0,0,date("m"),date("d")-30,date("Y"));
+      			$tgl_awal	= date("Y-m-d",$date_awal);
+      			$tabel_awal	= date("Ym",$date_awal);
+
+      			$sql_click = "SELECT sum(jumlah) as jclick
+      							FROM (
+      							SELECT campaign_id, hit_date, jumlah
+      							FROM (
+      							SELECT campaign_id, hit_date, jumlah
+      							FROM ".$database.".c_daily_hit_".$tabel_awal."
+      							)x
+      							WHERE hit_date
+      							BETWEEN '".$tgl_awal."'
+      							AND '".date("Y-m-d")."')y";
+              $tanda1 = 'C';
+
+      		break;
+      		default :
+          $tgl = date("Y-m-d");
+          $sql_click = "SELECT sum( jumlah ) AS jclick FROM ".$database.".c_daily_hit_".date("Ym")."
+          WHERE 1 AND hit_date='".$tgl."'";
+          $tanda1 = 'D';
+          break;
+      	}
+      }
+      $rs_click = $connection->query($sql_click);
+      $rs_click->setFetchMode(
+          \Phalcon\Db::FETCH_ASSOC
+      );
+
+      $row_click = $rs_click->fetchArray();
+      if( $row_click['jclick'] == NULL )
+      {
+      	$total_click = 0;
+      }
+      else
+      {
+        $total_click = $row_click['jclick'];
+      }
+
+       print_r('Total Klik '.$total_click.'<br>');
+       print_r('Tanda '.$tanda1.'<br>');
+
+       $this->view->totalclick = $total_click;
+
+       ///////////////grafik dibawah angka
+       $date_awalg	= mktime(0,0,0,date("m"),date("d")-6,date("Y"));
+       $tgl_awalg	= date("Y-m-d",$date_awalg);
+       $tabel_awalg	= date("Ym",$date_awalg);
+       //click
+       $t_click = 0;
+       $sql_clickg = "SELECT hit_date as tgl,sum(jumlah) as jclick
+       FROM (
+       SELECT campaign_id, hit_date, jumlah
+       FROM ".$database.".c_daily_hit_".$tabel_awalg."
+       )x
+       WHERE hit_date
+       BETWEEN '".$tgl_awalg."'
+       AND '".date("Y-m-d")."'
+       GROUP BY tgl";
+
+       $rs_clickg = $connection->query($sql_clickg);
+       $rs_clickg->setFetchMode(
+           \Phalcon\Db::FETCH_ASSOC
+       );
+       $click_label = '';
+       $click_result = '';
+       while( $row_clickg = $rs_clickg->fetchArray() ) {
+       	$t_click += $row_clickg['jclick'];
+       	$click_label .= "\"".$row_clickg['tgl']."\",";
+       	$click_result .= $row_clickg['jclick'].",";
+        print_r('<br> dari Query sql_clickg = '.$t_click);
+       }
+       $click_label = preg_replace('/,$/','',$click_label);
+       $click_result = preg_replace('/,$/','',$click_result);
+
+       $this->view->clicklabel = $click_label; //ini untuk X Axis ke kanan (tapi di ganti pakai get 7 days di view)
+       $this->view->clickresult = $click_result; // ini untuk jumlah click di Y Axis
+       $this->view->sql = $sql_clickg;
+       ///////////////grafik dibawah angka
+
+       $tanda = '';
+       if(!empty($this->request->getPost("period")))
+       {
+         $period = $this->request->getPost("period");
+       }
+
+       if( !isset($period) ) {
+       $date	= mktime(0,0,0,date("m"),date("d"),date("Y"));
+       	$tgl = date("Y-m-d",$date);
+       	$tabel = date("Ym",$date);
+
+       	$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, sum(jumlah) as tcclick
+        FROM ".$database.".c_daily_hit_".date("Ym")." d, ".$database.".campaign c WHERE 1=1 AND
+        d.campaign_id=c.id AND hit_date='".$tgl."'
+        group by campaign_name order by tcclick desc limit 5";
+        $tanda = 'A';
+
+       }
+       else {
+       	switch( $this->request->getPost("period") ) {
+       		case "yesterday" :
+       		 $date	= mktime(0,0,0,date("m"),date("d")-1,date("Y"));
+       			$yesterday	= date("Y-m-d",$date);
+
+       			$tabel = date("Ym",$date);
+
+       			$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, sum(jumlah) as tcclick
+            FROM ".$database.".c_daily_hit_".$tabel." d, ".$database.".campaign c WHERE 1=1
+            AND d.campaign_id=c.id AND hit_date='".$yesterday."'
+            group by campaign_name order by tcclick desc limit 5";
+            $tanda = 'B';
+       		break;
+       		case "last_7d" :
+       			$date_awal	= mktime(0,0,0,date("m"),date("d")-6,date("Y"));
+       			$tgl_awal	= date("Y-m-d",$date_awal);
+
+       			$tabel_awal	= date("Ym",$date_awal);
+
+       			$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, campaign_id, sum( tclick ) AS tcclick FROM (
+       							SELECT campaign_id, hit_date,sum(jumlah) as tclick
+       							FROM (
+       							SELECT campaign_id, hit_date,jumlah
+       							FROM ".$database.".c_daily_hit_".$tabel_awal."
+       							)x
+       							WHERE hit_date
+       							BETWEEN '".$tgl_awal."'
+       							AND '".date("Y-m-d")."' GROUP BY campaign_id)y
+       							INNER JOIN ".$database.".campaign cc ON cc.id = y.campaign_id
+       							WHERE 1
+       							GROUP BY campaign_name
+       							ORDER BY tcclick DESC
+       							LIMIT 5";
+                $tanda = 'C';
+
+       		break;
+       		case "last_1m" :
+     		    $date_awal	= mktime(0,0,0,date("m"),date("d")-30,date("Y"));
+       			$tgl_awal	= date("Y-m-d",$date_awal);
+       			$bln_awal = date("m",$date_awal);
+       			$tabel_awal	= date("Ym",$date_awal);
+
+       			$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, campaign_id, sum( tclick ) AS tcclick FROM (
+       							SELECT campaign_id, hit_date,sum(jumlah) as tclick
+       							FROM (
+       							SELECT campaign_id, hit_date,jumlah
+       							FROM ".$database.".c_daily_hit_".$tabel_awal."
+       							)x
+       							WHERE hit_date
+       							BETWEEN '".$tgl_awal."'
+       							AND '".date("Y-m-d")."' GROUP BY campaign_id)y
+       							INNER JOIN ".$database.".campaign cc ON cc.id = y.campaign_id
+       							WHERE 1
+       							GROUP BY campaign_name
+       							ORDER BY tcclick DESC
+       							LIMIT 5";
+                    $tanda = 'D';
+       		break;
+       		default :
+
+          $date	= mktime(0,0,0,date("m"),date("d"),date("Y"));
+          $tgl = date("Y-m-d",$date);
+          $tabel = date("Ym",$date);
+
+           $sql_topcamcl = "SELECT client_name,cp_name as campaign_name, sum(jumlah) as tcclick
+           FROM ".$database.".c_daily_hit_".date("Ym")." d, ".$database.".campaign c WHERE 1=1 AND
+           d.campaign_id=c.id AND hit_date='".$tgl."'
+           group by campaign_name order by tcclick desc limit 5";
+
+     			 break;
+       	}
+       }
+
+       //top 5 campaign based on click
+       $i = 1;
+       $rs_topcamcl = $connection->query($sql_topcamcl);
+       $rs_topcamcl->setFetchMode(
+           \Phalcon\Db::FETCH_ASSOC
+       );
+       while(   $row_topcamcl = $rs_topcamcl->fetchArray() )
+       {
+         if( $i == 1 ) {
+           $val = ($row_topcamcl['tcclick'] / $row_topcamcl['tcclick']) * 100;
+           $val__ = $row_topcamcl['tcclick'];
+         }
+         else {
+           $val = ($row_topcamcl['tcclick'] / $val__) * 100;
+         }
+         $i++;
+        }
+
+        $this->view->form = $form;
+
+    }
+
+    public function dailyreportAction()
+    {
+      if ($this->session->has('auth-identity')) {
+            $this->view->setTemplateBefore('cobaprivate');
+      }else {
+        $this->view->setTemplateBefore('coba');
+      }
+
+      $form = new CampaignForm();
+      $request = new Request();
+      $database = 'vokuro';
+
+      $config = [
+        'adapter' => 'Mysql',
+        'host' => '127.0.0.1',
+        'username' => 'root',
+        'password' => '',
+        'dbname' => $database
+      ];
+
+      $connection = new Mysql($config);
+      $profileId = $this->auth->getProfilesId();
+      $userId = $this->auth->getId();
+
+      $date	= mktime(0,0,0,date("m"),date("d"),date("Y"));
+      $tgl = date("Y-m-d",$date);
+
+      $thnstrt = date("Y");
+      $blnstrt = date("m");
+      $tglstrt = date("d");
+
+      $f_startdate = $tgl;
+      $f_enddate = $tgl;
+      $campaignname = '';
+
+      if ($this->request->isPost())
+      {
+        $date	= mktime(0,0,0,date("m"),date("d"),date("Y"));
+        $tgl = date("Y-m-d",$date);
+
+        $startdate = $this->request->getPost("rpt_startdate");
+        $enddate = $this->request->getPost("rpt_enddate");
+        $campaignname = $this->request->getPost("rpt_cp_name");
+
+        if($startdate == null)
+        {
+          $startdate = $tgl;
+        }else {
+          $ar_tgl_s = explode("/",$startdate);
+      		$thnstrt = $ar_tgl_s[2];
+      		$blnstrt = $ar_tgl_s[0];
+      		$tglstrt = $ar_tgl_s[1];
+          $f_startdate = $thnstrt.'-'.$blnstrt.'-'.$tglstrt;
+        }
+
+        if($enddate == null)
+        {
+          $enddate = $tgl;
+        }else {
+          $ar_tgl_e = explode("/",$enddate);
+          $thnend = $ar_tgl_e[2];
+          $blnend = $ar_tgl_e[0];
+          $tglend = $ar_tgl_e[1];
+          $f_enddate = $thnend.'-'.$blnend.'-'.$tglend;
+        }
+        if($campaignname == null)
+        {
+          $campaignname = '';
+        }
+      }
+
+      $batas = 50; //max row 50 data
+      $pg = isset( $_GET['pg'] ) ? $_GET['pg'] : "";
+
+      if ( empty( $pg ) ) {
+        $posisi = 0;
+        $pg = 1;
+      } else {
+        $posisi = ( $pg - 1 ) * $batas;
+      }
+
+      $sql_daily = "SELECT a.hit_date, a.campaign_id, c.client_name,
+        c.cp_name as campaign_name, a.jumlah as total_click, c.cp_cpmcpa as cpc_price,
+        c.cp_totalbudget as budget, (a.jumlah * c.cp_cpmcpa) as spending
+        FROM ".$database.".c_daily_hit_".$thnstrt.$blnstrt." a, ".$database.".campaign c
+        WHERE 1=1
+        and a.hit_date BETWEEN '".$f_startdate."' and '".$f_enddate."'
+        and a.campaign_id = c.id and c.cp_name LIKE '".$campaignname."%'";
+
+      if($profileId != '1')
+      {
+        $sql_daily .= " and c.client_id = ". $userId ." ORDER BY a.hit_date";
+      }else {
+        $sql_daily .= " ORDER BY a.hit_date ";
+      }
+
+
+        $i = 0;
+        // $maxperPage = 2;
+        $result_daily = $connection->query($sql_daily);
+        $result_daily->setFetchMode(
+            \Phalcon\Db::FETCH_ASSOC
+        );
+        $tampil = '';
+
+        $no = 1+$posisi;
+        while( $row_daily = $result_daily->fetchArray() ) {
+          if($i < $batas)
+          {
+          $tampil .= '
+          <tbody>
+              <tr>
+              <td>'.$no.'</td>
+              <td>'.$row_daily['hit_date'].'</td>
+              <td>'.$row_daily['client_name'].'</td>
+              <td>'.$row_daily['campaign_name'].'</td>
+              <td>-</td>
+              <td>'.$row_daily['total_click'].'</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+  						<td>-</td>
+  						<td>'.$row_daily['cpc_price'].'</td>
+  						<td>'.$row_daily['budget'].'</td>
+  						<td>'.$row_daily['spending'].'</td>
+              </tr>
+          </tbody>';
+        }
+        $i++;
+        $no++;
+        }
+        $this->view->tampil = $tampil;
+        $this->view->jumlahnya = $i;
+        $this->view->rownya = $result_daily->numRows();
+        $this->view->form = $form;
+        $this->view->s_startdate = $f_startdate;
+        $this->view->s_enddate = $f_enddate;
+        $this->view->s_campaignname = $campaignname;
+        // $this->view->tes = $sql_daily.' '.$thnstrt.' '.$blnstrt.' '.$tglstrt.' -> '.$f_startdate;
+
+
+  //     SELECT a.hit_date, a.campaign_id, c.client_name, c.cp_name as campaign_name, a.jumlah as total_click, c.cp_cpmcpa as cpc_price, c.cp_totalbudget as budget, (a.jumlah * c.cp_cpmcpa) as spending
+  // FROM vokuro.c_daily_hit_201704 a, vokuro.campaign c
+  // WHERE 1=1 and a.hit_date BETWEEN '2017-04-01' and '2017-04-30'
+  // and a.campaign_id = c.id
+  // ORDER BY a.hit_date
+
+    }
+
+    public function dailyrptdwAction($startdate,$enddate,$campaign)
+    {
+      $form = new CampaignForm();
+      $request = new Request();
+      $database = 'vokuro';
+
+      $config = [
+        'adapter' => 'Mysql',
+        'host' => '127.0.0.1',
+        'username' => 'root',
+        'password' => '',
+        'dbname' => $database
+      ];
+
+      $connection = new Mysql($config);
+      $profileId = $this->auth->getProfilesId();
+      $userId = $this->auth->getId();
+
+      $date	= mktime(0,0,0,date("m"),date("d"),date("Y"));
+      $tgl = date("Y-m-d",$date);
+
+      // $thnstrt = date("Y");
+      // $blnstrt = date("m");
+      // $tglstrt = date("d");
+
+      $f_startdate = $startdate;
+      $f_enddate = $enddate;
+      $campaignname = $campaign;
+
+      $ar_tgl_s = explode("-",$f_startdate);
+  
+      $thnstrt = $ar_tgl_s[0];
+      $blnstrt = $ar_tgl_s[1];
+      $tglstrt = $ar_tgl_s[2];
+
+      $batas = 50; //max row 50 data
+      $pg = isset( $_GET['pg'] ) ? $_GET['pg'] : "";
+
+      if ( empty( $pg ) ) {
+        $posisi = 0;
+        $pg = 1;
+      } else {
+        $posisi = ( $pg - 1 ) * $batas;
+      }
+
+      $sql_daily = "SELECT a.hit_date, a.campaign_id, c.client_name,
+        c.cp_name as campaign_name, a.jumlah as total_click, c.cp_cpmcpa as cpc_price,
+        c.cp_totalbudget as budget, (a.jumlah * c.cp_cpmcpa) as spending
+        FROM ".$database.".c_daily_hit_".$thnstrt.$blnstrt." a, ".$database.".campaign c
+        WHERE 1=1
+        and a.hit_date BETWEEN '".$f_startdate."' and '".$f_enddate."'
+        and a.campaign_id = c.id and c.cp_name LIKE '".$campaignname."%'";
+
+      if($profileId != '1')
+      {
+        $sql_daily .= " and c.client_id = ". $userId ." ORDER BY a.hit_date";
+      }else {
+        $sql_daily .= " ORDER BY a.hit_date ";
+      }
+
+
+        $i = 0;
+        // $maxperPage = 2;
+        $result_daily = $connection->query($sql_daily);
+        $result_daily->setFetchMode(
+            \Phalcon\Db::FETCH_ASSOC
+        );
+        $tampil = '';
+
+        $no = 1+$posisi;
+        $num = 0;
+
+        while( $row_daily = $result_daily->fetchArray() ) {
+        if($i < $batas)
+        {
+          $tampil .= "
+          <tr height=20 style='height:15.0pt'>
+           <td height=20 class=xl65 style='height:15.0pt;border-top:none'>". $no ."</td>
+           <td class=xl65 style='border-top:none;border-left:none'>" .$row_daily["hit_date"]. "</td>
+           <td class=xl65 style='border-top:none;border-left:none'>".$row_daily["client_name"]."</td>
+           <td class=xl65 style='border-top:none;border-left:none'>".$row_daily["campaign_name"]."</td>
+           <td class=xl65 style='border-top:none;border-left:none'>-</td>
+           <td class=xl65 style='border-top:none;border-left:none'>".$row_daily["total_click"]."</td>
+           <td class=xl65 style='border-top:none;border-left:none'>-</td>
+           <td class=xl65 style='border-top:none;border-left:none'>-</td>
+           <td class=xl65 style='border-top:none;border-left:none'>-</td>
+           <td class=xl65 style='border-top:none;border-left:none'>-</td>
+           <td class=xl65 style='border-top:none;border-left:none'>-</td>
+           <td class=xl65 style='border-top:none;border-left:none'>".$row_daily["cpc_price"]."</td>
+           <td class=xl65 style='border-top:none;border-left:none'>".$row_daily["budget"]."</td>
+           <td class=xl65 style='border-top:none;border-left:none'>".$row_daily["spending"]."</td>
+          </tr>
+          ";
+
+            // $hit .= $row_daily["hit_date"].'<br>';
+            // $client_name .= $row_daily["client_name"].'<br>';
+            // $campaign_name .= $row_daily["campaign_name"].'<br>';
+            // $total_click .= $row_daily["total_click"].'<br>';
+            // $cpc_price .= $row_daily["cpc_price"].'<br>';
+            // $budget .= $row_daily["budget"].'<br>';
+            // $spending .= $row_daily["spending"].'<br>';
+
+        }
+        $i++;
+        $no++;
+
+        }
+        // $this->view->no = '';
+        // $this->view->hit = $hit;
+        // $this->view->clientname = $client_name;
+        // $this->view->campaign_name = $campaign_name;
+        // $this->view->total_click = $total_click;
+        // $this->view->cpc_price = $cpc_price;
+        // $this->view->budget = $budget;
+        // $this->view->spending = $spending;
+        $this->view->tampil = $tampil;
+
+        $this->view->rownya = $result_daily->numRows();
     }
 }
