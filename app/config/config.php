@@ -11,7 +11,7 @@ return new Config([
         'adapter' => 'Mysql',
         'host' => '127.0.0.1',
         'username' => 'root',
-        'password' => '',
+        'password' => 'adminadmin',
         'dbname' => 'vokuro'
     ],
     'application' => [
