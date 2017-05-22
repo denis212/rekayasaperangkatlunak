@@ -35,7 +35,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advertiser <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><?= $this->tag->linkTo(['campaign/create', 'Create Campaign']) ?></li>
-                  <li><?= $this->tag->linkTo(['campaign/search', 'Search Campaign']) ?></li>
+                  <li><?= $this->tag->linkTo(['campaign/search', 'List Campaign']) ?></li>
                   <li><?= $this->tag->linkTo(['campaign/dashboardcamp', 'Dashboard Campaign']) ?></li>
                   <li><?= $this->tag->linkTo(['campaign/dailyreport', 'Daily Report']) ?></li>
                   <!-- <li><?= $this->tag->linkTo(['campaign/dashboardcamp', 'Dashboard Campaign']) ?></li>
@@ -46,14 +46,14 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Publisher <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><?= $this->tag->linkTo(['adspace/create', 'Create AdSpace']) ?></li>
-                  <li><?= $this->tag->linkTo(['adspace/search', 'Search AdSpace']) ?></li>
+                  <li><?= $this->tag->linkTo(['adspace/search', 'List AdSpace']) ?></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Payment <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><?= $this->tag->linkTo(['confirm/create', 'Confirmation']) ?></li>
-                  <li><?= $this->tag->linkTo(['confirm/search', 'Search Payment']) ?></li>
+                  <li><?= $this->tag->linkTo(['confirm/search', 'List Payment']) ?></li>
                 </ul>
               </li>
             </ul>
@@ -72,7 +72,7 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Campaign <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><?= $this->tag->linkTo(['campaign/create', 'Create Campaign']) ?></li>
-                    <li><?= $this->tag->linkTo(['campaign/search', 'Search Campaign']) ?></li>
+                    <li><?= $this->tag->linkTo(['campaign/search', 'List Campaign']) ?></li>
                     <li><?= $this->tag->linkTo(['campaign/dashboardcamp', 'Dashboard Campaign']) ?></li>
                     <li><?= $this->tag->linkTo(['campaign/dailyreport', 'Daily Report']) ?></li>
                     <!-- <li><?= $this->tag->linkTo(['campaign/dashboardcamp', 'Dashboard Campaign']) ?></li>
@@ -83,14 +83,14 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Publisher <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><?= $this->tag->linkTo(['adspace/create', 'Create AdSpace']) ?></li>
-                    <li><?= $this->tag->linkTo(['adspace/search', 'Search AdSpace']) ?></li>
+                    <li><?= $this->tag->linkTo(['adspace/search', 'List AdSpace']) ?></li>
                   </ul>
                 </li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Payment <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><?= $this->tag->linkTo(['confirm/create', 'Confirmation']) ?></li>
-                    <li><?= $this->tag->linkTo(['confirm/search', 'Search Payment']) ?></li>
+                    <li><?= $this->tag->linkTo(['confirm/search', 'List Payment']) ?></li>
                   </ul>
                 </li>
               </ul>

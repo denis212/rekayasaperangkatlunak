@@ -1,5 +1,6 @@
 <title>Info Users - GamanAds</title>
 
+
 <?php $this->assets->outputCss(); ?>
 
 <div class="container">

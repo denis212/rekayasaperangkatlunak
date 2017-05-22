@@ -57,7 +57,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advertiser <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li>{{ link_to('campaign/create', 'Create Campaign') }}</li>
-                  <li>{{ link_to('campaign/search', 'Search Campaign') }}</li>
+                  <li>{{ link_to('campaign/search', 'List Campaign') }}</li>
                   <li>{{ link_to('campaign/dashboardcamp', 'Dashboard Campaign') }}</li>
                   <li>{{ link_to('campaign/dailyreport', 'Daily Report') }}</li>
                   <!-- <li>{{ link_to('campaign/dashboardcamp', 'Dashboard Campaign') }}</li>
@@ -68,14 +68,14 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Publisher <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li>{{ link_to('adspace/create', 'Create AdSpace') }}</li>
-                  <li>{{ link_to('adspace/search', 'Search AdSpace') }}</li>
+                  <li>{{ link_to('adspace/search', 'List AdSpace') }}</li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Payment <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li>{{ link_to('confirm/create', 'Confirmation') }}</li>
-                  <li>{{ link_to('confirm/search', 'Search Payment') }}</li>
+                  <li>{{ link_to('confirm/search', 'List Payment') }}</li>
                 </ul>
               </li>
             </ul>
@@ -106,7 +106,7 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Campaign <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li>{{ link_to('campaign/create', 'Create Campaign') }}</li>
-                    <li>{{ link_to('campaign/search', 'Search Campaign') }}</li>
+                    <li>{{ link_to('campaign/search', 'List Campaign') }}</li>
                     <li>{{ link_to('campaign/dashboardcamp', 'Dashboard Campaign') }}</li>
                     <li>{{ link_to('campaign/dailyreport', 'Daily Report') }}</li>
                     <!-- <li>{{ link_to('campaign/dashboardcamp', 'Dashboard Campaign') }}</li>
@@ -117,14 +117,14 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Publisher <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li>{{ link_to('adspace/create', 'Create AdSpace') }}</li>
-                    <li>{{ link_to('adspace/search', 'Search AdSpace') }}</li>
+                    <li>{{ link_to('adspace/search', 'List AdSpace') }}</li>
                   </ul>
                 </li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Payment <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li>{{ link_to('confirm/create', 'Confirmation') }}</li>
-                    <li>{{ link_to('confirm/search', 'Search Payment') }}</li>
+                    <li>{{ link_to('confirm/search', 'List Payment') }}</li>
                   </ul>
                 </li>
               </ul>

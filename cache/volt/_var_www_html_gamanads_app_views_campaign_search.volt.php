@@ -11,18 +11,18 @@ use Vokuro\Models\Users;
 ?>
 
 <?php use Phalcon\Tag; ?>
-<div class="container">
+<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
 <div class="row">
     <nav>
         <ul class="pager">
-            <li class="previous"><?php echo $this->tag->linkTo(["campaign/create", "Go Back"]); ?></li>
-            <li class="next"><?php echo $this->tag->linkTo(["campaign/create", "Create "]); ?></li>
+            <li class="previous"><?php echo $this->tag->linkTo(["campaign/create", "Go Back", "style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
+            <li class="next"><?php echo $this->tag->linkTo(["campaign/create", "Create ","style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
         </ul>
     </nav>
 </div>
 
-<div class="page-header">
-    <h1>Search result</h1>
+<div class="page-header" style="border-bottom: 1px solid #e4e2e0;">
+    <h1>List Campaign result</h1>
 </div>
 
 <?php echo $this->getContent(); ?>
@@ -46,107 +46,70 @@ xmlns="http://www.w3.org/TR/REC-html40">
 	mso-footer-margin:.3in;}
 -->
 
-tr
-	{mso-height-source:auto;}
-col
-	{mso-width-source:auto;}
-br
-	{mso-data-placement:same-cell;}
-.style0
-	{mso-number-format:General;
-	text-align:general;
-	vertical-align:center;
-	white-space:nowrap;
-	mso-rotate:0;
-	mso-background-source:auto;
-	mso-pattern:auto;
-	color:black;
-	font-size:12.0pt;
-	font-weight:600;
-	font-style:normal;
-	text-decoration:none;
-	font-family:Calibri, sans-serif;
-	mso-font-charset:0;
-	border:none;
-	mso-protection:locked visible;
-	mso-style-name:Normal;
-	mso-style-id:0;}
-td
-	{mso-style-parent:style0;
-	padding-top:5px;
-	padding-right:5px;
-	padding-left:5px;
-	mso-ignore:padding;
-	color:black;
-	font-size:14.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:Calibri, sans-serif;
-	mso-font-charset:0;
-	mso-number-format:General;
-	text-align:general;
-	vertical-align:center;
-	border:none;
-	mso-background-source:auto;
-	mso-pattern:auto;
-	mso-protection:locked visible;
-	white-space:nowrap;
-	mso-rotate:0;}
+
 .xl65
 	{mso-style-parent:style0;
 	border:0.5pt solid windowtext;
   text-align:center;
-  font-size:14.0pt;}
+  font-size:12.0pt;}
 .xl66
 	{mso-style-parent:style0;
 	font-size:12.0pt;
 	font-family:Arial, sans-serif;
 	mso-font-charset:0;
 	text-align:center;
-	border:.5pt solid windowtext;}
+	border:.5pt solid windowtext;
+  background-color: #bcbaba;}
 .xl67
 	{mso-style-parent:style0;
 	font-size:12.0pt;
 	font-family:Arial, sans-serif;
 	mso-font-charset:0;
 	text-align:center;}
+.xl88
+  	{mso-style-parent:style0;
+  	font-size:12.0pt;
+  	font-family:Arial, sans-serif;
+  	mso-font-charset:0;
+  	text-align:center;
+  	border:.5pt solid windowtext;
+    background-color: #d6d9ff;}
 </style>
 
 </head>
 <?php if($this->auth->getProfilesId() == 1){?>
 <body link=blue vlink=purple>
+  <div>
+    <form method='post'>
+      <table>
+        <tr>
+          <td>
+            <?= $form->label('cp_namesearch') ?>
+          </td>
+          <td><?= $form->label('client_search') ?></td>
+          <td>
+            <?= $form->label('cp_status') ?>
+          </td>
+        </tr>
+         <tr>
+           <td>
+             <?= $form->render('cp_namesearch', ['class' => 'form-control']) ?>
+           </td>
+           <td>
+              <?= $form->render('client_search', ['class' => 'form-control']) ?>
+           </td>
+           <td>
+             <?= $form->render('cp_status', ['class' => 'form-control']) ?>
+           </td>
+           <td></td>
+         </tr>
+         <tr>
+           <td><?= $form->render('Search', ['class' => 'btn btn-primary btn-success']) ?></td>
+         </tr>
+      </table>
+    </form>
+  </div>
 <div class="row" style='overflow-x:scroll;overflow-y:hidden;'>
-<div>
-  <form method='post'>
-    <table>
-      <tr>
-        <td>
-          <?= $form->label('cp_namesearch') ?>
-        </td>
-        <td><?= $form->label('client_search') ?></td>
-        <td>
-          <?= $form->label('cp_status') ?>
-        </td>
-      </tr>
-       <tr>
-         <td>
-           <?= $form->render('cp_namesearch', ['class' => 'form-control']) ?>
-         </td>
-         <td>
-            <?= $form->render('client_search', ['class' => 'form-control']) ?>
-         </td>
-         <td>
-           <?= $form->render('cp_status', ['class' => 'form-control']) ?>
-         </td>
-         <td></td>
-       </tr>
-       <tr>
-         <td><?= $form->render('Search', ['class' => 'btn btn-primary btn-success']) ?></td>
-       </tr>
-    </table>
-  </form>
-</div>
 <br>
 <table border=0 cellpadding=0 cellspacing=0 width=3335 style='border-collapse:
  collapse;table-layout:auto;width:2502pt'>
@@ -201,10 +164,21 @@ td
   <td class=xl66 width=139 style='border-left:none;width:104pt'>Updated</td>
   <td class=xl66 width=68 style='border-left:none;width:51pt'>&nbsp;</td>
  </tr>
+ <?php $i = 0; ?>
   <?php foreach ($page->items as $campaign): ?>
+  <?php $i++;
+        $sisa=$i%2;
+
+        if($sisa == 0)
+        {
+            $css = 'xl88';
+        }else {
+          $css = 'xl65';
+        }
+  ?>
      <tr>
-     <td height=20 class=xl65 style='height:15.0pt;border-top:none'><?php echo $campaign->id ?></td>
-     <td height=20 class=xl65 style='height:15.0pt;border-top:none' >
+     <td height=20 class=<?php echo $css; ?> style='height:15.0pt;border-top:none'><?php echo $campaign->id ?></td>
+     <td height=20 class=<?php echo $css; ?> style='height:15.0pt;border-top:none' >
        <?php
           if($campaign->status == 'N')
             echo "Inactive";
@@ -214,39 +188,39 @@ td
             echo "Draft";
         ?>
      </td>
-     <td height=20 class=xl65 style='height:15.0pt;border-top:none' ><?php echo $campaign->client_id ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'>
+     <td height=20 class=<?php echo $css; ?> style='height:15.0pt;border-top:none' ><?php echo $campaign->client_id ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'>
        <?php
        echo $campaign->client_name;
        ?>
      </td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_name ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_pricemodel ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_targeturl ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_startenddate ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_name ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_pricemodel ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_targeturl ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_startenddate ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'>
        <?php
          $input = $campaign->cp_country ;
          echo $output =str_replace(',', ',<br />', $input);
        ?>
      </td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_cpmcpa ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_dailybudget ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_totalbudget ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_schedule ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_delivmethod ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_target ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_tag ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_zone ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_gettraffic ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_guarantee ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_testbudget ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_mblimit ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_dsktplimit ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->created_at ?></td>
-     <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->upddate_at ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_cpmcpa ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_dailybudget ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_totalbudget ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_schedule ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_delivmethod ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_target ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_tag ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_zone ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_gettraffic ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_guarantee ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_testbudget ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_mblimit ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_dsktplimit ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->created_at ?></td>
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->upddate_at ?></td>
 
-     <td class=xl65 style='border-top:none;border-left:none' width="12%">
+     <td class=<?php echo $css; ?> style='border-top:none;border-left:none' width="12%">
        <?php echo $this->tag->linkTo(["campaign/view/" . $campaign->id ."/".$page->current, "<i class='glyphicon glyphicon-eye-open'></i> View", "class"=>"btn btn-default"]); ?>
        <?php echo $this->tag->linkTo(["campaign/edit/" . $campaign->id."/".$page->current, "<i class='glyphicon glyphicon-edit'></i> Edit", "class"=>"btn btn-default"]); ?>
        <?php echo $this->tag->linkTo(["campaign/delete/" . $campaign->id."/".$page->current, "<i class='glyphicon glyphicon-remove'></i> Delete", "class"=>"btn btn-default"]); ?>

@@ -217,7 +217,7 @@ class UsersController extends ControllerBase
      */
     public function changePasswordAction()
     {
-        $this->view->setTemplateBefore('coba');
+        $this->view->setTemplateBefore('cobaprivate');
         $form = new ChangePasswordForm();
 
         if ($this->request->isPost()) {
@@ -261,6 +261,7 @@ class UsersController extends ControllerBase
 
     public function accountInfoAction()
     {
+      $this->view->setTemplateBefore('cobaprivate');
       $user = Users::findFirstById($this->auth->getId());
       if (!$user) {
           $this->flash->error("User was not found");

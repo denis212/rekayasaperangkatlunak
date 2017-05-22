@@ -133,7 +133,7 @@ td
   <td class=xl66 width=101 style='border-left:none;width:76pt'>CPM Price</td>
   <td class=xl66 width=93 style='border-left:none;width:70pt'>CPC Price</td>
   <td class=xl66 width=95 style='border-left:none;width:71pt'>Budget</td>
-  <td class=xl66 width=136 style='border-left:none;width:102pt'>Spending</td>
+  <td class=xl66 width=136 style='border-left:none;width:102pt'>Spending ($)</td>
  </tr>
  <?php echo $tampil; ?>
  <![if supportMisalignedColumns]>

@@ -142,9 +142,7 @@ class ConfirmForm extends Form
 
         //Currency
         $currency = new Select('currency', [
-            'IDR' => 'IDR',
             'USD' => 'USD',
-            'POUND' => 'POUND',
         ]);
 
         $currency->setLabel('Currency');

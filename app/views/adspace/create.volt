@@ -6,11 +6,11 @@
  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div class="container">
+<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
 <div class="row">
     <nav>
         <ul class="pager">
-          <li class="next"><?php echo $this->tag->linkTo(["adspace/search", "Search Ad Space"]); ?></li>
+          <li class="next"><?php echo $this->tag->linkTo(["adspace/search", "Search Ad Space","style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
         </ul>
     </nav>
 </div>

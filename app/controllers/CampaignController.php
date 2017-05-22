@@ -2308,23 +2308,32 @@ class CampaignController extends ControllerBase
         while( $row_daily = $result_daily->fetchArray() ) {
           if($i < $batas)
           {
+          $sisa=$i%2;
+
+          if($sisa == 0)
+          {
+              $css = 'xl65';
+          }else {
+            $css = 'xl88';
+          }
+
           $tampil .= '
           <tbody>
               <tr>
-              <td>'.$no.'</td>
-              <td>'.$row_daily['hit_date'].'</td>
-              <td>'.$row_daily['client_name'].'</td>
-              <td>'.$row_daily['campaign_name'].'</td>
-              <td>-</td>
-              <td>'.$row_daily['total_click'].'</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-  						<td>-</td>
-  						<td>'.$row_daily['cpc_price'].'</td>
-  						<td>'.$row_daily['budget'].'</td>
-  						<td>'.$row_daily['spending'].'</td>
+              <td class='.$css.'>'.$no.'</td>
+              <td class='.$css.'>'.$row_daily['hit_date'].'</td>
+              <td class='.$css.'>'.$row_daily['client_name'].'</td>
+              <td class='.$css.'>'.$row_daily['campaign_name'].'</td>
+              <td class='.$css.'>-</td>
+              <td class='.$css.'>'.$row_daily['total_click'].'</td>
+              <td class='.$css.'>-</td>
+              <td class='.$css.'>-</td>
+              <td class='.$css.'>-</td>
+              <td class='.$css.'>-</td>
+  						<td class='.$css.'>-</td>
+  						<td class='.$css.'>'.$row_daily['cpc_price'].'</td>
+  						<td class='.$css.'>'.$row_daily['budget'].'</td>
+  						<td class='.$css.'>'.$row_daily['spending'].'</td>
               </tr>
           </tbody>';
         }
@@ -2379,7 +2388,7 @@ class CampaignController extends ControllerBase
       $campaignname = $campaign;
 
       $ar_tgl_s = explode("-",$f_startdate);
-  
+
       $thnstrt = $ar_tgl_s[0];
       $blnstrt = $ar_tgl_s[1];
       $tglstrt = $ar_tgl_s[2];

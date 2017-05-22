@@ -1,26 +1,28 @@
-
+<title>Dashboard Campaign - GamanAds</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
+<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
+
 <div style="margin-left:20px; margin-right:20px;">
   <form name="dashboard" method="post" action="" >
-  <div style="margin:20px;">
-    {{ form.render('period',['class':'form-control','style':'width:150px;']) }}
-  </div>
-
+    <div style="margin:20px;">
+      {{ form.render('period',['class':'form-control','style':'width:150px;']) }}
+    </div>
   </form>
-<div style="margin:30px;border-style: solid;border-color: black; width: 200px; height: 85px;" class="col-md-5">
-  <small style="margin-left: 20px;">Clicks</small>
-  <h2 style="margin-left: 20px;"><?php echo $totalclick;?></h2>
+<div style="margin:30px;border-style: solid;border-color: black; width: 200px; height: 85px;" class="btn btn-default btn-lg col-md-5">
+  <small>Clicks</small>
+  <h2><?php echo $totalclick;?></h2>
 </div>
-<div style="margin:30px;border-style: solid;border-color: black; width: 200px; height: 85px;" class="col-md-5">
-  <small style="margin-left: 20px;">Saldo</small>
-  <h2 style="margin-left: 20px;"><?php echo $dash_saldo;?></h2>
+<div style="margin:30px;border-style: solid;border-color: black; width: 200px; height: 85px;" class="btn btn-default btn-lg col-md-5">
+  <small>Saldo</small>
+  <h2><?php echo $dash_saldo;?></h2>
 </div>
 <div id="container2">
 </div>
 
+</div>
 </div>
 
 <?php

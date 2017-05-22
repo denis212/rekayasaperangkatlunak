@@ -2,8 +2,10 @@
 <?php $this->assets->outputCss(); ?>
 {{ content() }}
 
-<div class="container" style="margin-top:20px;">
-  <legend>Confirm Payment</legend>
+<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
+<div class="page-header">
+    <h1>Confirm Payment</h1>
+</div>
 <div class="site-contact">
     <div class="row">
         <div class="col-lg-5">

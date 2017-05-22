@@ -10,12 +10,12 @@
 <script src="https://select2.github.io/dist/js/select2.full.js"></script>
 <link href="https://select2.github.io/dist/css/select2.min.css" rel="stylesheet"/>
 
-<div class="container">
+<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
 
 <div class="row">
     <nav>
         <ul class="pager">
-          <li class="next"><?php echo $this->tag->linkTo(["campaign/search", "Search Campaign"]); ?></li>
+          <li class="next"><?php echo $this->tag->linkTo(["campaign/search", "Search Campaign","style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
         </ul>
     </nav>
 </div>

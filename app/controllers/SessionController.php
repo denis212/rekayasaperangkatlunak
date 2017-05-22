@@ -131,7 +131,8 @@ class SessionController extends ControllerBase
                         'remember' => $this->request->getPost('remember')
                     ]);
 
-                    return $this->response->redirect('index');
+                    // return $this->response->redirect('index');
+                    return $this->response->redirect('campaign/dashboardcamp');
                 }
             }
         } catch (AuthException $e) {

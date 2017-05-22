@@ -31,7 +31,7 @@ h6 {
 
 h1{
   font-size: 36px;
-  color:#fff;
+  color:#060606;
 }
 
 h2{
@@ -2469,7 +2469,8 @@ shortcodes page css
 ********* Footer ******
 ************************/
 #bottom {
-  background: #f5f5f5;
+  background: #e4e2e0;
+  /*#f5f5f5;*/
   border-bottom: 5px solid #c52d2f;
   font-size: 14px;
 }

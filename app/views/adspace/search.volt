@@ -7,18 +7,47 @@
 ?>
 
 <?php use Phalcon\Tag; ?>
-<div class="container">
+<style>
+.xl65
+	{mso-style-parent:style0;
+	border:0.5pt solid windowtext;
+  text-align:center;
+  font-size:12.0pt;}
+.xl66
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	border:.5pt solid windowtext;
+  background-color: #bcbaba;}
+.xl67
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	text-align:center;}
+.xl88
+	{mso-style-parent:style0;
+	font-size:12.0pt;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	border:.5pt solid windowtext;
+  background-color: #d6d9ff;}
+</style>
+<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
 <div class="row">
     <nav>
         <ul class="pager">
-            <li class="previous"><?php echo $this->tag->linkTo(["adspace/create", "Go Back"]); ?></li>
-            <li class="next"><?php echo $this->tag->linkTo(["adspace/create", "Create "]); ?></li>
+            <li class="previous"><?php echo $this->tag->linkTo(["adspace/create", "Go Back", "style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
+            <li class="next"><?php echo $this->tag->linkTo(["adspace/create", "Create ", "style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
         </ul>
     </nav>
 </div>
 
-<div class="page-header">
-    <h1>Search result</h1>
+<div class="page-header" style="border-bottom: 1px solid #e4e2e0;">
+    <h1>List Adspace</h1>
 </div>
 
 <?php echo $this->getContent(); ?>
@@ -59,26 +88,37 @@
   <br>
     <table class="table table-bordered">
         <thead>
-            <tr>
-            <th>Id</th>
-            <th>Status</th>
-            <th>Client Name</th>
-            <th>Ad Url</th>
-            <th>Ad Type</th>
-            <th>Ad Guarantee</th>
-            <th>Active After Post</th>
-            <th>Created</th>
-            <th>Updated</th>
-                <th></th>
-                <th></th>
-                <th></th>
+            <tr class=xl67>
+            <td class=xl66>Id</th>
+            <td class=xl66>Status</th>
+            <td class=xl66>Client Name</th>
+            <td class=xl66>Ad Url</th>
+            <td class=xl66>Ad Type</th>
+            <td class=xl66>Ad Guarantee</th>
+            <td class=xl66>Active After Post</th>
+            <td class=xl66>Created</th>
+            <td class=xl66>Updated</th>
+                <td class=xl66></th>
+                <td class=xl66></th>
+                <td class=xl66></th>
             </tr>
         </thead>
         <tbody>
+        <?php $i = 0; ?>
         <?php foreach ($page->items as $adspace): ?>
+          <?php $i++;
+                $sisa=$i%2;
+
+                if($sisa == 0)
+                {
+                    $css = 'xl88';
+                }else {
+                  $css = 'xl65';
+                }
+          ?>
             <tr>
-            <td><?php echo $adspace->id ?></td>
-            <td>
+            <td height=20 class=<?php echo $css; ?>><?php echo $adspace->id ?></td>
+            <td height=20 class=<?php echo $css; ?>>
               <?php
                 if($adspace->status == 'a')
                   echo "Active";
@@ -87,11 +127,11 @@
                 }
 
               ?>
-            </td>
-            <td><?php echo $adspace->client_name ?></td>
-            <td><?php echo $adspace->ad_url ?></td>
-            <td><?php echo $adspace->ad_type ?></td>
-            <td>
+            </td height=20 class=<?php echo $css; ?>>
+            <td height=20 class=<?php echo $css; ?>><?php echo $adspace->client_name ?></td>
+            <td height=20 class=<?php echo $css; ?>><?php echo $adspace->ad_url ?></td>
+            <td height=20 class=<?php echo $css; ?>><?php echo $adspace->ad_type ?></td>
+            <td height=20 class=<?php echo $css; ?>>
               <?php
                 if($adspace->ad_guarantee == 'yes')
                   echo "Yes";
@@ -99,7 +139,7 @@
                   echo "No";
               ?>
             </td>
-            <td>
+            <td height=20 class=<?php echo $css; ?>>
               <?php
                 if($adspace->ad_status == 'yes')
                   echo "Yes";
@@ -107,13 +147,13 @@
                   echo "No";
               ?>
             </td>
-            <td><?php echo $adspace->created_at ?></td>
-            <td><?php echo $adspace->updated_at ?></td>
+            <td height=20 class=<?php echo $css; ?>><?php echo $adspace->created_at ?></td>
+            <td height=20 class=<?php echo $css; ?>><?php echo $adspace->updated_at ?></td>
 
-                <td><?php echo $this->tag->linkTo(["adspace/edit/" . $adspace->id, "<i class='glyphicon glyphicon-edit'></i> Edit", "class"=>"btn btn-default"]); ?></td>
-                <td><?php echo $this->tag->linkTo(["adspace/delete/" . $adspace->id, "<i class='glyphicon glyphicon-remove'></i> Delete", "class"=>"btn btn-default"]); ?></td>
+                <td height=20 class=<?php echo $css; ?>><?php echo $this->tag->linkTo(["adspace/edit/" . $adspace->id, "<i class='glyphicon glyphicon-edit'></i> Edit", "class"=>"btn btn-default"]); ?></td>
+                <td height=20 class=<?php echo $css; ?>><?php echo $this->tag->linkTo(["adspace/delete/" . $adspace->id, "<i class='glyphicon glyphicon-remove'></i> Delete", "class"=>"btn btn-default"]); ?></td>
                 <?php if($this->auth->getProfilesId() == 1){?>
-                <td>
+                <td height=20 class=<?php echo $css; ?>>
                   <?php
                   if($adspace->status == 'n')
                     echo $this->tag->linkTo(["adspace/activate/" . $adspace->id.'/'.$page->current, "<i class='glyphicon glyphicon-play'></i> Activate", "class"=>"btn btn-default"]);
@@ -122,7 +162,7 @@
                   ?>
                 </td>
                 <?php } else { ?>
-                <td>
+                <td height=20 class=<?php echo $css; ?>>
                 </td>
                 <?php } ?>
             </tr>
