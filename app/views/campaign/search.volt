@@ -1,12 +1,17 @@
 <title>Search Campaign - GamanAds</title>
  <?php $this->assets->outputCss(); ?>
 <?php
+
+// $url_campaign = "http://122.248.32.27:8089/hit?";
+$url_campaign = "localhost/gamanads/hit?";
+// $url_camp_test = "localhost/gamanads/hittest?";
 /**
  * @var \Phalcon\Mvc\View\Engine\Php $this
  */
 
 use Vokuro\Models\Campaign;
 use Vokuro\Models\Users;
+use Phalcon\Mvc\Url;
 
 ?>
 
@@ -142,6 +147,8 @@ xmlns="http://www.w3.org/TR/REC-html40">
   <td class=xl66 width=175 style='border-left:none;width:131pt'>Campaign Name</td>
   <td class=xl66 width=113 style='border-left:none;width:85pt'>Price Model</td>
   <td class=xl66 width=229 style='border-left:none;width:172pt'>Target Url</td>
+  <td class=xl66 width=229 style='border-left:none;width:172pt'>Test Url</td>
+  <td class=xl66 width=229 style='border-left:none;width:172pt'>Campaign Url</td>
   <td class=xl66 width=182 style='border-left:none;width:137pt'>Start - End
   Date</td>
   <td class=xl66 width=387 style='border-left:none;width:290pt'>Country</td>
@@ -197,6 +204,17 @@ xmlns="http://www.w3.org/TR/REC-html40">
      <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_name ?></td>
      <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_pricemodel ?></td>
      <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_targeturl ?></td>
+      <td class=<?php echo $css; ?> style='border-top:none;border-left:none'>
+        <?php
+        echo $this->tag->linkTo(["hittest?cid=".$campaign->id,
+        "<i class='glyphicon glyphicon-play'></i> Test URL", "class"=>"btn btn-default"]);
+        ?>
+      </td>
+      <td class=<?php echo $css; ?> style='border-top:none;border-left:none'>
+        <?php
+          echo $url_campaign."cid=".$campaign->id."&nid=&trans_id=&sub_id=";
+        ?>
+      </td>
      <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_startenddate ?></td>
      <td class=<?php echo $css; ?> style='border-top:none;border-left:none'>
        <?php
@@ -262,7 +280,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
   <td width=139 style='width:104pt'></td>
   <td width=68 style='width:51pt'></td>
   <td width=68 style='width:51pt'></td>
- </tr>
+</tr><?php echo $css; ?>
  <![endif]>
 </table>
 </div>
@@ -354,14 +372,16 @@ xmlns="http://www.w3.org/TR/REC-html40">
     <td class=xl66 width=113 style='border-left:none;width:85pt'>Campaign Name</td>
     <!-- <td class=xl66 width=113 style='border-left:none;width:85pt'>Price Model</td> -->
     <!-- <td class=xl66 width=229 style='border-left:none;width:172pt'>Target Url</td> -->
-    <td class=xl66 width=182 style='border-left:none;width:137pt'>Start - End
-    Date</td>
+    <td class=xl66 width=229 style='border-left:none;width:172pt'>Target Url</td>
+    <td class=xl66 width=229 style='border-left:none;width:172pt'>Test Url</td>
+    <td class=xl66 width=229 style='border-left:none;width:172pt'>Campaign Url</td>
+    <td class=xl66 width=182 style='border-left:none;width:137pt'>Start - End Date</td>
+    <td class=xl66 width=387 style='border-left:none;width:290pt'>Country</td>
     <td class=xl66 width=387 style='border-left:none;width:290pt'>Impression</td>
     <td class=xl66 width=387 style='border-left:none;width:290pt'>Conversion</td>
-    <!-- <td class=xl66 width=387 style='border-left:none;width:290pt'>Country</td> -->
     <td class=xl66 width=387 style='border-left:none;width:290pt'>Conv/Clicks</td>
     <td class=xl66 width=387 style='border-left:none;width:290pt'>CPA/CPM</td>
-    <td class=xl66 width=103 style='border-left:none;width:77pt'>Cost</td>
+    <!-- <td class=xl66 width=103 style='border-left:none;width:77pt'>Cost</td> -->
     <td class=xl66 width=103 style='border-left:none;width:77pt'>Type</td>
     <td class=xl66 width=103 style='border-left:none;width:77pt'>Created</td>
     <td class=xl66 width=103 style='border-left:none;width:77pt'>Updated</td>
@@ -384,15 +404,25 @@ xmlns="http://www.w3.org/TR/REC-html40">
     <td class=xl66 width=68 style='border-left:none;width:51pt'>&nbsp;</td>
    </tr>
     <?php foreach ($page->items as $campaign): ?>
+      <?php $i++;
+            $sisa=$i%2;
+
+            if($sisa == 0)
+            {
+                $css = 'xl88';
+            }else {
+              $css = 'xl65';
+            }
+      ?>
        <tr>
        <!-- <td height=20 class=xl65 style='height:15.0pt;border-top:none'></td> -->
-       <td height=20 class=xl65 style='height:15.0pt;border-top:none'><?php echo $campaign->id ?></td>
+       <td height=20 class=<?php echo $css; ?> style='height:15.0pt;border-top:none'><?php echo $campaign->id ?></td>
        <!-- <td height=20 class=xl65 style='height:15.0pt;border-top:none'>
          <php
          echo $campaign->client_name;
          ?>
        </td> -->
-       <td class=xl65 style='border-top:none;border-left:none'>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'>
        <?php
           if($campaign->status == 'N')
             echo "Inactive";
@@ -402,25 +432,35 @@ xmlns="http://www.w3.org/TR/REC-html40">
             echo "Draft";
         ?>
       </td>
-       <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_name ?></td>
-       <!-- <td class=xl65 style='border-top:none;border-left:none'><php echo $campaign->cp_pricemodel ?></td> -->
-       <!-- <td class=xl65 style='border-top:none;border-left:none'><php echo $campaign->cp_targeturl ?></td> -->
-       <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_startenddate ?></td>
-
-       <td class=xl65 style='border-top:none;border-left:none'> 0 <!--impression--></td>
-       <td class=xl65 style='border-top:none;border-left:none'> 0 <!--conversion--></td>
-       <!-- <td class=xl65 style='border-top:none;border-left:none'>
-          <php
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_name ?></td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_targeturl ?></td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'>
+         <?php
+         echo $this->tag->linkTo(["hittest?cid=".$campaign->id,
+         "<i class='glyphicon glyphicon-play'></i> Test URL", "class"=>"btn btn-default"]);
+         ?>
+       </td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'>
+         <?php
+           // echo $url_campaign."cid=".$campaign->id."&nid=&trans_id=&sub_id=;
+           echo $url_campaign."cid=".$campaign->id."&nid=&trans_id=&sub_id=";
+         ?>
+       </td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_startenddate ?></td>
+       <td class=xl65 style='border-top:none;border-left:none'>
+          <?php
             $input = $campaign->cp_country ;
             echo $output =str_replace(',', ',<br />', $input);
           ?>
-       </td> -->
-       <td class=xl65 style='border-top:none;border-left:none'> 0.00<!--conv/clicks--></td>
-       <td class=xl65 style='border-top:none;border-left:none'><?php echo "$ " . $campaign->cp_cpmcpa;?><!--CPA/CPM--></td>
-       <td class=xl65 style='border-top:none;border-left:none'> $<!--cost yang sudah di expand--></td>
-       <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->cp_pricemodel;?><!--Type--></td>
-       <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->created_at ?></td>
-       <td class=xl65 style='border-top:none;border-left:none'><?php echo $campaign->upddate_at ?></td>
+       </td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'> 0 <!--impression--></td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'> 0 <!--conversion--></td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'> 0.00<!--conv/clicks--></td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo "$ " . $campaign->cp_cpmcpa;?><!--CPA/CPM--></td>
+       <!-- <td class=<php echo $css; ?> style='border-top:none;border-left:none'> ost yang sudah di expand</td> -->
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->cp_pricemodel;?><!--Type--></td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->created_at ?></td>
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none'><?php echo $campaign->upddate_at ?></td>
        <!-- <td class=xl65 style='border-top:none;border-left:none'><php echo $campaign->cp_dailybudget ?></td> -->
        <!-- <td class=xl65 style='border-top:none;border-left:none'><php echo $campaign->cp_totalbudget ?></td>
        <td class=xl65 style='border-top:none;border-left:none'><php echo $campaign->cp_schedule ?></td>
@@ -435,7 +475,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
        <td class=xl65 style='border-top:none;border-left:none'><php echo $campaign->cp_dsktplimit ?></td> -->
 
        <!-- <td class=xl65 style='border-top:none;border-left:none' width="12%"><php echo $this->tag->linkTo(["campaign/view/" . $campaign->id, "View", "class"=>"btn"]); ?></td> -->
-       <td class=xl65 style='border-top:none;border-left:none' width="12%">
+       <td class=<?php echo $css; ?> style='border-top:none;border-left:none' width="12%">
          <?php echo $this->tag->linkTo(["campaign/edit/" . $campaign->id."/".$page->current, "<i class='glyphicon glyphicon-edit'></i> Edit", "class"=>"btn btn-default"]); ?>
          <?php echo $this->tag->linkTo(["campaign/delete/" . $campaign->id."/".$page->current, "<i class='glyphicon glyphicon-remove'></i> Delete", "class"=>"btn btn-default"]); ?>
        </td>

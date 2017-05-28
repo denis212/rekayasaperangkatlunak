@@ -1,24 +1,34 @@
-<title>Create Campaign - GamanAds</title>
-<?php $this->assets->outputCss(); ?>
-{{ content() }}
+<title>Edit Campaign - GamanAds</title>
+ <?php $this->assets->outputCss(); ?>
+<p><?php $this->flashSess->output() ?></p>
+
+<?= $this->getContent() ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script src="https://select2.github.io/dist/js/select2.full.js"></script>
+<script src="https://select2.github.io/dist/js/select2.full.js">
+</script>
 <link href="https://select2.github.io/dist/css/select2.min.css" rel="stylesheet"/>
-
-<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
-
+<div class="container">
 <div class="row">
     <nav>
         <ul class="pager">
-          <li class="next"><?php echo $this->tag->linkTo(["campaign/search", "Search Campaign","style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
+            <li class="previous">
+              <?php
+                if($frompage != 'view')
+                  echo $this->tag->linkTo(["campaign/search?page=".$frompage, "Go Back"]);
+                else
+                  echo $this->tag->linkTo(["campaign/view/".$form->id."/1", "Go Back"]);
+              ?>
+            </li>
+            <li class="next"><?php echo $this->tag->linkTo(["campaign/search", "Search Campaign"]); ?></li>
         </ul>
     </nav>
 </div>
+
 
 <legend>Create Campaign</legend>
 
@@ -26,158 +36,158 @@
 
 <form method='post' enctype='multipart/form-data' class="form-horizontal" autocomplete="off">
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('client_name') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('client_name') ?></label>
       <div class="col-md-4">
-        {{ form.render('client_name',['class':'form-control']) }}
-        {{ form.messages('client_name') }}
+        <?= $form->render('client_name', ['class' => 'form-control']) ?>
+        <?= $form->messages('client_name') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_name') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_name') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_name',['class':'form-control']) }}
-        {{ form.messages('cp_name') }}
+        <?= $form->render('cp_name', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_name') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_pricemodel') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_pricemodel') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_pricemodel',['class':'form-control']) }}
-        {{ form.messages('cp_pricemodel') }}
+        <?= $form->render('cp_pricemodel', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_pricemodel') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_targeturl') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_targeturl') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_targeturl',['class':'form-control']) }}
-        {{ form.messages('cp_targeturl') }}
+        <?= $form->render('cp_targeturl', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_targeturl') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_cpmcpa') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_cpmcpa') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_cpmcpa',['class':'form-control']) }}
-        {{ form.messages('cp_cpmcpa') }}
+        <?= $form->render('cp_cpmcpa', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_cpmcpa') ?>
         <span class="help-block">We recommend to choose CPM rate $3.70 for the best result</span>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-xs-4 control-label" for="textinput">{{ form.label('cp_startdate') }}</label>
+      <label class="col-xs-4 control-label" for="textinput"><?= $form->label('cp_startdate') ?></label>
         <div class="col-xs-3">
-            {{ form.render('cp_startdate',['class':'form-control']) }}
-            {{ form.messages('cp_startdate') }}
+            <?= $form->render('cp_startdate', ['class' => 'form-control']) ?>
+            <?= $form->messages('cp_startdate') ?>
         </div>
         <div class="col-xs-2">
-            {{ form.render('cp_enddate',['class':'form-control']) }}
-            {{ form.messages('cp_enddate') }}
+            <?= $form->render('cp_enddate', ['class' => 'form-control']) ?>
+            <?= $form->messages('cp_enddate') ?>
         </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_country') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_country') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_country',['class':'form-control']) }}
-        {{ form.messages('cp_country') }}
-        {{ form.render('hd_country') }}
+        <?= $form->render('cp_country', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_country') ?>
+        <?= $form->render('hd_country') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_dailybudget') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_dailybudget') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_dailybudget',['class':'form-control']) }}
-        {{ form.messages('cp_dailybudget') }}
+        <?= $form->render('cp_dailybudget', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_dailybudget') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_totalbudget') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_totalbudget') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_totalbudget',['class':'form-control']) }}
-        {{ form.messages('cp_totalbudget') }}
+        <?= $form->render('cp_totalbudget', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_totalbudget') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_schedule') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_schedule') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_schedule',['class':'form-control']) }}
-        {{ form.messages('cp_schedule') }}
+        <?= $form->render('cp_schedule', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_schedule') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_delivmethod') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_delivmethod') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_delivmethod',['class':'form-control']) }}
-        {{ form.messages('cp_delivmethod') }}
+        <?= $form->render('cp_delivmethod', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_delivmethod') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_target') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_target') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_target',['class':'form-control']) }}
-        {{ form.messages('cp_target') }}
+        <?= $form->render('cp_target', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_target') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_tag') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_tag') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_tag',['class':'form-control']) }}
-        {{ form.messages('cp_tag') }}
+        <?= $form->render('cp_tag', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_tag') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_zone') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_zone') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_zone',['class':'form-control']) }}
-        {{ form.messages('cp_zone') }}
+        <?= $form->render('cp_zone', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_zone') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.render('cp_gettraffic') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->render('cp_gettraffic') ?></label>
       <div class="col-md-4">
-        {{ form.label('cp_gettraffic',['class':'control-label']) }}
-        {{ form.messages('cp_gettraffic') }}
+        <?= $form->label('cp_gettraffic', ['class' => 'control-label']) ?>
+        <?= $form->messages('cp_gettraffic') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.render('cp_guarantee') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->render('cp_guarantee') ?></label>
       <div class="col-md-4">
-        {{ form.label('cp_guarantee',['style':'align:left;']) }}
-				{{ form.messages('cp_guarantee') }}
+        <?= $form->label('cp_guarantee', ['style' => 'align:left;']) ?>
+				<?= $form->messages('cp_guarantee') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_testbudget') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_testbudget') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_testbudget',['class':'form-control']) }}
-        {{ form.messages('cp_testbudget') }}
+        <?= $form->render('cp_testbudget', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_testbudget') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_mblimit') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_mblimit') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_mblimit',['class':'form-control']) }}
+        <?= $form->render('cp_mblimit', ['class' => 'form-control']) ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_dsktplimit') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_dsktplimit') ?></label>
       <div class="col-md-4">
-      {{ form.render('cp_dsktplimit',['class':'form-control']) }}
+      <?= $form->render('cp_dsktplimit', ['class' => 'form-control']) ?>
       </div>
     </div>
 
@@ -192,6 +202,16 @@
       </div>
       <div class="col-xs-1">
          <a id="clear1" class="btn btn-warning">Clear</a>
+         <?php
+
+           if($form->gbr120x600 != null)
+           {
+           echo $this->tag->image([$form->gbr120x600,'width'=>'30px','id'=>'gbr120x600']);
+           }
+         ?>
+         <?php if($form->gbr120x600 != null) { ?>
+           <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr120x600/'.$form->id, 'Delete Photo']) ?></a>
+         <?php }?>
       </div>
     </div>
 
@@ -202,6 +222,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear2" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr160x600 != null)
+          echo $this->tag->image([$form->gbr160x600,'width'=>'30px','id'=>'gbr160x600']);
+        ?>
+        <?php if($form->gbr160x600 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr160x600/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -212,6 +239,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear3" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr250x250 != null)
+          echo $this->tag->image([$form->gbr250x250,'width'=>'30px','id'=>'gbr250x250']);
+        ?>
+        <?php if($form->gbr250x250 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr250x250/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -222,6 +256,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear4" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr300x50 != null)
+          echo $this->tag->image([$form->gbr300x50,'width'=>'30px','id'=>'gbr300x50']);
+        ?>
+        <?php if($form->gbr300x50 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x50/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -232,6 +273,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear5" class="btn btn-warning">Clear</a><br>
+        <?php
+          if($form->gbr300x100 != null)
+          echo $this->tag->image([$form->gbr300x100,'width'=>'30px','id'=>'gbr300x100']);
+        ?>
+        <?php if($form->gbr300x100 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x100/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -242,6 +290,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear6" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr300x250 != null)
+          echo $this->tag->image([$form->gbr300x250,'width'=>'30px','id'=>'gbr300x250']);
+        ?>
+        <?php if($form->gbr300x250 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x250/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -252,6 +307,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear7" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr300x600 != null)
+          echo $this->tag->image([$form->gbr300x600,'width'=>'30px','id'=>'gbr300x600']);
+        ?>
+        <?php if($form->gbr300x600 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x600/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -262,6 +324,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear8" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr305x99 != null)
+          echo $this->tag->image([$form->gbr305x99,'width'=>'30px','id'=>'gbr305x99']);
+        ?>
+        <?php if($form->gbr305x99 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr305x99/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -272,6 +341,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear9" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr315x300 != null)
+          echo $this->tag->image([$form->gbr315x300,'width'=>'30px','id'=>'gbr315x300']);
+        ?>
+        <?php if($form->gbr315x300 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr315x300/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -282,6 +358,13 @@
       </div>
       <div class="col-xs-1">
          <a id="clear10" class="btn btn-warning">Clear</a>
+         <?php
+           if($form->gbr320x50!= null)
+           echo $this->tag->image([$form->gbr320x50,'width'=>'30px','id'=>'gbr320x50']);
+         ?>
+         <?php if($form->gbr320x50 != null) { ?>
+           <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x50/'.$form->id, 'Delete Photo']) ?></a>
+         <?php }?>
       </div>
     </div>
 
@@ -292,6 +375,13 @@
       </div>
       <div class="col-xs-1">
          <a id="clear11" class="btn btn-warning">Clear</a>
+         <?php
+           if($form->gbr320x100!= null)
+           echo $this->tag->image([$form->gbr320x100,'width'=>'30px','id'=>'gbr320x100']);
+         ?>
+         <?php if($form->gbr320x100 != null) { ?>
+           <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x100/'.$form->id, 'Delete Photo']) ?></a>
+         <?php }?>
       </div>
     </div>
 
@@ -302,6 +392,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear12" class="btn btn-warning">Clear</a><br>
+        <?php
+          if($form->gbr320x250!= null)
+          echo $this->tag->image([$form->gbr320x250,'width'=>'30px','id'=>'gbr320x250']);
+        ?>
+        <?php if($form->gbr320x250 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x250/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -312,6 +409,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear13" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr320x416!= null)
+          echo $this->tag->image([$form->gbr320x416,'width'=>'30px','id'=>'gbr320x416']);
+        ?>
+        <?php if($form->gbr320x416 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x416/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -322,6 +426,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear14" class="btn btn-warning">Clear</a><br>
+        <?php
+          if($form->gbr320x480!= null)
+          echo $this->tag->image([$form->gbr320x480,'width'=>'30px','id'=>'gbr320x480']);
+        ?>
+        <?php if($form->gbr320x480 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x480/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -332,6 +443,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear15" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr336x280!= null)
+          echo $this->tag->image([$form->gbr336x280,'width'=>'30px','id'=>'gbr336x280']);
+        ?>
+        <?php if($form->gbr336x280 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr336x280/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -342,6 +460,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear16" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr468x60!= null)
+          echo $this->tag->image([$form->gbr468x60,'width'=>'30px','id'=>'gbr468x60']);
+        ?>
+        <?php if($form->gbr468x60 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr468x60/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -352,6 +477,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear17" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr640x960!= null)
+          echo $this->tag->image([$form->gbr640x960,'width'=>'30px','id'=>'gbr640x960']);
+        ?>
+        <?php if($form->gbr640x960 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr640x960/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -362,6 +494,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear18" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr728x90!= null)
+          echo $this->tag->image([$form->gbr728x90,'width'=>'30px','id'=>'gbr728x90']);
+        ?>
+        <?php if($form->gbr728x90 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr728x90/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -372,6 +511,13 @@
       </div>
       <div class="col-xs-1">
         <a id="clear19" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr800x440!= null)
+          echo $this->tag->image([$form->gbr800x440,'width'=>'30px','id'=>'gbr800x440']);
+        ?>
+        <?php if($form->gbr800x440 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr800x440/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
 
@@ -382,15 +528,20 @@
       </div>
       <div class="col-xs-1">
         <a id="clear20" class="btn btn-warning">Clear</a>
+        <?php
+          if($form->gbr1024x768!= null)
+          echo $this->tag->image([$form->gbr1024x768,'width'=>'30px','id'=>'gbr1024x768']);
+        ?>
+        <?php if($form->gbr1024x768 != null) { ?>
+          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr1024x7/'.$form->id, 'Delete Photo']) ?></a>
+        <?php }?>
       </div>
     </div>
-
-  
 
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput"></label>
       <div class="col-md-1">
-        {{ form.render('Save',['class':'btn btn-primary']) }}
+        <?= $form->render('Save', ['class' => 'btn btn-primary']) ?>
       </div>
     </div>
 
@@ -400,14 +551,20 @@
 				<td></td>
 			</tr>
 		</table>
-    {{ form.render('client_id') }}
-    {{ form.render('role') }}
-    <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>" value="<?php echo $this->security->getToken() ?>"/>
-
+    <?= $form->render('id') ?>
+    <?= $form->render('client_id') ?>
+    <?= $form->render('role') ?>
+		<?= $form->render('csrf', ['value' => $this->security->getToken()]) ?>
+		<?= $form->messages('csrf') ?>
 
 		<hr>
 
 	</form>
+
+</div>
+
+  <?php echo $this->tag->hiddenField(["tampcount", "size" => 30, "class" => "form-control", "id" => "tampcount"]) ?>
+  <?php echo $this->tag->hiddenField(["tampdate", "size" => 30, "class" => "form-control", "id" => "tampdate"]) ?>
 
 </div>
 
@@ -447,7 +604,34 @@ var dateFormat = "yy-mm-dd",
 $( document ).ready(function() {
   document.getElementById("submit").disabled = true;
   var myTest = new Array();
+  var green = 0;
+  var greenPass = <?php echo $form->hijau; ?>;
+
+  if(greenPass != 0){
+    green = greenPass;
+  }
+
+  if(green<6){
+    document.getElementById("submit").disabled = true;
+  }else if(green>=6){
+    document.getElementById("submit").disabled = false;
+  }
+
+  // alert(document.getElementById('tampcount').value);
+
 });
+
+//set value for select2 cp_country
+country = document.getElementById('tampcount').value;
+document.getElementById('hd_country').value = country;
+push = country.split(",");
+$("#cp_country").select2().val(push).trigger("change");
+
+//set value for start end date
+dateAsli = document.getElementById('tampdate').value;
+pushDate = dateAsli.split(" - ");
+document.getElementById('cp_startdate').value = pushDate[0];
+document.getElementById('cp_enddate').value = pushDate[1];
 
 var _URL = window.URL || window.webkitURL;
 var tampA = 0;var tampF = 0;var tampK = 0;var tampP = 0;
@@ -456,6 +640,11 @@ var tampC = 0;var tampH = 0;var tampM = 0;var tampR = 0;
 var tampD = 0;var tampI = 0;var tampN = 0;var tampS = 0;
 var tampE = 0;var tampJ = 0;var tampO = 0;var tampT = 0;
 var green = 0;
+var greenPass = <?php echo $form->hijau; ?>
+
+if(greenPass != 0){
+  green = greenPass;
+}
 
 if(green<6){
   document.getElementById("submit").disabled = true;
@@ -1646,7 +1835,9 @@ $("#file20").change(function(e) {
     var val = $(this).val();
 
     switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
-      case 'gif': case 'jpg': case 'png':
+      case 'gif':
+      case 'jpg':
+      case 'png':
       //atas sini
       image = new Image();
 
@@ -1690,17 +1881,14 @@ $("#file20").change(function(e) {
 </script>
 
 <script type="text/javascript">
+
 $("#cp_country").select2();
 $('#cp_country').on('change', function(){
   myTest = $("#cp_country").val();
   document.getElementById('hd_country').value = myTest;
   });
 
-$("#cp_schedule").select2();
-$("#cp_delivmethod").select2();
-$("#cp_target").select2();
-$("#cp_tag").select2();
+
 </script>
 </div>
-
 <?php $this->assets->outputJs(); ?>

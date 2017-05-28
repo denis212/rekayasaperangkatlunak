@@ -14,9 +14,14 @@ $router->add('/reset-password/{code}/{email}', [
     'action' => 'resetPassword'
 ]);
 
-$router->add('/hit/{cid}/{nid}/{trans_id}/{sub_id}', [
+$router->add('/hit', [
     'controller' => 'hit',
     'action' => 'hitAds'
 ]);
+
+$router->add('/hittest', [
+    'controller' => 'hit',
+    'action' => 'hitTest'
+])->setName('hitTest');
 
 return $router;

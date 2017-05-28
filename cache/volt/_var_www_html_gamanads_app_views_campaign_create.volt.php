@@ -1,6 +1,6 @@
 <title>Create Campaign - GamanAds</title>
 <?php $this->assets->outputCss(); ?>
-{{ content() }}
+<?= $this->getContent() ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
@@ -26,158 +26,158 @@
 
 <form method='post' enctype='multipart/form-data' class="form-horizontal" autocomplete="off">
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('client_name') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('client_name') ?></label>
       <div class="col-md-4">
-        {{ form.render('client_name',['class':'form-control']) }}
-        {{ form.messages('client_name') }}
+        <?= $form->render('client_name', ['class' => 'form-control']) ?>
+        <?= $form->messages('client_name') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_name') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_name') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_name',['class':'form-control']) }}
-        {{ form.messages('cp_name') }}
+        <?= $form->render('cp_name', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_name') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_pricemodel') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_pricemodel') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_pricemodel',['class':'form-control']) }}
-        {{ form.messages('cp_pricemodel') }}
+        <?= $form->render('cp_pricemodel', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_pricemodel') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_targeturl') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_targeturl') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_targeturl',['class':'form-control']) }}
-        {{ form.messages('cp_targeturl') }}
+        <?= $form->render('cp_targeturl', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_targeturl') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_cpmcpa') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_cpmcpa') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_cpmcpa',['class':'form-control']) }}
-        {{ form.messages('cp_cpmcpa') }}
+        <?= $form->render('cp_cpmcpa', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_cpmcpa') ?>
         <span class="help-block">We recommend to choose CPM rate $3.70 for the best result</span>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-xs-4 control-label" for="textinput">{{ form.label('cp_startdate') }}</label>
+      <label class="col-xs-4 control-label" for="textinput"><?= $form->label('cp_startdate') ?></label>
         <div class="col-xs-3">
-            {{ form.render('cp_startdate',['class':'form-control']) }}
-            {{ form.messages('cp_startdate') }}
+            <?= $form->render('cp_startdate', ['class' => 'form-control']) ?>
+            <?= $form->messages('cp_startdate') ?>
         </div>
         <div class="col-xs-2">
-            {{ form.render('cp_enddate',['class':'form-control']) }}
-            {{ form.messages('cp_enddate') }}
+            <?= $form->render('cp_enddate', ['class' => 'form-control']) ?>
+            <?= $form->messages('cp_enddate') ?>
         </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_country') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_country') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_country',['class':'form-control']) }}
-        {{ form.messages('cp_country') }}
-        {{ form.render('hd_country') }}
+        <?= $form->render('cp_country', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_country') ?>
+        <?= $form->render('hd_country') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_dailybudget') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_dailybudget') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_dailybudget',['class':'form-control']) }}
-        {{ form.messages('cp_dailybudget') }}
+        <?= $form->render('cp_dailybudget', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_dailybudget') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_totalbudget') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_totalbudget') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_totalbudget',['class':'form-control']) }}
-        {{ form.messages('cp_totalbudget') }}
+        <?= $form->render('cp_totalbudget', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_totalbudget') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_schedule') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_schedule') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_schedule',['class':'form-control']) }}
-        {{ form.messages('cp_schedule') }}
+        <?= $form->render('cp_schedule', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_schedule') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_delivmethod') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_delivmethod') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_delivmethod',['class':'form-control']) }}
-        {{ form.messages('cp_delivmethod') }}
+        <?= $form->render('cp_delivmethod', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_delivmethod') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_target') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_target') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_target',['class':'form-control']) }}
-        {{ form.messages('cp_target') }}
+        <?= $form->render('cp_target', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_target') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_tag') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_tag') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_tag',['class':'form-control']) }}
-        {{ form.messages('cp_tag') }}
+        <?= $form->render('cp_tag', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_tag') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_zone') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_zone') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_zone',['class':'form-control']) }}
-        {{ form.messages('cp_zone') }}
+        <?= $form->render('cp_zone', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_zone') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.render('cp_gettraffic') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->render('cp_gettraffic') ?></label>
       <div class="col-md-4">
-        {{ form.label('cp_gettraffic',['class':'control-label']) }}
-        {{ form.messages('cp_gettraffic') }}
+        <?= $form->label('cp_gettraffic', ['class' => 'control-label']) ?>
+        <?= $form->messages('cp_gettraffic') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.render('cp_guarantee') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->render('cp_guarantee') ?></label>
       <div class="col-md-4">
-        {{ form.label('cp_guarantee',['style':'align:left;']) }}
-				{{ form.messages('cp_guarantee') }}
+        <?= $form->label('cp_guarantee', ['style' => 'align:left;']) ?>
+				<?= $form->messages('cp_guarantee') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_testbudget') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_testbudget') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_testbudget',['class':'form-control']) }}
-        {{ form.messages('cp_testbudget') }}
+        <?= $form->render('cp_testbudget', ['class' => 'form-control']) ?>
+        <?= $form->messages('cp_testbudget') ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_mblimit') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_mblimit') ?></label>
       <div class="col-md-4">
-        {{ form.render('cp_mblimit',['class':'form-control']) }}
+        <?= $form->render('cp_mblimit', ['class' => 'form-control']) ?>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">{{ form.label('cp_dsktplimit') }}</label>
+      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_dsktplimit') ?></label>
       <div class="col-md-4">
-      {{ form.render('cp_dsktplimit',['class':'form-control']) }}
+      <?= $form->render('cp_dsktplimit', ['class' => 'form-control']) ?>
       </div>
     </div>
 
@@ -390,7 +390,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput"></label>
       <div class="col-md-1">
-        {{ form.render('Save',['class':'btn btn-primary']) }}
+        <?= $form->render('Save', ['class' => 'btn btn-primary']) ?>
       </div>
     </div>
 
@@ -400,8 +400,8 @@
 				<td></td>
 			</tr>
 		</table>
-    {{ form.render('client_id') }}
-    {{ form.render('role') }}
+    <?= $form->render('client_id') ?>
+    <?= $form->render('role') ?>
     <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>" value="<?php echo $this->security->getToken() ?>"/>
 
 
