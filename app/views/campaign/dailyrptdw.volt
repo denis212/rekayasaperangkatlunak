@@ -4,7 +4,7 @@
  * @var \Phalcon\Mvc\View\Engine\Php $this
  */
 ?>
-<?php use Phalcon\Tag;
+<?php 
 
 $export_file = 'dailyreport-'.date("Y-m-d").".xls";
 ob_end_clean();

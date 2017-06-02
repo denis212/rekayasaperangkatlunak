@@ -1,7 +1,7 @@
  <?php $this->assets->outputCss(); ?>
- 
+
 {{ content() }}
-<div class="container">
+<div class="container" style=" margin-right: 25px; margin-left:25px; width:auto;">
 <form method="post" class="form-horizontal" autocomplete="off" action="{{ url("users/changePassword") }}">
 
     <div>

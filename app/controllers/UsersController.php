@@ -20,28 +20,29 @@ class UsersController extends ControllerBase
     {
         if ($this->session->has('auth-identity')) {
             // $this->view->setTemplateBefore('private');
-              $this->view->setTemplateBefore('cobaprivate');
+              // $this->view->setTemplateBefore('cobaprivate');
+              // $this->view->setTemplateBefore('admin');
         }else {
           // $this->view->setTemplateBefore('public');
           $this->view->setTemplateBefore('coba');
         }
 
           // Add some local CSS resources
-         $this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
-         $this->assets->addCss("css/font-awesome.min.css");
-         $this->assets->addCss("css/animate.min.css");
-         $this->assets->addCss("css/prettyPhoto.css");
-         $this->assets->addCss("css/main.css");
-         $this->assets->addCss("css/responsive.css");
-
-         // And some local JavaScript resources
-         $this->assets->addJs("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
-         $this->assets->addJs("js/jquery.js");
-         $this->assets->addJs("js/bootstrap.min.js");
-         $this->assets->addJs("js/main.js");
-         $this->assets->addJs("js/jquery.prettyPhoto.js");
-         $this->assets->addJs("js/jquery.isotope.min.js");
-         $this->assets->addJs("js/wow.min.js");
+        //  $this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+        //  $this->assets->addCss("css/font-awesome.min.css");
+        //  $this->assets->addCss("css/animate.min.css");
+        //  $this->assets->addCss("css/prettyPhoto.css");
+        //  $this->assets->addCss("css/main.css");
+        //  $this->assets->addCss("css/responsive.css");
+         //
+        //  // And some local JavaScript resources
+        //  $this->assets->addJs("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
+        //  $this->assets->addJs("js/jquery.js");
+        //  $this->assets->addJs("js/bootstrap.min.js");
+        //  $this->assets->addJs("js/main.js");
+        //  $this->assets->addJs("js/jquery.prettyPhoto.js");
+        //  $this->assets->addJs("js/jquery.isotope.min.js");
+        //  $this->assets->addJs("js/wow.min.js");
     }
 
     /**
@@ -217,7 +218,7 @@ class UsersController extends ControllerBase
      */
     public function changePasswordAction()
     {
-        $this->view->setTemplateBefore('cobaprivate');
+        // $this->view->setTemplateBefore('cobaprivate');
         $form = new ChangePasswordForm();
 
         if ($this->request->isPost()) {
@@ -261,7 +262,7 @@ class UsersController extends ControllerBase
 
     public function accountInfoAction()
     {
-      $this->view->setTemplateBefore('cobaprivate');
+      // $this->view->setTemplateBefore('cobaprivate');
       $user = Users::findFirstById($this->auth->getId());
       if (!$user) {
           $this->flash->error("User was not found");

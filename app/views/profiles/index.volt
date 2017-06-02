@@ -2,10 +2,17 @@
 
 {{ content() }}
 
-<div class="container">
+<div class="container" style="background-color:#f5f5f5; margin-right: 25px; margin-left:25px; width:auto;">
+
 <div class="site-signup" style=" margin-left:80px;margin-right:80px;">
-<div align="right">
-    {{ link_to("profiles/create", "<i class='icon-plus-sign'></i> Create Profiles", "class": "btn btn-primary") }}
+<div align="right" style="margin-top:20px;">
+    <nav>
+      <ul class="pager">
+        <li class="next">
+          {{ link_to("profiles/create", "<i class='icon-plus-sign'></i> Create Profiles","class": "btn btn-primary", "style":"background-color:#c52d2f; color: #fff;") }}
+        </li>
+      </ul>
+    </nav>
 </div>
 
 <form class="form-horizontal" method="post" action="{{ url("profiles/search") }}" autocomplete="off">

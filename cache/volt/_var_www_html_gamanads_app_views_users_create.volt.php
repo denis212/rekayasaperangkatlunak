@@ -1,9 +1,9 @@
 <title>Create Users - GamanAds</title>
  <?php $this->assets->outputCss(); ?>
-<div class="container">
+<div class="container" style="background-color:#f5f5f5; margin-right: 25px; margin-left:25px; width:auto;">
 <ul class="pager">
     <li class="previous pull-left">
-        <?= $this->tag->linkTo(['users', '&larr; Go Back']) ?>
+        <?= $this->tag->linkTo(['users', '&larr; Go Back', 'class' => 'btn btn-primary', 'style' => 'background-color:#c52d2f; color: #fff;']) ?>
     </li>
     <li class="pull-right">
 
@@ -72,17 +72,12 @@
       <label class="col-md-4 control-label" for="textinput">Country </label>
       <div class="col-md-4">
         <?= $form->render('country', ['class' => 'form-control']) ?>
-        <?= $form->messages('country') ?>
+        <?= $form->messages('country') ?> <br>
+        <?= $this->tag->submitButton(['Save', 'class' => 'btn btn-success']) ?>
       </div>
     </div>
 
-    <div class="form-group">
-      <label class="col-md-5 control-label">
-        <?= $this->tag->submitButton(['Save', 'class' => 'btn btn-success']) ?>
-      </label>
-
-    </div>
-
 </form>
-<div>
+
 <?php $this->assets->outputJs(); ?>
+</div>

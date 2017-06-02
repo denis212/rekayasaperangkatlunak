@@ -31,19 +31,6 @@ header('Content-Disposition: attachment; filename="'.basename($export_file).'"')
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<div class="row">
-    <nav>
-        <ul class="pager">
-            <li class="previous"><?php echo $this->tag->linkTo(["campaign/search?page=".$frompage, "Go Back"]); ?></li>
-            <li class="next"><?php echo $this->tag->linkTo(["campaign/create", "Create "]); ?></li>
-        </ul>
-    </nav>
-</div>
-
-<div class="page-header">
-    <h1>View Detail Campaign</h1>
-</div>
-
 <?php echo $this->getContent(); ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"

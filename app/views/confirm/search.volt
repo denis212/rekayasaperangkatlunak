@@ -38,7 +38,8 @@
   background-color: #d6d9ff;}
 </style>
 
-<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
+<!-- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3"> -->
+<div class="container" style="background-color:#f5f5f5; margin-top: -10px; margin-right: 25px; margin-left:25px; width:auto;">
 <div class="row">
     <nav>
         <ul class="pager">
@@ -53,7 +54,7 @@
 
 <?php echo $this->getContent(); ?>
 
-<div class="row"  class="row" style='overflow-x:scroll;overflow-y:hidden;'>
+<div class="row" style='overflow-x:scroll;overflow-y:hidden;'>
     <table class="table table-bordered">
         <thead>
             <tr class=xl67>

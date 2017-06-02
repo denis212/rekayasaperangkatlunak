@@ -10,6 +10,7 @@ use Vokuro\Forms\CampaignForm;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Http\Request;
 use Phalcon\Db as Assoc;
+use Phalcon\Mvc\Controller;
 
 
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
@@ -24,30 +25,31 @@ class CampaignController extends ControllerBase
         // $this->view->setTemplateBefore('private');
           // $this->view->setTemplateBefore('cobaprivate');
           // Add some local CSS resources
-         $this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
-         $this->assets->addCss("css/font-awesome.min.css");
-         $this->assets->addCss("css/animate.min.css");
-         $this->assets->addCss("css/prettyPhoto.css");
-         $this->assets->addCss("css/main.css");
-         $this->assets->addCss("css/responsive.css");
-
-         // And some local JavaScript resources
-         $this->assets->addJs("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
-         $this->assets->addJs("js/jquery.js");
-         $this->assets->addJs("js/bootstrap.min.js");
-         $this->assets->addJs("js/main.js");
-         $this->assets->addJs("js/jquery.prettyPhoto.js");
-         $this->assets->addJs("js/jquery.isotope.min.js");
-         $this->assets->addJs("js/wow.min.js");
+        //  $this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+        //  $this->assets->addCss("css/font-awesome.min.css");
+        //  $this->assets->addCss("css/animate.min.css");
+        //  $this->assets->addCss("css/prettyPhoto.css");
+        //  $this->assets->addCss("css/main.css");
+        //  $this->assets->addCss("css/responsive.css");
+         //
+        //  // And some local JavaScript resources
+        //  $this->assets->addJs("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
+        //  $this->assets->addJs("js/jquery.js");
+        //  $this->assets->addJs("js/bootstrap.min.js");
+        //  $this->assets->addJs("js/main.js");
+        //  $this->assets->addJs("js/jquery.prettyPhoto.js");
+        //  $this->assets->addJs("js/jquery.isotope.min.js");
+        //  $this->assets->addJs("js/wow.min.js");
     }
     /**
      * Index action
      */
     public function indexAction()
     {
-        $this->view->setTemplateBefore('cobaprivate');
+        // $this->view->setTemplateBefore('cobaprivate');
         $this->persistent->parameters = null;
         $this->view->form = new CampaignForm();
+        return $this->response->redirect('campaign/create');
     }
 
     /**
@@ -55,7 +57,7 @@ class CampaignController extends ControllerBase
      */
     public function searchAction()
     {
-        $this->view->setTemplateBefore('cobaprivate');
+        // $this->view->setTemplateBefore('cobaprivate');
         $form = new CampaignForm();
         $numberPage = 1;
         $addParam = '';
@@ -442,7 +444,7 @@ class CampaignController extends ControllerBase
      */
      public function viewAction($id,$page)
      {
-       $this->view->setTemplateBefore('cobaprivate');
+      //  $this->view->setTemplateBefore('cobaprivate');
          $numberPage = 1;
 
          if ($this->request->isPost()) {
@@ -485,6 +487,7 @@ class CampaignController extends ControllerBase
 
      public function viewdownloadAction($id,$param1,$param2)
      {
+         $this->view->posisi = 'download';
          $numberPage = 1;
 
          if ($this->request->isPost()) {
@@ -519,7 +522,6 @@ class CampaignController extends ControllerBase
 
          $this->view->page = $paginator->getPaginate();
          $this->view->frompage = $page;
-
          // $this->view->form = $form;
      }
 
@@ -644,7 +646,8 @@ class CampaignController extends ControllerBase
     //create Action
     public function createAction()
     {
-        $this->view->setTemplateBefore('cobaprivate');
+        // $this->view->setTemplateBefore('cobaprivate');
+        // $this->view->pick('admin');
         $form = new CampaignForm();
         $form->profilesId = $this->auth->getProfilesId();
         $form->cid = $this->auth->getId();
@@ -1922,7 +1925,8 @@ class CampaignController extends ControllerBase
 
     public function dashboardcampAction()
     {
-      $this->view->setTemplateBefore('cobaprivate');
+      // $this->view->setTemplateBefore('cobaprivate');
+      // $this->view->setTemplateBefore('admin');
       $form = new CampaignForm();
       $request = new Request();
       $database = 'vokuro';
@@ -2201,11 +2205,11 @@ class CampaignController extends ControllerBase
 
     public function dailyreportAction()
     {
-      if ($this->session->has('auth-identity')) {
-            $this->view->setTemplateBefore('cobaprivate');
-      }else {
-        $this->view->setTemplateBefore('coba');
-      }
+      // if ($this->session->has('auth-identity')) {
+      //       $this->view->setTemplateBefore('cobaprivate');
+      // }else {
+      //   $this->view->setTemplateBefore('coba');
+      // }
 
       $form = new CampaignForm();
       $request = new Request();
@@ -2360,6 +2364,9 @@ class CampaignController extends ControllerBase
 
     public function dailyrptdwAction($startdate,$enddate,$campaign)
     {
+
+      $this->view->posisi = 'download';
+
       $form = new CampaignForm();
       $request = new Request();
       $database = 'vokuro';

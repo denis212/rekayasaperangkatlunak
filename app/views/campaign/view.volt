@@ -12,7 +12,7 @@
 
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div class="container">
+<div style="margin-right:25px;margin-left:25px;">
 <div class="row">
     <nav>
         <ul class="pager">

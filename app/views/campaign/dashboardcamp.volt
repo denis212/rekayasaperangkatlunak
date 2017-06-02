@@ -1,29 +1,92 @@
 <title>Dashboard Campaign - GamanAds</title>
+
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
+
+{{ javascript_include('plugins/jQuery/jquery-3.1.1.min.js') }}
+{{ javascript_include('plugins/flot/jquery.flot.categories.min.js') }}
+{{ javascript_include('plugins/jQuery/jquery-3.1.1.min.js') }}
+{{ javascript_include('plugins/flot/jquery.flot.min.js') }}
+
+
+<!-- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3"> -->
+
+<div class="row">
 
 <div style="margin-left:20px; margin-right:20px;">
+  <div class="col-md-12">
+  <div class="box box-primary" style="margin-top:20px;">
   <form name="dashboard" method="post" action="" >
     <div style="margin:20px;">
       {{ form.render('period',['class':'form-control','style':'width:150px;']) }}
     </div>
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h2><?php echo $totalclick;?></h2>
+
+              <p>Clicks</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h2><?php echo $dash_saldo;?><sup style="font-size: 10px"></sup></h2>
+
+              <p>Balance</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-cash"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
   </form>
-<div style="margin:30px;border-style: solid;border-color: black; width: 200px; height: 85px;" class="btn btn-default btn-lg col-md-5">
-  <small>Clicks</small>
-  <h2><?php echo $totalclick;?></h2>
+  </div>
 </div>
-<div style="margin:30px;border-style: solid;border-color: black; width: 200px; height: 85px;" class="btn btn-default btn-lg col-md-5">
-  <small>Saldo</small>
-  <h2><?php echo $dash_saldo;?></h2>
-</div>
-<div id="container2">
+
+<!-- <div id="container2">
+</div> -->
+
+<div class="col-md-12">
+  <!-- Bar chart -->
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <i class="fa fa-bar-chart-o"></i>
+
+      <h3 class="box-title">Click Chart Per-date</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <div id="container2" style="height: auto;"></div>
+    </div>
+    <!-- /.box-body-->
+  </div>
 </div>
 
 </div>
 </div>
+
+
 
 <?php
 $date= mktime(0,0,0,date("m"),date("d"),date("Y"));
@@ -59,6 +122,7 @@ $day6= date("Y-m-d",$date6);
 ?>
 
 <script>
+
 var chart = Highcharts.chart('container2', {
 
     chart: {
@@ -134,3 +198,5 @@ var chart = Highcharts.chart('container2', {
 
 chart.setSize(950, 350);
 </script>
+
+<!-- <script src="../../plugins/flot/jquery.flot.min.js"></script> -->

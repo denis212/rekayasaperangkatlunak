@@ -1,11 +1,12 @@
 <title>Create Profiles - GamanAds</title>
 
-<div class="container">
+<div class="container" style="background-color:#f5f5f5; margin-right: 25px; margin-left:25px; width:auto;">
+
 <form method="post" autocomplete="off">
 
-<ul class="pager">
+<ul class="pager" style="margin-right:20px;">
     <li class="previous pull-left">
-        {{ link_to("profiles", "&larr; Go Back") }}
+        {{ link_to("profiles", "&larr; Go Back","class": "btn btn-primary", "style":"background-color:#c52d2f; color: #fff;") }}
     </li>
     <li class="pull-right">
 

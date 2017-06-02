@@ -16,7 +16,7 @@ class PermissionsController extends ControllerBase
     public function indexAction()
     {
         // $this->view->setTemplateBefore('private');
-        $this->view->setTemplateBefore('cobaprivate');
+        // $this->view->setTemplateBefore('cobaprivate');
 
         if ($this->request->isPost()) {
 

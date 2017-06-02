@@ -14,6 +14,7 @@ use Vokuro\Auth\Auth;
 use Vokuro\Acl\Acl;
 use Vokuro\Mail\Mail;
 use Phalcon\Flash\Direct as FlashDirect;
+use Phalcon\Mvc\Controller;
 
 /**
  * Register the global configuration as config
@@ -59,7 +60,7 @@ $di->set('view', function () {
             $volt->setOptions([
                 'compiledPath' => $config->application->cacheDir . 'volt/',
                 'compiledSeparator' => '_',
-                'compileAlways' => true 
+                'compileAlways' => true
             ]);
 
             return $volt;

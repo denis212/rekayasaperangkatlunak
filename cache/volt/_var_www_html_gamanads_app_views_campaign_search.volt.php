@@ -16,8 +16,9 @@ use Phalcon\Mvc\Url;
 ?>
 
 <?php use Phalcon\Tag; ?>
-<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
-<div class="row">
+<!-- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3"> -->
+<div style="margin-right:25px;margin-left:25px;">
+<div class="row" style="margin-right:20px;">
     <nav>
         <ul class="pager">
             <li class="previous"><?php echo $this->tag->linkTo(["campaign/create", "Go Back", "style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
@@ -280,7 +281,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
   <td width=139 style='width:104pt'></td>
   <td width=68 style='width:51pt'></td>
   <td width=68 style='width:51pt'></td>
-</tr><?php echo $css; ?>
+</tr>
  <![endif]>
 </table>
 </div>

@@ -10,9 +10,9 @@
 <script src="https://select2.github.io/dist/js/select2.full.js"></script>
 <link href="https://select2.github.io/dist/css/select2.min.css" rel="stylesheet"/>
 
-<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
-
-<div class="row">
+<!-- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3"> -->
+<div style="margin-right:25px;margin-left:25px;background-color:#fff;">
+<div class="row" style="margin-right:20px;">
     <nav>
         <ul class="pager">
           <li class="next"><?php echo $this->tag->linkTo(["campaign/search", "Search Campaign","style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
@@ -385,7 +385,7 @@
       </div>
     </div>
 
-  
+
 
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput"></label>
@@ -403,9 +403,6 @@
     {{ form.render('client_id') }}
     {{ form.render('role') }}
     <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>" value="<?php echo $this->security->getToken() ?>"/>
-
-
-		<hr>
 
 	</form>
 

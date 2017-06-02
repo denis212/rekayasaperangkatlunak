@@ -44,16 +44,17 @@
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
-
+ <!-- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3"> -->
+<div class="container" style="background-color:#fff; width:auto;" style="margin-right:25px;margin-left:90px;">
 <div class="page-header">
     <h1>Daily Report</h1>
 </div>
 
-<div class="row"  class="row" style='overflow-x:scroll;overflow-y:hidden;'>
+
+<div class="row" style='overflow-x:scroll;overflow-y:hidden;'>
   <div>
     <form method='post'>
-      <table>
+      <table style="width:auto;">
         <tr>
           <th style="padding:5px;"><?= $form->label('rpt_startdate') ?></th>
           <th style="padding:5px;"><?= $form->label('rpt_enddate') ?></th>

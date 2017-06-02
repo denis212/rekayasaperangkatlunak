@@ -2,11 +2,14 @@
 <?php $this->assets->outputCss(); ?>
 {{ content() }}
 
-<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
+<!-- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3"> -->
+<div class="container" style=" margin-right: 25px; margin-left:25px; width:auto;">
+<div class="col-md-12">
+<div class="box box-primary" style="margin-top:20px;">
 <div class="page-header">
     <h1>Confirm Payment</h1>
 </div>
-<div class="site-contact">
+<div class="site-contact" style="margin-left:20px;">
     <div class="row">
         <div class="col-lg-5">
           <form method='post' class="form-horizontal" autocomplete="off">
@@ -47,6 +50,8 @@
         </div>
     </div>
 
+</div>
+</div>
 </div>
 </div>
 

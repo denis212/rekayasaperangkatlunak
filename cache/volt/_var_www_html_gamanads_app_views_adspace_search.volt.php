@@ -36,7 +36,8 @@
 	border:.5pt solid windowtext;
   background-color: #d6d9ff;}
 </style>
-<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
+<!-- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3"> -->
+<div style="margin-left:25px;margin-right:25px;">
 <div class="row">
     <nav>
         <ul class="pager">

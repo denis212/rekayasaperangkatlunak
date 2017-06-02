@@ -1,13 +1,13 @@
 <title>Search Users - GamanAds</title>
 <?php $this->assets->outputCss(); ?>
 <?= $this->getContent() ?>
-<div class="container">
+<div class="container" style="background-color:#f5f5f5; margin-right: 25px; margin-left:25px; width:auto;">
 <ul class="pager">
     <li class="previous pull-left">
-        <?= $this->tag->linkTo(['users/index', '&larr; Go Back']) ?>
+        <?= $this->tag->linkTo(['users/index', '&larr; Go Back', 'class' => 'btn btn-primary', 'style' => 'background-color:#c52d2f; color: #fff;']) ?>
     </li>
     <li class="pull-right">
-        <?= $this->tag->linkTo(['users/create', 'Create users']) ?>
+        <?= $this->tag->linkTo(['users/create', 'Create users', 'class' => 'btn btn-primary', 'style' => 'background-color:#c52d2f; color: #fff;']) ?>
     </li>
 </ul>
 

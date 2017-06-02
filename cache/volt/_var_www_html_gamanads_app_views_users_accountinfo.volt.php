@@ -3,7 +3,7 @@
 
 <?php $this->assets->outputCss(); ?>
 
-<div class="container">
+<div class="container" style=" margin-right: 25px; margin-left:25px; width:auto;">
 <form method="post" autocomplete="off">
 
 <ul class="pager">

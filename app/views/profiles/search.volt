@@ -1,7 +1,7 @@
 <title>Search Profiles - GamanAds</title>
 
 {{ content() }}
-<div class="container">
+<div class="container" style="background-color:#f5f5f5; margin-right: 25px; margin-left:25px; width:auto;">
 <ul class="pager">
     <li class="previous pull-left">
         {{ link_to("profiles/index", "&larr; Go Back") }}

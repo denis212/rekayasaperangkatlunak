@@ -1,6 +1,8 @@
 <title>Edit Profiles - GamanAds</title>
-
-<div class="container">
+<div class="col-md-12">
+<div class="box box-primary" style="background-color:#f5f5f5; margin-right: 25px; margin-top: 25px;
+margin-left:25px; width:auto; height:450px;">
+<div style="margin:10px;">
 <form method="post" autocomplete="off">
 
 <ul class="pager">
@@ -28,7 +30,7 @@
   </ul>
 
   <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
+    <div id="home" class="tab-pane fade in active" style="width:400px;">
         {{ form.render("id") }}
           <div class="col-lg-5">
             <div class="clearfix">
@@ -76,4 +78,6 @@
 </div>
 
 </form>
+</div>
+</div>
 </div>

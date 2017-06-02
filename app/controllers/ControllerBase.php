@@ -2,6 +2,7 @@
 namespace Vokuro\Controllers;
 
 use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Action;
 use Phalcon\Mvc\Dispatcher;
 use Vokuro\Models\Saldo;
 
@@ -25,6 +26,7 @@ class ControllerBase extends Controller
         $this->view->userlevel = $this->auth->getProfilesId();
         if($this->auth->getId()!=0)
         {
+          $this->view->posisi = 'in';
           $userid = $this->auth->getId();
           $saldo = Saldo::findFirst("user_id = ". $userid);
           if($saldo != null)
@@ -37,10 +39,13 @@ class ControllerBase extends Controller
             $cur = 'IDR';
             $this->view->usersaldo = $cur.' '.$sal;
           }
+        }else {
+          $this->view->posisi = 'out';
         }
+
         // Only check permissions on private controllers
         if ($this->acl->isPrivate($controllerName)) {
-
+            // $this->view->posisi = 'in';
             // Get the current identity
             $identity = $this->auth->getIdentity();
             $userid = $this->auth->getId();
@@ -75,7 +80,7 @@ class ControllerBase extends Controller
 
                 $this->flash->notice('You don\'t have access to this module: ' . $controllerName . ':' . $actionName);
 
-                if ($this->acl->isAllowed($identity['profile'], $controllerName, 'index')) {
+                if ($this->acl->isAllowed($identity['profile'], $controllerName, 'indexl')) {
                     $dispatcher->forward([
                         'controller' => $controllerName,
                         'action' => 'index'
@@ -89,6 +94,8 @@ class ControllerBase extends Controller
 
                 return false;
             }
+        }else {
+          // $this->view->posisi = 'out';
         }
 
     }

@@ -6,8 +6,11 @@
  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3">
-<div class="row">
+<!-- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3"> -->
+<div class="container" style=" margin-right: 25px; margin-left:25px; width:auto;">
+<div class="col-md-12">
+<div class="box box-primary" style="margin-top:20px;">
+<div class="row" style="margin-right:20px;">
     <nav>
         <ul class="pager">
           <li class="next"><?php echo $this->tag->linkTo(["adspace/search", "Search Ad Space","style"=>"background-color:#c52d2f; color: #fff;"]); ?></li>
@@ -75,5 +78,7 @@
 
 </div>
 
+</div>
+</div>
 </div>
 <?php $this->assets->outputJs(); ?>

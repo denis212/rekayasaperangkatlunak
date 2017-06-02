@@ -13,16 +13,12 @@ class IndexController extends ControllerBase
     public function indexAction()
     {
         $this->view->setVar('logged_in', is_array($this->auth->getIdentity()));
-        // if ($this->session->has('auth-identity')) {
-        //     $this->view->setTemplateBefore('private');
-        // }else {
-        //   $this->view->setTemplateBefore('public');
-        // }
 
         if ($this->session->has('auth-identity')) {
-          $this->view->setTemplateBefore('cobaprivate');
+          return $this->response->redirect('campaign/dashboardcamp');
         }else {
-        $this->view->setTemplateBefore('coba');
+          $this->view->setTemplateBefore('coba');
         }
+
     }
 }
