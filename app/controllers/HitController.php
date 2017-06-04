@@ -176,7 +176,7 @@ class HitController extends ControllerBase
       $sal_akhir = $sal_awal - $cost_per;
       // print_r($result['saldo'].' '.$result['cost_per'].' '.$result['client_id']);
     }
-    
+
     // $sqltrace
     $connection->execute("INSERT INTO ".$database.".c_traceid_log_".date("Ym")." (campaign_id,traceid,traceid_ads,sub_id,entry_date) VALUES (".$cid.",'".$traceid_alias."','".$traceid."','".$subid."',NOW())");
 

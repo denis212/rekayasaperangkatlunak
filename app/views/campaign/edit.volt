@@ -12,8 +12,8 @@
 <script src="https://select2.github.io/dist/js/select2.full.js">
 </script>
 <link href="https://select2.github.io/dist/css/select2.min.css" rel="stylesheet"/>
-<div class="container">
-<div class="row">
+<div style="margin-right:25px;margin-left:25px;background-color:#fff;">
+<div class="row" style="margin-right:20px;margin-left:20px;margin-top:-10px;">
     <nav>
         <ul class="pager">
             <li class="previous">

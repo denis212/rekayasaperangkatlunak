@@ -350,7 +350,7 @@
             </ul>
           </li>
           <!-- publisher -->
-          <li class="<?php if($ctrlname == "adspace" && ($action == "create" || $action == "search")) {echo "active treeview";} else {echo "treeview";} ?>">
+          <li class="<?php if(($ctrlname == "adspace") && ($action == "create" || $action == "search")) {echo "active treeview";} else {echo "treeview";} ?>">
             <a href="#">
               <i class="fa fa-laptop"></i>
               <span>Publisher</span>
@@ -364,7 +364,7 @@
             </ul>
           </li>
           <!-- Payment -->
-          <li class="<?php if($ctrlname == "confirm" && ($action == "create" || $action == "search")) {echo "active treeview";} else {echo "treeview";} ?>">
+          <li class="<?php if(($ctrlname == "confirm") && ($action == "create" || $action == "search")) {echo "active treeview";} else {echo "treeview";} ?>">
             <a href="#">
               <i class="fa fa-credit-card"></i>
               <span>Payment</span>

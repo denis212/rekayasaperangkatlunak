@@ -154,7 +154,7 @@ class CampaignController extends ControllerBase
      */
     public function editAction($id,$page)
     {
-      $this->view->setTemplateBefore('cobaprivate');
+      // $this->view->setTemplateBefore('cobaprivate');
       $green = 0;
       $campaign = Campaign::findFirstByid($id);
       if (!$campaign) {
