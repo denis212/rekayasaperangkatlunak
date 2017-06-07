@@ -31,11 +31,11 @@ return new Config([
         'fromName' => 'GamanAds',
         'fromEmail' => 'noreply@gamanads.co.id',
         'smtp' => [
-            'server' => 'mail.mobiwin.co.id',
+            'server' => 'smtp.gmail.com',
             'port' => 465,
             'security' => 'SSL',
-            'username' => 'denis.setianto@mobiwin.co.id',
-            'password' => 'Denis2016'
+            'username' => 'mobiwin.tester@gmail.com',
+            'password' => 'mobiwin.tester2016',
         ]
     ],
     'amazon' => [

@@ -12,556 +12,556 @@
 <script src="https://select2.github.io/dist/js/select2.full.js">
 </script>
 <link href="https://select2.github.io/dist/css/select2.min.css" rel="stylesheet"/>
-<div class="container">
-<div class="row">
-    <nav>
-        <ul class="pager">
-            <li class="previous">
-              <?php
-                if($frompage != 'view')
-                  echo $this->tag->linkTo(["campaign/search?page=".$frompage, "Go Back"]);
-                else
-                  echo $this->tag->linkTo(["campaign/view/".$form->id."/1", "Go Back"]);
-              ?>
-            </li>
-            <li class="next"><?php echo $this->tag->linkTo(["campaign/search", "Search Campaign"]); ?></li>
-        </ul>
-    </nav>
-</div>
-
-
-<legend>Create Campaign</legend>
-
-<div align="center">
-
-<form method='post' enctype='multipart/form-data' class="form-horizontal" autocomplete="off">
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('client_name') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('client_name', ['class' => 'form-control']) ?>
-        <?= $form->messages('client_name') ?>
+<div class="container" style=" margin-right: 25px; margin-left:25px; margin-top:-10px; width:auto;">
+  <div class="col-md-12">
+    <div class="box box-primary" style="margin-top:20px;">
+      <div class="row" style="margin-right:20px;">
+        <nav>
+            <ul class="pager" style="margin-left:25px;">
+                <li class="previous">
+                  <?php
+                    if($frompage != 'view')
+                      echo $this->tag->linkTo(["campaign/search?page=".$frompage, "Go Back"]);
+                    else
+                      echo $this->tag->linkTo(["campaign/view/".$form->id."/1", "Go Back"]);
+                  ?>
+                </li>
+                <li class="next"><?php echo $this->tag->linkTo(["campaign/search", "Search Campaign"]); ?></li>
+            </ul>
+        </nav>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_name') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_name', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_name') ?>
-      </div>
-    </div>
+      <legend>Create Campaign</legend>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_pricemodel') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_pricemodel', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_pricemodel') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_targeturl') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_targeturl', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_targeturl') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_cpmcpa') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_cpmcpa', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_cpmcpa') ?>
-        <span class="help-block">We recommend to choose CPM rate $3.70 for the best result</span>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-xs-4 control-label" for="textinput"><?= $form->label('cp_startdate') ?></label>
-        <div class="col-xs-3">
-            <?= $form->render('cp_startdate', ['class' => 'form-control']) ?>
-            <?= $form->messages('cp_startdate') ?>
+    <div align="center">
+      <form method='post' enctype='multipart/form-data' class="form-horizontal" autocomplete="off">
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('client_name') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('client_name', ['class' => 'form-control']) ?>
+          <?= $form->messages('client_name') ?>
         </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_name') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_name', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_name') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_pricemodel') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_pricemodel', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_pricemodel') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_targeturl') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_targeturl', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_targeturl') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_cpmcpa') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_cpmcpa', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_cpmcpa') ?>
+          <span class="help-block">We recommend to choose CPM rate $3.70 for the best result</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-4 control-label" for="textinput"><?= $form->label('cp_startdate') ?></label>
+          <div class="col-xs-3">
+              <?= $form->render('cp_startdate', ['class' => 'form-control']) ?>
+              <?= $form->messages('cp_startdate') ?>
+          </div>
+          <div class="col-xs-2">
+              <?= $form->render('cp_enddate', ['class' => 'form-control']) ?>
+              <?= $form->messages('cp_enddate') ?>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_country') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_country', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_country') ?>
+          <?= $form->render('hd_country') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_dailybudget') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_dailybudget', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_dailybudget') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_totalbudget') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_totalbudget', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_totalbudget') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_schedule') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_schedule', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_schedule') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_delivmethod') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_delivmethod', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_delivmethod') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_target') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_target', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_target') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_tag') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_tag', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_tag') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_zone') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_zone', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_zone') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->render('cp_gettraffic') ?></label>
+        <div class="col-md-4">
+          <?= $form->label('cp_gettraffic', ['class' => 'control-label']) ?>
+          <?= $form->messages('cp_gettraffic') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->render('cp_guarantee') ?></label>
+        <div class="col-md-4">
+          <?= $form->label('cp_guarantee', ['style' => 'align:left;']) ?>
+  				<?= $form->messages('cp_guarantee') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_testbudget') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_testbudget', ['class' => 'form-control']) ?>
+          <?= $form->messages('cp_testbudget') ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_mblimit') ?></label>
+        <div class="col-md-4">
+          <?= $form->render('cp_mblimit', ['class' => 'form-control']) ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_dsktplimit') ?></label>
+        <div class="col-md-4">
+        <?= $form->render('cp_dsktplimit', ['class' => 'form-control']) ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-7 control-label"><h4>Minimum Upload 6 Image</h4></label>
+      </div>
+
+      <div class="form-group">
+        <label id="120x600" class="col-xs-4 control-label" for="file1">Image 120x600</label></td>
         <div class="col-xs-2">
-            <?= $form->render('cp_enddate', ['class' => 'form-control']) ?>
-            <?= $form->messages('cp_enddate') ?>
+          <input type="file" name="photo1" id="file1" value="<?php $_POST['photo1'] ?>"/>
         </div>
+        <div class="col-xs-1">
+           <a id="clear1" class="btn btn-warning">Clear</a>
+           <?php
+
+             if($form->gbr120x600 != null)
+             {
+             echo $this->tag->image([$form->gbr120x600,'width'=>'30px','id'=>'gbr120x600']);
+             }
+           ?>
+           <?php if($form->gbr120x600 != null) { ?>
+             <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr120x600/'.$form->id, 'Delete Photo']) ?></a>
+           <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="160x600" class="col-xs-4 control-label" for="file2">Image 160x600</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo2" id="file2"/>
+        </div>
+        <div class="col-xs-1">
+          <a id="clear2" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr160x600 != null)
+            echo $this->tag->image([$form->gbr160x600,'width'=>'30px','id'=>'gbr160x600']);
+          ?>
+          <?php if($form->gbr160x600 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr160x600/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id='250x250'  class="col-xs-4 control-label" for="file3">Image 250x250</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo3" id="file3"/>
+        </div>
+        <div class="col-xs-1">
+          <a id="clear3" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr250x250 != null)
+            echo $this->tag->image([$form->gbr250x250,'width'=>'30px','id'=>'gbr250x250']);
+          ?>
+          <?php if($form->gbr250x250 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr250x250/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="300x50" class="col-xs-4 control-label" for="file4">Image 300x50</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo4" id="file4" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear4" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr300x50 != null)
+            echo $this->tag->image([$form->gbr300x50,'width'=>'30px','id'=>'gbr300x50']);
+          ?>
+          <?php if($form->gbr300x50 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x50/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="300x100" class="col-xs-4 control-label" for="file5">Image 300x100</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo5" id="file5" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear5" class="btn btn-warning">Clear</a><br>
+          <?php
+            if($form->gbr300x100 != null)
+            echo $this->tag->image([$form->gbr300x100,'width'=>'30px','id'=>'gbr300x100']);
+          ?>
+          <?php if($form->gbr300x100 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x100/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+            <label id='300x250'  class="col-xs-4 control-label" for="file6">Image 300x250</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo6" id="file6" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear6" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr300x250 != null)
+            echo $this->tag->image([$form->gbr300x250,'width'=>'30px','id'=>'gbr300x250']);
+          ?>
+          <?php if($form->gbr300x250 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x250/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="300x600" class="col-xs-4 control-label" for="file7">Image 300x600</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo7" id="file7" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear7" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr300x600 != null)
+            echo $this->tag->image([$form->gbr300x600,'width'=>'30px','id'=>'gbr300x600']);
+          ?>
+          <?php if($form->gbr300x600 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x600/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="305x99" class="col-xs-4 control-label" for="file8">Image 305x99</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo8" id="file8" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear8" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr305x99 != null)
+            echo $this->tag->image([$form->gbr305x99,'width'=>'30px','id'=>'gbr305x99']);
+          ?>
+          <?php if($form->gbr305x99 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr305x99/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id='315x300'  class="col-xs-4 control-label" for="file9">Image 315x300</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo9" id="file9" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear9" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr315x300 != null)
+            echo $this->tag->image([$form->gbr315x300,'width'=>'30px','id'=>'gbr315x300']);
+          ?>
+          <?php if($form->gbr315x300 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr315x300/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="320x50" class="col-xs-4 control-label" for="file10">Image 320x50</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo10" id="file10" />
+        </div>
+        <div class="col-xs-1">
+           <a id="clear10" class="btn btn-warning">Clear</a>
+           <?php
+             if($form->gbr320x50!= null)
+             echo $this->tag->image([$form->gbr320x50,'width'=>'30px','id'=>'gbr320x50']);
+           ?>
+           <?php if($form->gbr320x50 != null) { ?>
+             <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x50/'.$form->id, 'Delete Photo']) ?></a>
+           <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="320x100" class="col-xs-4 control-label" for="file11">Image 320x100</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo11" id="file11" />
+        </div>
+        <div class="col-xs-1">
+           <a id="clear11" class="btn btn-warning">Clear</a>
+           <?php
+             if($form->gbr320x100!= null)
+             echo $this->tag->image([$form->gbr320x100,'width'=>'30px','id'=>'gbr320x100']);
+           ?>
+           <?php if($form->gbr320x100 != null) { ?>
+             <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x100/'.$form->id, 'Delete Photo']) ?></a>
+           <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id='320x250'  class="col-xs-4 control-label" for="file12">Image 320x250</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo12" id="file12" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear12" class="btn btn-warning">Clear</a><br>
+          <?php
+            if($form->gbr320x250!= null)
+            echo $this->tag->image([$form->gbr320x250,'width'=>'30px','id'=>'gbr320x250']);
+          ?>
+          <?php if($form->gbr320x250 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x250/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="320x416" class="col-xs-4 control-label" for="file13">Image 320x416</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo13" id="file13" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear13" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr320x416!= null)
+            echo $this->tag->image([$form->gbr320x416,'width'=>'30px','id'=>'gbr320x416']);
+          ?>
+          <?php if($form->gbr320x416 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x416/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="320x480" class="col-xs-4 control-label" for="file14">Image 320x480</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo14" id="file14" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear14" class="btn btn-warning">Clear</a><br>
+          <?php
+            if($form->gbr320x480!= null)
+            echo $this->tag->image([$form->gbr320x480,'width'=>'30px','id'=>'gbr320x480']);
+          ?>
+          <?php if($form->gbr320x480 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x480/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id='336x280'  class="col-xs-4 control-label" for="file15">Image 336x280</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo15" id="file15" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear15" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr336x280!= null)
+            echo $this->tag->image([$form->gbr336x280,'width'=>'30px','id'=>'gbr336x280']);
+          ?>
+          <?php if($form->gbr336x280 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr336x280/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="468x60" class="col-xs-4 control-label" for="file16">Image 468x60</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo16" id="file16" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear16" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr468x60!= null)
+            echo $this->tag->image([$form->gbr468x60,'width'=>'30px','id'=>'gbr468x60']);
+          ?>
+          <?php if($form->gbr468x60 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr468x60/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="640x960" class="col-xs-4 control-label" for="file17">Image 640x960</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo17" id="file17" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear17" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr640x960!= null)
+            echo $this->tag->image([$form->gbr640x960,'width'=>'30px','id'=>'gbr640x960']);
+          ?>
+          <?php if($form->gbr640x960 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr640x960/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id='728x90'  class="col-xs-4 control-label" for="file18">Image 728x90</label>
+        <div class="col-xs-2">
+            <input type="file" name="photo18" id="file18" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear18" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr728x90!= null)
+            echo $this->tag->image([$form->gbr728x90,'width'=>'30px','id'=>'gbr728x90']);
+          ?>
+          <?php if($form->gbr728x90 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr728x90/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="800x440" class="col-xs-4 control-label" for="file19">Image 800x440</label>
+        <div class="col-xs-2">
+          <input type="file" name="photo19" id="file19" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear19" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr800x440!= null)
+            echo $this->tag->image([$form->gbr800x440,'width'=>'30px','id'=>'gbr800x440']);
+          ?>
+          <?php if($form->gbr800x440 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr800x440/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label id="1024x768" class="col-md-4 control-label" for="file20">Image 1024x768</label>
+        <div class="col-xs-2">
+            <input type="file" name="photo20" id="file20" />
+        </div>
+        <div class="col-xs-1">
+          <a id="clear20" class="btn btn-warning">Clear</a>
+          <?php
+            if($form->gbr1024x768!= null)
+            echo $this->tag->image([$form->gbr1024x768,'width'=>'30px','id'=>'gbr1024x768']);
+          ?>
+          <?php if($form->gbr1024x768 != null) { ?>
+            <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr1024x7/'.$form->id, 'Delete Photo']) ?></a>
+          <?php }?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput"></label>
+        <div class="col-md-1">
+          <?= $form->render('Save', ['class' => 'btn btn-primary']) ?>
+        </div>
+      </div>
+
+  		<table class="signup">
+        <tr>
+  				<td align="right"></td>
+  				<td></td>
+  			</tr>
+  		</table>
+      <?= $form->render('id') ?>
+      <?= $form->render('client_id') ?>
+      <?= $form->render('role') ?>
+  		<?= $form->render('csrf', ['value' => $this->security->getToken()]) ?>
+  		<?= $form->messages('csrf') ?>
+  	</form>
+
     </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_country') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_country', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_country') ?>
-        <?= $form->render('hd_country') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_dailybudget') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_dailybudget', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_dailybudget') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_totalbudget') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_totalbudget', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_totalbudget') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_schedule') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_schedule', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_schedule') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_delivmethod') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_delivmethod', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_delivmethod') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_target') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_target', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_target') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_tag') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_tag', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_tag') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_zone') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_zone', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_zone') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->render('cp_gettraffic') ?></label>
-      <div class="col-md-4">
-        <?= $form->label('cp_gettraffic', ['class' => 'control-label']) ?>
-        <?= $form->messages('cp_gettraffic') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->render('cp_guarantee') ?></label>
-      <div class="col-md-4">
-        <?= $form->label('cp_guarantee', ['style' => 'align:left;']) ?>
-				<?= $form->messages('cp_guarantee') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_testbudget') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_testbudget', ['class' => 'form-control']) ?>
-        <?= $form->messages('cp_testbudget') ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_mblimit') ?></label>
-      <div class="col-md-4">
-        <?= $form->render('cp_mblimit', ['class' => 'form-control']) ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"><?= $form->label('cp_dsktplimit') ?></label>
-      <div class="col-md-4">
-      <?= $form->render('cp_dsktplimit', ['class' => 'form-control']) ?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-7 control-label"><h4>Minimum Upload 6 Image</h4></label>
-    </div>
-
-    <div class="form-group">
-      <label id="120x600" class="col-xs-4 control-label" for="file1">Image 120x600</label></td>
-      <div class="col-xs-2">
-        <input type="file" name="photo1" id="file1" value="<?php $_POST['photo1'] ?>"/>
-      </div>
-      <div class="col-xs-1">
-         <a id="clear1" class="btn btn-warning">Clear</a>
-         <?php
-
-           if($form->gbr120x600 != null)
-           {
-           echo $this->tag->image([$form->gbr120x600,'width'=>'30px','id'=>'gbr120x600']);
-           }
-         ?>
-         <?php if($form->gbr120x600 != null) { ?>
-           <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr120x600/'.$form->id, 'Delete Photo']) ?></a>
-         <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="160x600" class="col-xs-4 control-label" for="file2">Image 160x600</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo2" id="file2"/>
-      </div>
-      <div class="col-xs-1">
-        <a id="clear2" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr160x600 != null)
-          echo $this->tag->image([$form->gbr160x600,'width'=>'30px','id'=>'gbr160x600']);
-        ?>
-        <?php if($form->gbr160x600 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr160x600/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id='250x250'  class="col-xs-4 control-label" for="file3">Image 250x250</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo3" id="file3"/>
-      </div>
-      <div class="col-xs-1">
-        <a id="clear3" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr250x250 != null)
-          echo $this->tag->image([$form->gbr250x250,'width'=>'30px','id'=>'gbr250x250']);
-        ?>
-        <?php if($form->gbr250x250 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr250x250/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="300x50" class="col-xs-4 control-label" for="file4">Image 300x50</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo4" id="file4" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear4" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr300x50 != null)
-          echo $this->tag->image([$form->gbr300x50,'width'=>'30px','id'=>'gbr300x50']);
-        ?>
-        <?php if($form->gbr300x50 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x50/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="300x100" class="col-xs-4 control-label" for="file5">Image 300x100</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo5" id="file5" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear5" class="btn btn-warning">Clear</a><br>
-        <?php
-          if($form->gbr300x100 != null)
-          echo $this->tag->image([$form->gbr300x100,'width'=>'30px','id'=>'gbr300x100']);
-        ?>
-        <?php if($form->gbr300x100 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x100/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-          <label id='300x250'  class="col-xs-4 control-label" for="file6">Image 300x250</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo6" id="file6" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear6" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr300x250 != null)
-          echo $this->tag->image([$form->gbr300x250,'width'=>'30px','id'=>'gbr300x250']);
-        ?>
-        <?php if($form->gbr300x250 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x250/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="300x600" class="col-xs-4 control-label" for="file7">Image 300x600</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo7" id="file7" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear7" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr300x600 != null)
-          echo $this->tag->image([$form->gbr300x600,'width'=>'30px','id'=>'gbr300x600']);
-        ?>
-        <?php if($form->gbr300x600 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr300x600/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="305x99" class="col-xs-4 control-label" for="file8">Image 305x99</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo8" id="file8" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear8" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr305x99 != null)
-          echo $this->tag->image([$form->gbr305x99,'width'=>'30px','id'=>'gbr305x99']);
-        ?>
-        <?php if($form->gbr305x99 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr305x99/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id='315x300'  class="col-xs-4 control-label" for="file9">Image 315x300</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo9" id="file9" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear9" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr315x300 != null)
-          echo $this->tag->image([$form->gbr315x300,'width'=>'30px','id'=>'gbr315x300']);
-        ?>
-        <?php if($form->gbr315x300 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr315x300/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="320x50" class="col-xs-4 control-label" for="file10">Image 320x50</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo10" id="file10" />
-      </div>
-      <div class="col-xs-1">
-         <a id="clear10" class="btn btn-warning">Clear</a>
-         <?php
-           if($form->gbr320x50!= null)
-           echo $this->tag->image([$form->gbr320x50,'width'=>'30px','id'=>'gbr320x50']);
-         ?>
-         <?php if($form->gbr320x50 != null) { ?>
-           <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x50/'.$form->id, 'Delete Photo']) ?></a>
-         <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="320x100" class="col-xs-4 control-label" for="file11">Image 320x100</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo11" id="file11" />
-      </div>
-      <div class="col-xs-1">
-         <a id="clear11" class="btn btn-warning">Clear</a>
-         <?php
-           if($form->gbr320x100!= null)
-           echo $this->tag->image([$form->gbr320x100,'width'=>'30px','id'=>'gbr320x100']);
-         ?>
-         <?php if($form->gbr320x100 != null) { ?>
-           <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x100/'.$form->id, 'Delete Photo']) ?></a>
-         <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id='320x250'  class="col-xs-4 control-label" for="file12">Image 320x250</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo12" id="file12" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear12" class="btn btn-warning">Clear</a><br>
-        <?php
-          if($form->gbr320x250!= null)
-          echo $this->tag->image([$form->gbr320x250,'width'=>'30px','id'=>'gbr320x250']);
-        ?>
-        <?php if($form->gbr320x250 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x250/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="320x416" class="col-xs-4 control-label" for="file13">Image 320x416</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo13" id="file13" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear13" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr320x416!= null)
-          echo $this->tag->image([$form->gbr320x416,'width'=>'30px','id'=>'gbr320x416']);
-        ?>
-        <?php if($form->gbr320x416 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x416/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="320x480" class="col-xs-4 control-label" for="file14">Image 320x480</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo14" id="file14" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear14" class="btn btn-warning">Clear</a><br>
-        <?php
-          if($form->gbr320x480!= null)
-          echo $this->tag->image([$form->gbr320x480,'width'=>'30px','id'=>'gbr320x480']);
-        ?>
-        <?php if($form->gbr320x480 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr320x480/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id='336x280'  class="col-xs-4 control-label" for="file15">Image 336x280</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo15" id="file15" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear15" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr336x280!= null)
-          echo $this->tag->image([$form->gbr336x280,'width'=>'30px','id'=>'gbr336x280']);
-        ?>
-        <?php if($form->gbr336x280 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr336x280/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="468x60" class="col-xs-4 control-label" for="file16">Image 468x60</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo16" id="file16" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear16" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr468x60!= null)
-          echo $this->tag->image([$form->gbr468x60,'width'=>'30px','id'=>'gbr468x60']);
-        ?>
-        <?php if($form->gbr468x60 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr468x60/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="640x960" class="col-xs-4 control-label" for="file17">Image 640x960</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo17" id="file17" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear17" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr640x960!= null)
-          echo $this->tag->image([$form->gbr640x960,'width'=>'30px','id'=>'gbr640x960']);
-        ?>
-        <?php if($form->gbr640x960 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr640x960/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id='728x90'  class="col-xs-4 control-label" for="file18">Image 728x90</label>
-      <div class="col-xs-2">
-          <input type="file" name="photo18" id="file18" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear18" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr728x90!= null)
-          echo $this->tag->image([$form->gbr728x90,'width'=>'30px','id'=>'gbr728x90']);
-        ?>
-        <?php if($form->gbr728x90 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr728x90/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="800x440" class="col-xs-4 control-label" for="file19">Image 800x440</label>
-      <div class="col-xs-2">
-        <input type="file" name="photo19" id="file19" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear19" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr800x440!= null)
-          echo $this->tag->image([$form->gbr800x440,'width'=>'30px','id'=>'gbr800x440']);
-        ?>
-        <?php if($form->gbr800x440 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr800x440/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label id="1024x768" class="col-md-4 control-label" for="file20">Image 1024x768</label>
-      <div class="col-xs-2">
-          <input type="file" name="photo20" id="file20" />
-      </div>
-      <div class="col-xs-1">
-        <a id="clear20" class="btn btn-warning">Clear</a>
-        <?php
-          if($form->gbr1024x768!= null)
-          echo $this->tag->image([$form->gbr1024x768,'width'=>'30px','id'=>'gbr1024x768']);
-        ?>
-        <?php if($form->gbr1024x768 != null) { ?>
-          <br><a class="btn btn-primary btn-danger" <?php echo $this->tag->linkTo(['campaign/deletegbr1024x7/'.$form->id, 'Delete Photo']) ?></a>
-        <?php }?>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"></label>
-      <div class="col-md-1">
-        <?= $form->render('Save', ['class' => 'btn btn-primary']) ?>
-      </div>
-    </div>
-
-		<table class="signup">
-      <tr>
-				<td align="right"></td>
-				<td></td>
-			</tr>
-		</table>
-    <?= $form->render('id') ?>
-    <?= $form->render('client_id') ?>
-    <?= $form->render('role') ?>
-		<?= $form->render('csrf', ['value' => $this->security->getToken()]) ?>
-		<?= $form->messages('csrf') ?>
-
-		<hr>
-
-	</form>
-
+  </div>
 </div>
+
 
   <?php echo $this->tag->hiddenField(["tampcount", "size" => 30, "class" => "form-control", "id" => "tampcount"]) ?>
   <?php echo $this->tag->hiddenField(["tampdate", "size" => 30, "class" => "form-control", "id" => "tampdate"]) ?>

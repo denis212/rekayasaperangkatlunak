@@ -1,37 +1,41 @@
- <?php $this->assets->outputCss(); ?>
+<?php $this->assets->outputCss(); ?>
 
 <?= $this->getContent() ?>
 <div class="container" style=" margin-right: 25px; margin-left:25px; width:auto;">
-<form method="post" class="form-horizontal" autocomplete="off" action="<?= $this->url->get('users/changePassword') ?>">
+  <div class="col-md-12">
+    <div class="box box-primary" style="margin-top:20px;">
+      <form method="post" class="form-horizontal" autocomplete="off" action="<?= $this->url->get('users/changePassword') ?>">
 
-    <div>
+        <div>
 
-        <h2>Change Password</h2>
+          <h2>Change Password</h2>
 
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Password</label>
-          <div class="col-md-4">
-            <?= $form->render('password', ['class' => 'form-control']) ?>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Password</label>
+            <div class="col-md-4">
+              <?= $form->render('password', ['class' => 'form-control']) ?>
+            </div>
           </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Confirm Password</label>
+            <div class="col-md-4">
+              <?= $form->render('confirmPassword', ['class' => 'form-control']) ?>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput"></label>
+            <div class="col-md-4">
+              <?= $this->tag->submitButton(['Save', 'class' => 'btn btn-primary']) ?>
+            </div>
+          </div>
+
+
         </div>
 
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Confirm Password</label>
-          <div class="col-md-4">
-          <?= $form->render('confirmPassword', ['class' => 'form-control']) ?>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput"></label>
-          <div class="col-md-4">
-            <?= $this->tag->submitButton(['Save', 'class' => 'btn btn-primary']) ?>
-          </div>
-        </div>
-
-
+      </form>
     </div>
-
-</form>
+  </div>
 </div>
 <?php $this->assets->outputJs(); ?>

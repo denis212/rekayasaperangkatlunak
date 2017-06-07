@@ -353,7 +353,7 @@ class Campaign extends Model
         // Only send the confirmation email if emails are turned on in the config
         $this->getDI()
             ->getMail()
-            ->send(["admin@gamanads.com" => "Admin GamanAds"],"New Campaign", 'newcampaign',
+            ->send(["denis.setianto@gmail.com" => "Admin GamanAds"],"New Campaign", 'newcampaign',
                 [ 'emailBody'=> "New Campaign : <b>$this->cp_name</b> from Client Id : <b>$this->client_id</b> Client Name: <b>$this->client_name</b>"]);
     }
 
@@ -362,7 +362,7 @@ class Campaign extends Model
         // Only send the confirmation email if emails are turned on in the config
         $this->getDI()
             ->getMail()
-            ->send(["admin@gamanads.com" => "Admin GamanAds"],"Update Campaign", 'updatecampaign',
+            ->send(["denis.setianto@gmail.com" => "Admin GamanAds"],"Update Campaign", 'updatecampaign',
                 [ 'emailBody'=> "Update Campaign : <b>$this->cp_name</b> from Client Id : <b>$this->client_id</b> Client Name: <b>$this->client_name</b>"]);
     }
 

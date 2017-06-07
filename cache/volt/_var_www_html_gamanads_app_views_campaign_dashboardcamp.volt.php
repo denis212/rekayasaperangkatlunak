@@ -15,73 +15,73 @@
 
 <div class="row">
 
-<div style="margin-left:20px; margin-right:20px;">
+  <div style="margin-left:20px; margin-right:20px;">
+    <div class="col-md-12">
+      <div class="box box-primary" style="margin-top:20px;">
+        <form name="dashboard" method="post" action="" >
+          <div style="margin:20px;">
+            <?= $form->render('period', ['class' => 'form-control', 'style' => 'width:150px;']) ?>
+          </div>
+          <section class="content">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+              <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h2><?php echo $totalclick;?></h2>
+
+                    <p>Clicks</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                  <div class="inner">
+                    <h2><?php echo $dash_saldo;?><sup style="font-size: 10px"></sup></h2>
+
+                    <p>Balance</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-cash"></i>
+                  </div>
+                  <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </form>
+      </div>
+    </div>
+
+    <!-- <div id="container2">
+  </div> -->
+
   <div class="col-md-12">
-  <div class="box box-primary" style="margin-top:20px;">
-  <form name="dashboard" method="post" action="" >
-    <div style="margin:20px;">
-      <?= $form->render('period', ['class' => 'form-control', 'style' => 'width:150px;']) ?>
-    </div>
-    <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h2><?php echo $totalclick;?></h2>
+    <!-- Bar chart -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <i class="fa fa-bar-chart-o"></i>
 
-              <p>Clicks</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h2><?php echo $dash_saldo;?><sup style="font-size: 10px"></sup></h2>
+        <h3 class="box-title">Click Chart Per-date</h3>
 
-              <p>Balance</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-cash"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
         </div>
       </div>
-    </section>
-  </form>
-  </div>
-</div>
-
-<!-- <div id="container2">
-</div> -->
-
-<div class="col-md-12">
-  <!-- Bar chart -->
-  <div class="box box-primary">
-    <div class="box-header with-border">
-      <i class="fa fa-bar-chart-o"></i>
-
-      <h3 class="box-title">Click Chart Per-date</h3>
-
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      <div class="box-body">
+        <div id="container2" style="height: auto;"></div>
       </div>
+      <!-- /.box-body-->
     </div>
-    <div class="box-body">
-      <div id="container2" style="height: auto;"></div>
-    </div>
-    <!-- /.box-body-->
   </div>
-</div>
 
 </div>
 </div>
@@ -125,75 +125,75 @@ $day6= date("Y-m-d",$date6);
 
 var chart = Highcharts.chart('container2', {
 
-    chart: {
-        type: 'column',
-        align: 'center'
-    },
+  chart: {
+    type: 'column',
+    align: 'center'
+  },
 
+  title: {
+    text: 'Click, Conversion and Pixels'
+  },
+
+  legend: {
+    align: 'right',
+    verticalAlign: 'middle',
+    layout: 'vertical'
+  },
+
+  xAxis: {
+    // "'".$day6."',"."'".$day5."',"."'".$day4."',"."'".$day3."',".
+    // "'".$day2."',"."'".$day1."',"."'".$day."',"
+    categories: [<?php echo $clicklabel; ?>],
+  },
+
+  yAxis: {
+    allowDecimals: false,
     title: {
-        text: 'Click, Conversion and Pixels'
-    },
-
-    legend: {
-        align: 'right',
-        verticalAlign: 'middle',
-        layout: 'vertical'
-    },
-
-    xAxis: {
-      // "'".$day6."',"."'".$day5."',"."'".$day4."',"."'".$day3."',".
-      // "'".$day2."',"."'".$day1."',"."'".$day."',"
-        categories: [<?php echo $clicklabel; ?>],
-    },
-
-    yAxis: {
-        allowDecimals: false,
-        title: {
-            text: 'Total'
-        }
-    },
-
-    series: [{
-        name: 'Clicks',
-        data: [<?php echo $clickresult ?>]
-    }, {
-        name: 'Impression',
-        data: []
-    }, {
-        name: 'Pixels',
-        data: []
-    }],
-
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    align: 'center',
-                    verticalAlign: 'bottom',
-                    layout: 'horizontal'
-                },
-                yAxis: {
-                    labels: {
-                        align: 'left',
-                        x: 0,
-                        y: -5
-                    },
-                    title: {
-                        text: null
-                    }
-                },
-                subtitle: {
-                    text: null
-                },
-                credits: {
-                    enabled: false
-                }
-            }
-        }]
+      text: 'Total'
     }
+  },
+
+  series: [{
+    name: 'Clicks',
+    data: [<?php echo $clickresult ?>]
+  }, {
+    name: 'Impression',
+    data: []
+  }, {
+    name: 'Pixels',
+    data: []
+  }],
+
+  responsive: {
+    rules: [{
+      condition: {
+        maxWidth: 500
+      },
+      chartOptions: {
+        legend: {
+          align: 'center',
+          verticalAlign: 'bottom',
+          layout: 'horizontal'
+        },
+        yAxis: {
+          labels: {
+            align: 'left',
+            x: 0,
+            y: -5
+          },
+          title: {
+            text: null
+          }
+        },
+        subtitle: {
+          text: null
+        },
+        credits: {
+          enabled: false
+        }
+      }
+    }]
+  }
 });
 
 chart.setSize(950, 350);
