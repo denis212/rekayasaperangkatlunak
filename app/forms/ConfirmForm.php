@@ -16,6 +16,7 @@ use Phalcon\Validation\Validator\Identical;
 use Phalcon\Forms\Element\Submit;
 use Phalcon\Validation\Validator\Numericality;
 use Vokuro\Models\Users;
+use Vokuro\Models\Daftarbank;
 
 
 class ConfirmForm extends Form
@@ -42,17 +43,38 @@ class ConfirmForm extends Form
 
         $this->add($username);
 
-        $bankname = new Text('bankname', [
-            'placeholder' => 'Bank Name'
+        // $bankname = new Text('bankname', [
+        //     'placeholder' => 'Bank Name'
+        // ]);
+        // $bankname->setLabel('Bank Name');
+        // $bankname->addValidators([
+        //     new PresenceOf([
+        //         'message' => 'The Bank Name is required'
+        //     ])
+        // ]);
+        //
+        // $this->add($bankname);
+        //BANK
+        $bank = Daftarbank::find(['nama'=>'nama']);
+        $accbank = new Select('bankname', $bank,[
+          'using' => [
+            'nama','nama'
+          ],
+          'useEmpty' => true,
+          'emptyText' => 'SELECT BANK',
+          'emptyValue' => '',
+
         ]);
-        $bankname->setLabel('Bank Name');
-        $bankname->addValidators([
+
+        $accbank->setLabel('BANK');
+
+        $accbank->addValidators([
             new PresenceOf([
-                'message' => 'The Bank Name is required'
+                'message' => 'BANK is required'
             ])
         ]);
 
-        $this->add($bankname);
+        $this->add($accbank);
 
         $branch = new Text('branch', [
             'placeholder' => 'Branch Bank'
@@ -104,7 +126,7 @@ class ConfirmForm extends Form
 
         // Email
         $email = new Text('email', [
-            'placeholder' => 'sample@gamanads.com'
+            'placeholder' => 'youremail@email.com'
         ]);
 
         $email->setLabel('E-Mail');
@@ -121,10 +143,8 @@ class ConfirmForm extends Form
         $this->add($email);
 
         //Nominal
-        $nominal = new Numeric('nominal', [
-            'placeholder' => 'Min. $10',
-            'min' => 10.0,
-            'step' => 0.01,
+        $nominal = new Text('nominal', [
+            'placeholder' => 'Min. Rp 50.000'
         ]);
 
         $nominal->setLabel('Nominal');
@@ -133,16 +153,13 @@ class ConfirmForm extends Form
             new PresenceOf([
                 'message' => 'Nominal is required'
             ]),
-            new Numericality([
-             'message' => 'Nominal is not numeric'
-           ]),
         ]);
 
         $this->add($nominal);
 
         //Currency
         $currency = new Select('currency', [
-            'USD' => 'USD',
+            'Rp.' => 'Rp.',
         ]);
 
         $currency->setLabel('Currency');

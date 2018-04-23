@@ -1,163 +1,56 @@
 <?php if($posisi =='out'){ ?>
   <!DOCTYPE html>
-  <html lang="en">
+  <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- <title>Home | Corlate</title> -->
-
-    <!-- core CSS -->
-
-    {{ stylesheet_link('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}
-    <!-- { stylesheet_link('css/font-awesome.min.css') }} -->
-    {{ stylesheet_link('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
-    {{ stylesheet_link('css/animate.min.css') }}
-    {{ stylesheet_link('css/prettyPhoto.css') }}
-    {{ stylesheet_link('css/main.css') }}
-    {{ stylesheet_link('css/responsive.css') }}
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet"> -->
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-  </head><!--/head-->
+    <title>AdminLTE 2 | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    {{ stylesheet_link('bootstrap/css/bootstrap.min.css')}}
+    <!-- Font Awesome -->
+    {{ stylesheet_link('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
+    <!-- Ionicons -->
+    {{ stylesheet_link('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')}}
 
-  <body class="homepage">
+    {{ stylesheet_link('css/AdminLTE.min.css')}}
 
-    {{ content() }}
+    {{ stylesheet_link('plugins/iCheck/square/blue.css')}}
+    <!-- iCheck -->
+      {{ stylesheet_link('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic')}}
+      <link rel="shortcut icon" href="images/ico/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+  <body class="hold-transition login-page">
+  <!-- <div class="login-box"> -->
+    {{content()}}
+    <!-- /.login-box-body -->
+  <!-- </div> -->
+  <!-- /.login-box -->
 
-    <section id="bottom">
-      <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-        <div class="row">
-          <div class="col-md-2 col-sm-6">
-            <div class="widget">
-              <h3>Advertisers</h3>
-              <ul>
-                <!-- <li><a href="index.php?r=site/advertiser">Ad Format</a></li> -->
-                <li>{{ link_to('#', 'Ad Format') }}</li>
+  <!-- jQuery 3.1.1 -->
+  {{ javascript_include('plugins/jQuery/jquery-3.1.1.min.js') }}
 
-                <li>{{ link_to('#', 'Targeting Features') }}</li>
-              </ul>
-            </div>
-          </div><!--/.col-md-3-->
-
-          <div class="col-md-2 col-sm-6">
-            <div class="widget">
-              <h3>Publishers</h3>
-              <ul>
-                <li>{{ link_to('#', 'Ad Format') }}</li>
-                <!-- <li><a href="#"></a></li> -->
-              </ul>
-            </div>
-          </div><!--/.col-md-3-->
-
-          <div class="col-md-2 col-sm-6">
-            <div class="widget">
-              <h3>Company</h3>
-              <ul>
-                <li>{{ link_to('about', 'About us') }}</li>
-                <!-- <li><a href="#">We are hiring</a></li> -->
-                <!-- <li><a href="#">Meet the team</a></li> -->
-                <!-- <li><a href="#">Copyright</a></li> -->
-                <li>{{ link_to('terms', 'Terms and Conditions') }}</li>
-                <li>{{ link_to('policy', 'Privacy policy') }}</li>
-              </ul>
-            </div>
-          </div><!--/.col-md-3-->
-
-          <div class="col-md-2 col-sm-6">
-            <div class="widget">
-              <h3>Help</h3>
-              <ul>
-                <li>{{ link_to('faq', 'FAQ') }}</li>
-                <li>{{ link_to('contact', 'Contact') }}</li>
-                <!-- <li><a href="#">Forum</a></li>
-                <li><a href="#">Documentation</a></li>
-                <li><a href="#">Refund policy</a></li>
-                <li><a href="#">Ticket system</a></li>
-                <li><a href="#">Billing system</a></li> -->
-              </ul>
-            </div>
-
-          </div>
-          <!--/.col-md-3-->
-
-          <div class="col-md-2 col-sm-6">
-            <div class="widget">
-              <h3>Stay In Touch</h3>
-              <ul>
-                <li><a href="#"><i class="fa fa-facebook"> Facebook</i></a></li>
-                <li><a href="#"><i class="fa fa-twitter">Twitter</i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"> LinkedIn</i></a></li>
-                <li><a href="#"><i class="fa fa-skype"> Skype</i></a></li>
-              </ul>
-            </div>
-          </div>
-          <!--/.col-md-3-->
-        </div>
-      </div>
-    </section><!--/#bottom-->
-
-    <footer id="footer" class="midnight-blue">
-      <div class="container">
-        <p class="pull-left" style="color:white;">&copy; GamanAds 2016 - <?= date('Y') ?></p>
-
-        <p class="pull-right" style="color:white;"</p>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4 col-xs-4">
-              <div class="top-number"><p><i class="fa fa-phone-square"> +62 21 5010 6377 / Fax : +62 21 5010 6378 </i></p></div>
-            </div>
-            <div class="col-sm-5 col-xs-10">
-              <div class="social">
-                <ul class="social-share">
-                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </body>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/wow.min.js"></script> -->
-
-    <!-- Calling jquery first -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script language="JavaScript" type="text/javascript" src="js/jquery.js"></script>
-    <script language="JavaScript" type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- Carousel -->
-    <script language="JavaScript" type="text/javascript">
-    $(document).ready(function(){
-      $('.carousel').carousel({
-        interval: 8000
-      })
+  <!-- Bootstrap 3.3.7 -->
+  {{ javascript_include('bootstrap/js/bootstrap.min.js') }}
+  <!-- iCheck -->
+  {{ javascript_include('plugins/iCheck/icheck.min.js') }}
+  <script>
+    $(function () {
+      $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+      });
     });
-    </script>
-    <script src="js/main.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/wow.min.js"></script>
-
-    </html>
+  </script>
+  </body>
+  </html>
     <?php } else if($posisi == 'in') { ?>
       <!-- REGION ADMIN LTE -->
       <!DOCTYPE html>
@@ -165,51 +58,19 @@
       <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GAMANADS | Dashboard</title>
+        <title>ADMINJPU | Dashboard</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.7 -->
-        <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> -->
         {{ stylesheet_link('bootstrap/css/bootstrap.min.css')}}
-        <!-- Font Awesome -->
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"> -->
-        <!-- {{ stylesheet_link('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')}} -->
         {{ stylesheet_link('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
-        <!-- Ionicons -->
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
         {{ stylesheet_link('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')}}
-        <!-- Theme style -->
-        <!-- <link rel="stylesheet" href="css/AdminLTE.min.css"> -->
         {{ stylesheet_link('css/AdminLTE.min.css')}}
-        <!-- AdminLTE Skins. Choose a skin from the css/skins
-        folder instead of downloading all of them to reduce the load. -->
-        <!-- <link rel="stylesheet" href="css/skins/_all-skins.min.css"> -->
         {{ stylesheet_link('css/skins/_all-skins.min.css')}}
-        <!-- Morris chart -->
-        <!-- <link rel="stylesheet" href="plugins/morris/morris.css"> -->
         {{ stylesheet_link('plugins/morris/morris.css')}}
-        <!-- jvectormap -->
-        <!-- <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css"> -->
         {{ stylesheet_link('plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}
-        <!-- Date Picker -->
-        <!-- <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"> -->
         {{ stylesheet_link('plugins/datepicker/datepicker3.css')}}
-        <!-- Daterange picker -->
-        <!-- <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css"> -->
         {{ stylesheet_link('plugins/daterangepicker/daterangepicker.css')}}
-        <!-- bootstrap wysihtml5 - text editor -->
-        <!-- <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"> -->
         {{ stylesheet_link('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <!-- Google Font -->
-        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
         {{ stylesheet_link('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic')}}
       </head>
       <body class="hold-transition skin-blue sidebar-mini">
@@ -223,7 +84,7 @@
             $ctrlname = $this->router->getControllerName();
             ?>
 
-            <?php echo $this->tag->linkTo(['campaign/dashboardcamp', '<span class="logo-mini"><b>G</b>MDs</span><span class="logo-lg"><b>Gaman</b>Ads</span>',
+            <?php echo $this->tag->linkTo(['#', '<span class="logo-mini"><b></b>Doc</span><span class="logo-lg"><b>CMS</b>JPU</span>',
             'class'=>'logo']) ?>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -248,13 +109,12 @@
                         <p>
                           {{ auth.getName() }}
                         </p>
-                        <p>Your Balance <?php echo $usersaldo ?> </p>
                       </li>
                       <!-- Menu Footer-->
                       <li class="user-footer">
                         <div class="pull-left">
                           <!-- <a href="#" class="btn btn-default btn-flat">Account Information</a> -->
-                          <?php echo $this->tag->linkTo(['users/accountInfo', 'Account Information', 'class'=>'btn btn-default btn-flat']) ?>
+                          <?php echo $this->tag->linkTo(['users/changePassword', 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
 
                         </div>
                         <div class="pull-right">
@@ -304,7 +164,7 @@
       <br>
       <li class="header">MAIN NAVIGATION</li>
       <!-- <php if($userlevel == 1) { ?> -->
-      <li class="<?php if($ctrlname == "campaign" && $action == "dashboardcamp" ) {echo "active treeview";} else {echo "treeview";} ?>">
+      <!-- <li class="<php if($ctrlname == "campaign" && $action == "dashboardcamp" ) {echo "active treeview";} else {echo "treeview";} ?>">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           <span class="pull-right-container">
@@ -312,18 +172,185 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php if($action == "dashboardcamp") { echo "active"; $here = 1; } else { echo null; } ?>">
-            <?php echo $this->tag->linkTo(['campaign/dashboardcamp', '<i class="fa fa-area-chart"></i> Dashboard Campaign']) ?>
+          <li class="<php if($action == "dashboardcamp") { echo "active"; $here = 1; } else { echo null; } ?>">
+            <php echo $this->tag->linkTo(['campaign/dashboardcamp', '<i class="fa fa-area-chart"></i> Dashboard Campaign']) ?>
           </li>
         </ul>
+      </li> -->
+
+      <!-- Referal / super agen -->
+  <?php if(($userlevel == 1) || ($userlevel == 10)|| ($userlevel == 4)) {?>
+      <li class="<?php if(($ctrlname == "users" || $ctrlname == "confirm" ) && ($action == "createref" || $action == "listref"|| $action == "viewres"|| $action == "dashref"|| $action == "rptreferal"|| $action == "editref"|| $action == "deleteref")) {echo "active treeview";} else {echo "treeview";} ?>">
+        <a href="#">
+          <i class="fa fa-user-secret"></i>
+          <span>Referal / Super Agen</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <?php if($userlevel != 4) {?>
+          <li class="<?php echo ($action == "dashref") ? "active" : null; ?>">{{ link_to('users/dashref', '<i class="fa fa-tachometer"></i> Dashboard Referal ') }}</li>
+          <li class="<?php echo ($action == "rptreferal") ? "active" : null; ?>">{{ link_to('confirm/rptreferal', '<i class="fa fa-tachometer"></i> Reporting Referal ') }}</li>
+          <li class="<?php echo ($action == "createref") ? "active" : null; ?>">{{ link_to('users/createref', '<i class="fa fa-plus-circle"></i> Tambah Referal ') }}</li>
+          <li class="<?php echo ($action == "listref") ? "active" : null; ?>">{{ link_to('users/listref', '<i class="fa fa-list-ul"></i> List Referal ') }}</li>
+          <li class="<?php echo ($action == "viewres"||$action == "deleteref"||$action == "editref") ? "active" : null; ?>">{{ link_to('users/viewres', '<i class="fa fa-list-ul"></i> List Reseller ') }}</li>
+          <?php }else { ?>
+          <li class="<?php echo ($action == "dashref") ? "active" : null; ?>">{{ link_to('users/dashref', '<i class="fa fa-tachometer"></i> Dashboard Referal ') }}</li>
+          <li class="<?php echo ($action == "rptreferal") ? "active" : null; ?>">{{ link_to('confirm/rptreferal', '<i class="fa fa-tachometer"></i> Reporting Referal ') }}</li>
+          <li class="<?php echo ($action == "viewres"||$action == "deleteref"||$action == "editref") ? "active" : null; ?>">{{ link_to('users/viewres', '<i class="fa fa-list-ul"></i> List Reseller ') }}</li>
+          <?php } ?>
+        </ul>
       </li>
+    <?php } ?>
+
+    <?php if(($userlevel == 1) || ($userlevel == 8)|| ($userlevel == 7)|| ($userlevel == 5)) {?>
+      <!-- Reseller / Agen -->
+      <li class="<?php if(($ctrlname == "users" || $ctrlname == "confirm" ) && ($action == "cekreferal" || $action == "insreseller"|| $action == "listactive"
+                  || $action == "aktivasi"|| $action == "verifmanual"|| $action == "search"|| $action == "create"
+                  || $action == "edit"|| $action == "listverif"|| $action == "listtempreseller"|| $action == "edittempres"
+                  || $action == "deletetempres"|| $action == "dashres"|| $action == "rptreseller")) {echo "active treeview";} else {echo "treeview";} ?>">
+        <a href="#">
+          <i class="fa fa-users"></i>
+          <span>Reseller / Agen</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+
+        <ul class="treeview-menu">
+        <?php if($userlevel == 8) {?>
+          <li class="<?php echo ($action == "listverif" || $action == "verifmanual" ) ? "active" : null; ?>">{{ link_to('users/listverif', '<i class="fa fa-list-ul"></i> List Verifikasi Reseller') }}</li>
+        <?php } ?>
+
+        <?php if($userlevel == 7) {?>
+          <li class="<?php echo ($action == "listactive") ? "active" : null; ?>">{{ link_to('users/listactive', '<i class="fa fa-list-ul"></i> List Aktivasi Reseller') }}</li>
+        <?php } ?>
+
+        <?php if($userlevel == 5) {?>
+          <li class="<?php echo ($action == "dashres") ? "active" : null; ?>">{{ link_to('users/dashres', '<i class="fa fa-tachometer"></i> Dashboard Reseller') }}</li>
+          <li class="<?php echo ($action == "rptreseller") ? "active" : null; ?>">{{ link_to('confirm/rptreseller', '<i class="fa fa-tachometer"></i> Reporting Reseller') }}</li>
+        <?php } ?>
+
+        <?php if(($userlevel != 8) && ($userlevel != 7)&& ($userlevel != 5)) { ?>
+          <li class="<?php echo ($action == "dashres") ? "active" : null; ?>">{{ link_to('users/dashres', '<i class="fa fa-tachometer"></i> Dashboard Reseller') }}</li>
+          <li class="<?php echo ($action == "rptreseller") ? "active" : null; ?>">{{ link_to('confirm/rptreseller', '<i class="fa fa-tachometer"></i> Reporting Reseller') }}</li>
+          <li class="<?php echo ($action == "listverif" || $action == "verifmanual" ) ? "active" : null; ?>">{{ link_to('users/listverif', '<i class="fa fa-list-ul"></i> List Verifikasi Reseller') }}</li>
+          <li class="<?php echo ($action == "cekreferal") ? "active" : null; ?>">{{ link_to('users/cekreferal', '<i class="fa fa-plus-circle"></i> Tambah Reseller ') }}</li>
+          <li class="<?php echo ($action == "listactive") ? "active" : null; ?>">{{ link_to('users/listactive', '<i class="fa fa-list-ul"></i> List Aktivasi Reseller') }}</li>
+          <li class="<?php echo ($action == "listtempreseller" || $action == "edittempres" || $action == "deletetempres") ? "active" : null; ?>">{{ link_to('users/listtempreseller', '<i class="fa fa-list-ul"></i> List Data Reseller Sementara') }}</li>
+        <?php } ?>
+        </ul>
+      </li>
+    <?php } ?>
+
+    <?php if(($userlevel == 1) || ($userlevel == 5)|| ($userlevel == 7)|| ($userlevel == 8)) {?>
+      <!-- halaman confirmation -->
+      <li class="<?php if($ctrlname == "confirm" && ($action == "create" || $action == "reqdeposit"|| $action == "search")) {echo "active treeview";} else {echo "treeview";} ?>">
+        <a href="#">
+          <i class="fa fa-money"></i>
+          <span>Deposit & Confirmation</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <?php if(($userlevel == 7) || ($userlevel == 8)) {?>
+          <li class="<?php echo ($action == "search") ? "active" : null; ?>">{{ link_to('confirm/search', '<i class="fa fa-check-square-o"></i> Approval Confirmation ') }}</li>
+        <?php }else { ?>
+          <li class="<?php echo ($action == "create") ? "active" : null; ?>">{{ link_to('confirm/create', '<i class="fa fa-plus-circle"></i> Confirmation') }}</li>
+          <li class="<?php echo ($action == "reqdeposit") ? "active" : null; ?>">{{ link_to('confirm/reqdeposit', '<i class="fa fa-plus-circle"></i> Request Deposit ') }}</li>
+          <?php if($userlevel != 5){ ?>
+          <li class="<?php echo ($action == "search") ? "active" : null; ?>">{{ link_to('confirm/search', '<i class="fa fa-check-square-o"></i> Approval Confirmation ') }}</li>
+          <?php } ?>
+        <?php } ?>
+        </ul>
+      </li>
+  <?php } ?>
+
+<?php if(($userlevel == 5)) {?>
+      <li class="<?php if($ctrlname == "confirm" && ($action == "listorder" || $action == "beli")) {echo "active treeview";} else {echo "treeview";} ?>">
+        <a href="#">
+          <i class="fa fa-shopping-cart"></i>
+          <span>Penjualan Akun</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php echo ($action == "listorder" || $action == "beli") ? "active" : null; ?>">{{ link_to('confirm/listorder', '<i class="fa fa-shopping-basket"></i> Order Akun') }}</li>
+        </ul>
+      </li>
+<?php } ?>
+
+<?php if($userlevel == 1) {?>
+      <li class="<?php if($ctrlname == "accesspoint" && ($action == "create" || $action == "edit"|| $action == "search"|| $action == "view")) {echo "active treeview";} else {echo "treeview";} ?>">
+        <a href="#">
+          <i class="fa fa-wifi"></i>
+          <span>Access Point</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php echo ($action == "create" || $action == "edit") ? "active" : null; ?>">{{ link_to('accesspoint/create', '<i class="fa fa-plus-circle"></i> Create Access Point') }}</li>
+          <li class="<?php echo ($action == "search") ? "active" : null; ?>">{{ link_to('accesspoint/search', '<i class="fa fa-list-ul"></i> List Access Point ') }}</li>
+
+        </ul>
+      </li>
+<?php } ?>
+
+<?php if(($userlevel == 1) || ($userlevel == 6)) {?>
+      <li class="<?php if($ctrlname == "confirm" && ($action == "createloopakun")) {echo "active treeview";} else {echo "treeview";} ?>">
+        <a href="#">
+          <i class="fa fa-address-card-o"></i>
+          <span>Generate Password Wifi.Id</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php echo ($action == "createloopakun") ? "active" : null; ?>">{{ link_to('confirm/createloopakun', '<i class="fa fa-magic"></i> Generate Akun') }}</li>
+        </ul>
+      </li>
+<?php } ?>
+
+<!-- <php if(($userlevel == 1) || ($userlevel == 6)) {?>
+      <li class="<php if($ctrlname == "confirm" && ($action == "uploadexc")) {echo "active treeview";} else {echo "treeview";} ?>">
+        <a href="#">
+          <i class="fa fa-file-excel-o"></i>
+          <span>Import CSV Aktivasi Akun</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<php echo ($action == "uploadexc") ? "active" : null; ?>">{{ link_to('confirm/uploadexc', '<i class="fa fa-upload"></i> Import CSV') }}</li>
+        </ul>
+      </li>
+  <php } ?>
+
+<php if(($userlevel == 1) || ($userlevel == 6)) {?>
+      <li class="<php if($ctrlname == "confirm" && ($action == "orderlistdwn")) {echo "active treeview";} else {echo "treeview";} ?>">
+        <a href="#">
+          <i class="fa fa-file-excel-o"></i>
+          <span>Export CSV List Akun</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<php echo ($action == "orderlistdwn") ? "active" : null; ?>">{{ link_to('confirm/orderlistdwn', '<i class="fa fa-download"></i> Export CSV') }}</li>
+        </ul>
+      </li>
+  <php } ?> -->
       <!-- user & access -->
       <?php if($userlevel == 1) {?>
         <li class="<?php if(($action == "" || $action == "index" || $action == "search"|| $action == "create")
         && ($ctrlname == "users" || $ctrlname == "profiles" ||  $ctrlname == "permissions"))
         {echo "active treeview";} else {echo "treeview";} ?>">
         <a href="#">
-          <i class="fa fa-files-o"></i>
+          <i class="fa fa-user-times"></i>
           <span>User & Access</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
@@ -336,49 +363,23 @@
         </ul>
       </li>
       <?php } ?>
-      <!-- advertisers -->
-      <li class="<?php if($ctrlname == "campaign" && ($action == "create" || $action == "search" || $action == "dailyreport")) {echo "active treeview";} else {echo "treeview";} ?>">
+
+      <?php if($userlevel == 1) {?>
+        <li class="<?php if(($action == "" || $action == "index" || $action == "search"|| $action == "create")
+        && ($ctrlname == "users" || $ctrlname == "profiles" ||  $ctrlname == "permissions"))
+        {echo "active treeview";} else {echo "treeview";} ?>">
         <a href="#">
-          <i class="fa fa-edit"></i>
-          <span>Advertiser</span>
+          <i class="fa fa-user-times"></i>
+          <span>Create Table Penjualan</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php echo ($action == "create") ? "active" : null; ?>">{{ link_to('campaign/create', '<i class="fa fa-plus-circle"></i> Create Campaign') }}</li>
-          <li class="<?php echo ($action == "search") ? "active" : null; ?>">{{ link_to('campaign/search', '<i class="fa fa-list-ul"></i> List Campaign') }}</li>
-          <li class="<?php echo ($action == "dailyreport") ? "active" : null; ?>">{{ link_to('campaign/dailyreport', '<i class="fa fa-book"></i> Daily Report') }}</li>
+          <li class="<?php echo ($ctrlname == "hit") ? "active" : null; ?>"> <?php echo $this->tag->linkTo(['hit/penjualan', '<i class="fa fa-user"></i> Create']) ?></li>
         </ul>
       </li>
-      <!-- publisher -->
-      <li class="<?php if(($ctrlname == "adspace") && ($action == "create" || $action == "search")) {echo "active treeview";} else {echo "treeview";} ?>">
-        <a href="#">
-          <i class="fa fa-laptop"></i>
-          <span>Publisher</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class="<?php echo ($action == "create") ? "active" : null; ?>">{{ link_to('adspace/create', '<i class="fa fa-plus-circle"></i> Create Adspace') }}</li>
-          <li class="<?php echo ($action == "search") ? "active" : null; ?>">{{ link_to('adspace/search', '<i class="fa fa-list-ul"></i> List Adspace') }}</li>
-        </ul>
-      </li>
-      <!-- Payment -->
-      <li class="<?php if(($ctrlname == "confirm") && ($action == "create" || $action == "search")) {echo "active treeview";} else {echo "treeview";} ?>">
-        <a href="#">
-          <i class="fa fa-credit-card"></i>
-          <span>Payment</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class="<?php echo ($action == "create") ? "active" : null; ?>">{{ link_to('confirm/create', '<i class="fa fa-check-square-o"></i> Confirmation') }}</li>
-          <li class="<?php echo ($action == "search") ? "active" : null; ?>">{{ link_to('confirm/search', '<i class="fa fa-list-ul"></i> List Payment') }}</li>
-        </ul>
-      </li>
+      <?php } ?>
       <!-- change password -->
       <li class="<?php if($ctrlname == "users" && ($action == "accountInfo" || $action == "changePassword")) {echo "active treeview";} else {echo "treeview";} ?>">
         <a href="#">
@@ -389,7 +390,6 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php echo ($action == "accountInfo") ? "active" : null; ?>">{{ link_to('users/accountInfo', '<i class="fa fa-user-secret"></i> Account Information') }}</li>
           <li class="<?php echo ($action == "changePassword") ? "active" : null; ?>">{{ link_to('users/changePassword', '<i class="fa fa-key"></i> Change Password') }}</li>
         </ul>
       </li>

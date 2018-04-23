@@ -15,9 +15,11 @@ class IndexController extends ControllerBase
         $this->view->setVar('logged_in', is_array($this->auth->getIdentity()));
 
         if ($this->session->has('auth-identity')) {
-          return $this->response->redirect('campaign/dashboardcamp');
+          return $this->response->redirect('users/listref');
+          // return $this->response->redirect('index');
         }else {
-          $this->view->setTemplateBefore('coba');
+          // $this->view->setTemplateBefore('coba');
+          return $this->response->redirect('session/login');
         }
 
     }

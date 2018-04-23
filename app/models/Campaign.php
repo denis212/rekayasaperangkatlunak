@@ -67,6 +67,8 @@ class Campaign extends Model
      */
     public $cp_country;
 
+    public $cp_carrier;
+
     /**
      *
      * @var string

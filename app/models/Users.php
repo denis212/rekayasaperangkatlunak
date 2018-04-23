@@ -5,6 +5,9 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
+use Phalcon\Mvc\Model\Behavior\Timestampable;
+use Phalcon\Db\RawValue;
+
 /**
  * Vokuro\Models\Users
  * All the users registered in the application
@@ -24,11 +27,6 @@ class Users extends Model
      */
     public $name;
 
-    /**
-     *
-     * @var string
-     */
-    public $lastname;
 
     /**
      *
@@ -76,40 +74,32 @@ class Users extends Model
      *
      * @var string
      */
-    public $type;
-
-    /**
-     *
-     * @var string
-     */
-    public $skype;
-
-    /**
-     *
-     * @var string
-     */
     public $phone;
 
     /**
      *
      * @var string
      */
-    public $company;
+    public $coderef;
     /**
      *
      * @var string
      */
-    public $address;
+    public $commision;
+    public $status;
+    public $no_ktp;
     /**
      *
      * @var string
      */
-    public $city;
-    /**
-     *
-     * @var string
-     */
-    public $country;
+    public $created;
+
+    public $updated;
+
+    public $lev1;
+    public $lev2;
+    public $lev3;
+    public $lev4;
 
     /**
      * Before create the user assign a password
@@ -135,11 +125,12 @@ class Users extends Model
 
         // The account must be confirmed via e-mail
         // Only require this if emails are turned on in the config, otherwise account is automatically active
-        if ($this->getDI()->get('config')->useMail) {
-            $this->active = 'N';
-        } else {
-            $this->active = 'Y';
-        }
+        // if ($this->getDI()->get('config')->useMail) {
+        //     $this->active = 'N';
+        // } else {
+        //     $this->active = 'Y';
+        // }
+        // $this->active = 'N';
 
         // The account is not suspended by default
         $this->suspended = 'N';
@@ -154,21 +145,21 @@ class Users extends Model
     public function afterSave()
     {
         // Only send the confirmation email if emails are turned on in the config
-        if ($this->getDI()->get('config')->useMail) {
-
-            if ($this->active == 'N') {
-
-                $emailConfirmation = new EmailConfirmations();
-
-                $emailConfirmation->usersId = $this->id;
-
-                if ($emailConfirmation->save()) {
-                    $this->getDI()
-                        ->getFlash()
-                        ->notice('A confirmation mail has been sent to ' . $this->email);
-                }
-            }
-        }
+        // if ($this->getDI()->get('config')->useMail) {
+        //
+        //     if ($this->active == 'N') {
+        //
+        //         $emailConfirmation = new EmailConfirmations();
+        //
+        //         $emailConfirmation->usersId = $this->id;
+        //
+        //         if ($emailConfirmation->save()) {
+        //             $this->getDI()
+        //                 ->getFlash()
+        //                 ->notice('A confirmation mail has been sent to ' . $this->email);
+        //         }
+        //     }
+        // }
     }
 
     /**
@@ -212,5 +203,15 @@ class Users extends Model
                 'message' => 'User cannot be deleted because he/she has activity in the system'
             ]
         ]);
+    }
+    public function beforeCreate()
+    {
+      $this->created =  new RawValue('now()');
+      $this->updated =  new RawValue('now()');
+    }
+
+    public function beforeUpdate()
+    {
+      $this->updated =  new RawValue('now()');
     }
 }

@@ -39,11 +39,6 @@
                   {{ form.render("name",['class':'form-control','style':'width:350px;']) }}
                     {{ form.messages("name") }}
                 </div>
-                <div class="clearfix">
-                    <label for="lastname">Last Name</label>
-                    {{ form.render("lastname",['class':'form-control','style':'width:350px;']) }}
-                    {{ form.messages("lastname") }}
-                </div>
 
                 <div class="clearfix">
                     <label for="profilesId">Profile</label>
@@ -54,18 +49,7 @@
                     <label for="suspended">Suspended?</label>
                     {{ form.render("suspended",['class':'form-control','style':'width:350px;']) }}
                 </div>
-                <div class="clearfix">
-                    <label for="type">Type</label>
-                    {{ form.render("type",['class':'form-control','style':'width:350px;']) }}
-                </div>
-                <div class="clearfix">
-                    <label for="company">Company</label>
-                    {{ form.render("company",['class':'form-control','style':'width:350px;']) }}
-                </div>
-                <div class="clearfix">
-                    <label for="address">Address</label>
-                    {{ form.render("address",['class':'form-control','style':'width:350px;']) }}
-                </div>
+
             </div>
 
             <div class="col-lg-5">
@@ -85,24 +69,13 @@
                     <label for="active">Confirmed?</label>
                     {{ form.render("active",['class':'form-control','style':'width:350px;']) }}
                 </div>
-                <div class="clearfix">
-                    <label for="skype">Skype</label>
-                    {{ form.render("skype",['class':'form-control','style':'width:350px;']) }}
-                    {{ form.messages("skype") }}
-                </div>
+
                 <div class="clearfix">
                     <label for="phone">Phone Number</label>
                     {{ form.render("phone",['class':'form-control','style':'width:350px;']) }}
                     {{ form.messages("phone") }}
                 </div>
-                <div class="clearfix">
-                    <label for="city">City</label>
-                    {{ form.render("city",['class':'form-control','style':'width:350px;']) }}
-                </div>
-                <div class="clearfix">
-                    <label for="country">Country</label>
-                    {{ form.render("country",['class':'form-control','style':'width:350px;']) }}
-                </div>
+    
             </div>
         </div>
 

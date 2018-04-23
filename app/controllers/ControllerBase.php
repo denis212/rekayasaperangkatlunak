@@ -28,17 +28,17 @@ class ControllerBase extends Controller
         {
           $this->view->posisi = 'in';
           $userid = $this->auth->getId();
-          $saldo = Saldo::findFirst("user_id = ". $userid);
-          if($saldo != null)
-          {
-            $sal = $saldo->cur_saldo;
-            $cur = $saldo->currency;
-            $this->view->usersaldo = $cur.' '.$sal;
-          }else {
-            $sal = '0';
-            $cur = 'IDR';
-            $this->view->usersaldo = $cur.' '.$sal;
-          }
+          // $saldo = Saldo::findFirst("user_id = ". $userid);
+          // if($saldo != null)
+          // {
+          //   $sal = $saldo->cur_saldo;
+          //   $cur = $saldo->currency;
+          //   $this->view->usersaldo = $cur.' '.$sal;
+          // }else {
+          //   $sal = '0';
+          //   $cur = 'IDR';
+          //   $this->view->usersaldo = $cur.' '.$sal;
+          // }
         }else {
           $this->view->posisi = 'out';
         }
@@ -49,18 +49,18 @@ class ControllerBase extends Controller
             // Get the current identity
             $identity = $this->auth->getIdentity();
             $userid = $this->auth->getId();
-            $saldo = Saldo::findFirst("user_id = ". $userid);
+            // $saldo = Saldo::findFirst("user_id = ". $userid);
 
-            if($saldo != null)
-            {
-              $sal = $saldo->cur_saldo;
-              $cur = $saldo->currency;
-              $this->view->usersaldo = $cur.' '.$sal;
-            }else {
-              $sal = '0';
-              $cur = 'IDR';
-              $this->view->usersaldo = $cur.' '.$sal;
-            }
+            // if($saldo != null)
+            // {
+            //   $sal = $saldo->cur_saldo;
+            //   $cur = $saldo->currency;
+            //   $this->view->usersaldo = $cur.' '.$sal;
+            // }else {
+            //   $sal = '0';
+            //   $cur = 'IDR';
+            //   $this->view->usersaldo = $cur.' '.$sal;
+            // }
 
             // If there is no identity available the user is redirected to index/index
             if (!is_array($identity)) {

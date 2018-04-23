@@ -191,7 +191,7 @@
           <div class="form-group">
             <label id="120x600" class="col-xs-4 control-label" for="file1">Image 120x600</label></td>
             <div class="col-xs-2">
-              <input type="file" name="photo1" id="file1" value="<?php $_POST['photo1'] ?>"/>
+              <input type="file" name="photo1" id="file1"/>
             </div>
             <div class="col-xs-1">
               <a id="clear1" class="btn btn-warning">Clear</a>

@@ -1,4 +1,4 @@
-<title>Search Payment - GamanAds</title>
+<title>Search Confirmation - ADMINJPU</title>
 <?php $this->assets->outputCss(); ?>
 <?php
 /**
@@ -49,13 +49,13 @@
 </div>
 
 <div class="page-header">
-    <h1>List Payment Result</h1>
+    <h1>List Deposit Reseller Result</h1>
 </div>
 
 <?php echo $this->getContent(); ?>
 
 <div class="row" style='overflow-x:scroll;overflow-y:hidden;'>
-    <table class="table table-bordered">
+    <table class="table table-dotted">
         <thead>
             <tr class=xl67>
             <td class=xl66>Client Id</th>
@@ -71,8 +71,10 @@
             <td class=xl66>Currency</th>
             <td class=xl66>Created At</th>
             <td class=xl66>Upddate At</th>
-                <td class=xl66></th>
+						<?php if(($userlevel == 7) ||($userlevel == 1)) {?>
+						    <td class=xl66></th>
                 <!-- <th></th> -->
+							<?php } ?>
             </tr>
         </thead>
         <tbody>
@@ -105,26 +107,27 @@
             <td height=20 class=<?php echo $css; ?>><?php echo $confirm->phone ?></td>
             <td height=20 class=<?php echo $css; ?>><?php echo $confirm->email ?></td>
             <td height=20 class=<?php echo $css; ?>><?php echo $confirm->currency ?></td>
-            <td height=20 class=<?php echo $css; ?>><?php echo $confirm->created_at ?></td>
-            <td height=20 class=<?php echo $css; ?>><?php echo $confirm->upddate_at ?></td>
-
-            <td height=20 class=<?php echo $css; ?>><?php echo $this->tag->linkTo(["confirm/approve/".$confirm->id."/".$page->current, "<i class='glyphicon glyphicon-edit'></i> Approve Payment", "class"=>"btn btn-default"]); ?></td>
+            <td height=20 class=<?php echo $css; ?>><?php echo $confirm->created ?></td>
+            <td height=20 class=<?php echo $css; ?>><?php echo $confirm->updated ?></td>
+						<?php if(($userlevel == 7) || ($userlevel == 1) ) {?>
+            <td height=20 class=<?php echo $css; ?>><?php echo $this->tag->linkTo(["confirm/approve/".$confirm->id."/".$page->current, "<i class='glyphicon glyphicon-edit'></i> Approve Payment", "class"=>"btn btn-success"]); ?></td>
             <!-- <td><php echo $this->tag->linkTo(["confirm/unapprove/" . $confirm->id, "<i class='glyphicon glyphicon-edit'></i> Unapprove Payment", "class"=>"btn btn-default"]); ?></td> -->
-            </tr>
+						<?Php } ?>
+						</tr>
         <?php endforeach; ?>
         </tbody>
     </table>
 </div>
 <br>
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="btn-group">
-        {{ link_to("confirm/search", '<i class="icon-fast-backward"></i> First', "class": "btn btn-default") }}
-        {{ link_to("confirm/search?page=" ~ page.before, '<i class="icon-step-backward"></i> Previous', "class": "btn btn-default ") }}
-        {{ link_to("confirm/search?page=" ~ page.next, '<i class="icon-step-forward"></i> Next', "class": "btn btn-default") }}
-        {{ link_to("confirm/search?page=" ~ page.last, '<i class="icon-fast-forward"></i> Last', "class": "btn btn-default") }}
+        {{ link_to("confirm/search", '<i class="icon-fast-backward"></i> First', "class": "btn btn-primary") }}
+        {{ link_to("confirm/search?page=" ~ page.before, '<i class="icon-step-backward"></i> Previous', "class": "btn btn-primary ") }}
+        {{ link_to("confirm/search?page=" ~ page.next, '<i class="icon-step-forward"></i> Next', "class": "btn btn-primary") }}
+        {{ link_to("confirm/search?page=" ~ page.last, '<i class="icon-fast-forward"></i> Last', "class": "btn btn-primary") }}
         <span class="help-inline">{{ page.current }}/{{ page.total_pages }}</span>
       </div>
     </div>

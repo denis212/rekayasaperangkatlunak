@@ -8,59 +8,30 @@ use Phalcon\Db\RawValue;
 class Saldo extends Model
 {
 
-    /**
-     *
-     * @var integer
-     * @Primary
-     * @Identity
-     * @Column(type="integer", length=11, nullable=false)
-     */
+
     public $id;
-
-    /**
-     *
-     * @var integer
-     * @Column(type="integer", length=11, nullable=false)
-     */
     public $user_id;
-
-    /**
-     *
-     * @var double
-     * @Column(type="double", length=25, nullable=false)
-     */
+    public $quota;
     public $cur_saldo;
+    public $created;
+    public $updated;
 
-    public $created_at;
-
-    /**
-     *
-     * @var string
-     * @Column(type="string", nullable=false)
-     */
-    public $upddate_at;
-
-    /**
-     * Validations and business logic
-     *
-     * @return boolean
-     */
      public function beforeCreate()
      {
-         $this->created_at =  new RawValue('now()');
-         $this->upddate_at =  new RawValue('now()');
+         $this->created =  new RawValue('now()');
+         $this->updated =  new RawValue('now()');
      }
 
      public function beforeUpdate()
      {
-         $this->upddate_at =  new RawValue('now()');
+         $this->updated =  new RawValue('now()');
      }
     /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        $this->setSchema("vokuro");
+        $this->setSchema("cmsjpu");
     }
 
     /**

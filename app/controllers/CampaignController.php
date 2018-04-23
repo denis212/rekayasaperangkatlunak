@@ -22,24 +22,7 @@ class CampaignController extends ControllerBase
 {
     public function initialize()
     {
-        // $this->view->setTemplateBefore('private');
-          // $this->view->setTemplateBefore('cobaprivate');
-          // Add some local CSS resources
-        //  $this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
-        //  $this->assets->addCss("css/font-awesome.min.css");
-        //  $this->assets->addCss("css/animate.min.css");
-        //  $this->assets->addCss("css/prettyPhoto.css");
-        //  $this->assets->addCss("css/main.css");
-        //  $this->assets->addCss("css/responsive.css");
-         //
-        //  // And some local JavaScript resources
-        //  $this->assets->addJs("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
-        //  $this->assets->addJs("js/jquery.js");
-        //  $this->assets->addJs("js/bootstrap.min.js");
-        //  $this->assets->addJs("js/main.js");
-        //  $this->assets->addJs("js/jquery.prettyPhoto.js");
-        //  $this->assets->addJs("js/jquery.isotope.min.js");
-        //  $this->assets->addJs("js/wow.min.js");
+
     }
     /**
      * Index action
@@ -118,12 +101,6 @@ class CampaignController extends ControllerBase
         if (count($campaign) == 0) {
             $this->flash->notice("The search did not find any campaign");
 
-            // $this->dispatcher->forward([
-            //     "controller" => "campaign",
-            //     "action" => "index"
-            // ]);
-            //
-            // return;
         }
 
         $paginator = new Paginator([
@@ -1929,7 +1906,7 @@ class CampaignController extends ControllerBase
       // $this->view->setTemplateBefore('admin');
       $form = new CampaignForm();
       $request = new Request();
-      $database = 'vokuro';
+      $database = 'cms_lock';
 
       $config = [
       	'adapter' => 'Mysql',
@@ -1947,257 +1924,257 @@ class CampaignController extends ControllerBase
 
       $id = $this->auth->getId();
 
-      $sql_saldo = "SELECT cur_saldo AS saldo, currency FROM ".$database.".saldo WHERE 1 AND user_id='".$id."'";
-      $current_saldo = $connection->query($sql_saldo);
-      $current_saldo->setFetchMode(
-          \Phalcon\Db::FETCH_ASSOC
-      );
+      // $sql_saldo = "SELECT cur_saldo AS saldo, currency FROM ".$database.".saldo WHERE 1 AND user_id='".$id."'";
+      // $current_saldo = $connection->query($sql_saldo);
+      // $current_saldo->setFetchMode(
+      //     \Phalcon\Db::FETCH_ASSOC
+      // );
+      //
+      // $row_saldo= $current_saldo->fetchArray();
+      // if( $row_saldo['saldo'] == NULL )
+      // {
+      //   $total_saldo = 0;
+      //   $curr = $row_saldo['currency'];
+      // }
+      // else
+      // {
+      //   $total_saldo = $row_saldo['saldo'];
+      //   $curr = $row_saldo['currency'];
+      // }
+      //
+      // $this->view->dash_saldo = $total_saldo.' '.$curr;
 
-      $row_saldo= $current_saldo->fetchArray();
-      if( $row_saldo['saldo'] == NULL )
-      {
-        $total_saldo = 0;
-        $curr = $row_saldo['currency'];
-      }
-      else
-      {
-        $total_saldo = $row_saldo['saldo'];
-        $curr = $row_saldo['currency'];
-      }
-
-      $this->view->dash_saldo = $total_saldo.' '.$curr;
-
-      if( !isset($period) )
-      {
-      	$tgl = date("Y-m-d");
-
-      	$sql_click = "SELECT sum( jumlah ) AS jclick FROM ".$database.".c_daily_hit_".date("Ym")."
-        WHERE 1 AND hit_date='".$tgl."'";
-        $tanda1 = 'A';
-      }
-      else
-      {
-      	switch( $period ) {
-      		case "yesterday" :
-      			$date	= mktime(0,0,0,date("m"),date("d")-1,date("Y"));
-      			$yesterday	= date("Y-m-d",$date);
-
-      			$tabel = date("Ym",$date);
-
-      			$sql_click = "SELECT sum( jumlah ) AS jclick FROM ".$database.".c_daily_hit_".$tabel."
-            WHERE 1 AND hit_date='".$yesterday."'";
-            $tanda1 = 'B';
-      		break;
-      		case "last_7d" :
-      			$date_awal	= mktime(0,0,0,date("m"),date("d")-6,date("Y"));
-      			$tgl_awal	= date("Y-m-d",$date_awal);
-      			$tabel_awal	= date("Ym",$date_awal);
-
-      			$bln_awal = date("m",$date_awal);
-
-      			$sql_click = "SELECT sum(jumlah) as jclick
-      							FROM (
-      							SELECT campaign_id, hit_date, jumlah
-      							FROM (
-      							SELECT campaign_id, hit_date, jumlah
-      							FROM ".$database.".c_daily_hit_".$tabel_awal."
-      							)x
-      							WHERE hit_date
-      							BETWEEN '".$tgl_awal."'
-      							AND '".date("Y-m-d")."')y";
-                $tanda1 = 'C';
-      		break;
-      		case "last_1m" :
-      			$date_awal	= mktime(0,0,0,date("m"),date("d")-30,date("Y"));
-      			$tgl_awal	= date("Y-m-d",$date_awal);
-      			$tabel_awal	= date("Ym",$date_awal);
-
-      			$sql_click = "SELECT sum(jumlah) as jclick
-      							FROM (
-      							SELECT campaign_id, hit_date, jumlah
-      							FROM (
-      							SELECT campaign_id, hit_date, jumlah
-      							FROM ".$database.".c_daily_hit_".$tabel_awal."
-      							)x
-      							WHERE hit_date
-      							BETWEEN '".$tgl_awal."'
-      							AND '".date("Y-m-d")."')y";
-              $tanda1 = 'C';
-
-      		break;
-      		default :
-          $tgl = date("Y-m-d");
-          $sql_click = "SELECT sum( jumlah ) AS jclick FROM ".$database.".c_daily_hit_".date("Ym")."
-          WHERE 1 AND hit_date='".$tgl."'";
-          $tanda1 = 'D';
-          break;
-      	}
-      }
-      $rs_click = $connection->query($sql_click);
-      $rs_click->setFetchMode(
-          \Phalcon\Db::FETCH_ASSOC
-      );
-
-      $row_click = $rs_click->fetchArray();
-      if( $row_click['jclick'] == NULL )
-      {
-      	$total_click = 0;
-      }
-      else
-      {
-        $total_click = $row_click['jclick'];
-      }
-
-       print_r('Total Klik '.$total_click.'<br>');
-       print_r('Tanda '.$tanda1.'<br>');
-
-       $this->view->totalclick = $total_click;
-
-       ///////////////grafik dibawah angka
-       $date_awalg	= mktime(0,0,0,date("m"),date("d")-6,date("Y"));
-       $tgl_awalg	= date("Y-m-d",$date_awalg);
-       $tabel_awalg	= date("Ym",$date_awalg);
-       //click
-       $t_click = 0;
-       $sql_clickg = "SELECT hit_date as tgl,sum(jumlah) as jclick
-       FROM (
-       SELECT campaign_id, hit_date, jumlah
-       FROM ".$database.".c_daily_hit_".$tabel_awalg."
-       )x
-       WHERE hit_date
-       BETWEEN '".$tgl_awalg."'
-       AND '".date("Y-m-d")."'
-       GROUP BY tgl";
-
-       $rs_clickg = $connection->query($sql_clickg);
-       $rs_clickg->setFetchMode(
-           \Phalcon\Db::FETCH_ASSOC
-       );
-       $click_label = '';
-       $click_result = '';
-       while( $row_clickg = $rs_clickg->fetchArray() ) {
-       	$t_click += $row_clickg['jclick'];
-       	$click_label .= "\"".$row_clickg['tgl']."\",";
-       	$click_result .= $row_clickg['jclick'].",";
-        print_r('<br> dari Query sql_clickg = '.$t_click);
-       }
-       $click_label = preg_replace('/,$/','',$click_label);
-       $click_result = preg_replace('/,$/','',$click_result);
-
-       $this->view->clicklabel = $click_label; //ini untuk X Axis ke kanan (tapi di ganti pakai get 7 days di view)
-       $this->view->clickresult = $click_result; // ini untuk jumlah click di Y Axis
-       $this->view->sql = $sql_clickg;
-       ///////////////grafik dibawah angka
-
-       $tanda = '';
-       if(!empty($this->request->getPost("period")))
-       {
-         $period = $this->request->getPost("period");
-       }
-
-       if( !isset($period) ) {
-       $date	= mktime(0,0,0,date("m"),date("d"),date("Y"));
-       	$tgl = date("Y-m-d",$date);
-       	$tabel = date("Ym",$date);
-
-       	$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, sum(jumlah) as tcclick
-        FROM ".$database.".c_daily_hit_".date("Ym")." d, ".$database.".campaign c WHERE 1=1 AND
-        d.campaign_id=c.id AND hit_date='".$tgl."'
-        group by campaign_name order by tcclick desc limit 5";
-        $tanda = 'A';
-
-       }
-       else {
-       	switch( $this->request->getPost("period") ) {
-       		case "yesterday" :
-       		 $date	= mktime(0,0,0,date("m"),date("d")-1,date("Y"));
-       			$yesterday	= date("Y-m-d",$date);
-
-       			$tabel = date("Ym",$date);
-
-       			$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, sum(jumlah) as tcclick
-            FROM ".$database.".c_daily_hit_".$tabel." d, ".$database.".campaign c WHERE 1=1
-            AND d.campaign_id=c.id AND hit_date='".$yesterday."'
-            group by campaign_name order by tcclick desc limit 5";
-            $tanda = 'B';
-       		break;
-       		case "last_7d" :
-       			$date_awal	= mktime(0,0,0,date("m"),date("d")-6,date("Y"));
-       			$tgl_awal	= date("Y-m-d",$date_awal);
-
-       			$tabel_awal	= date("Ym",$date_awal);
-
-       			$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, campaign_id, sum( tclick ) AS tcclick FROM (
-       							SELECT campaign_id, hit_date,sum(jumlah) as tclick
-       							FROM (
-       							SELECT campaign_id, hit_date,jumlah
-       							FROM ".$database.".c_daily_hit_".$tabel_awal."
-       							)x
-       							WHERE hit_date
-       							BETWEEN '".$tgl_awal."'
-       							AND '".date("Y-m-d")."' GROUP BY campaign_id)y
-       							INNER JOIN ".$database.".campaign cc ON cc.id = y.campaign_id
-       							WHERE 1
-       							GROUP BY campaign_name
-       							ORDER BY tcclick DESC
-       							LIMIT 5";
-                $tanda = 'C';
-
-       		break;
-       		case "last_1m" :
-     		    $date_awal	= mktime(0,0,0,date("m"),date("d")-30,date("Y"));
-       			$tgl_awal	= date("Y-m-d",$date_awal);
-       			$bln_awal = date("m",$date_awal);
-       			$tabel_awal	= date("Ym",$date_awal);
-
-       			$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, campaign_id, sum( tclick ) AS tcclick FROM (
-       							SELECT campaign_id, hit_date,sum(jumlah) as tclick
-       							FROM (
-       							SELECT campaign_id, hit_date,jumlah
-       							FROM ".$database.".c_daily_hit_".$tabel_awal."
-       							)x
-       							WHERE hit_date
-       							BETWEEN '".$tgl_awal."'
-       							AND '".date("Y-m-d")."' GROUP BY campaign_id)y
-       							INNER JOIN ".$database.".campaign cc ON cc.id = y.campaign_id
-       							WHERE 1
-       							GROUP BY campaign_name
-       							ORDER BY tcclick DESC
-       							LIMIT 5";
-                    $tanda = 'D';
-       		break;
-       		default :
-
-          $date	= mktime(0,0,0,date("m"),date("d"),date("Y"));
-          $tgl = date("Y-m-d",$date);
-          $tabel = date("Ym",$date);
-
-           $sql_topcamcl = "SELECT client_name,cp_name as campaign_name, sum(jumlah) as tcclick
-           FROM ".$database.".c_daily_hit_".date("Ym")." d, ".$database.".campaign c WHERE 1=1 AND
-           d.campaign_id=c.id AND hit_date='".$tgl."'
-           group by campaign_name order by tcclick desc limit 5";
-
-     			 break;
-       	}
-       }
-
-       //top 5 campaign based on click
-       $i = 1;
-       $rs_topcamcl = $connection->query($sql_topcamcl);
-       $rs_topcamcl->setFetchMode(
-           \Phalcon\Db::FETCH_ASSOC
-       );
-       while(   $row_topcamcl = $rs_topcamcl->fetchArray() )
-       {
-         if( $i == 1 ) {
-           $val = ($row_topcamcl['tcclick'] / $row_topcamcl['tcclick']) * 100;
-           $val__ = $row_topcamcl['tcclick'];
-         }
-         else {
-           $val = ($row_topcamcl['tcclick'] / $val__) * 100;
-         }
-         $i++;
-        }
+      // if( !isset($period) )
+      // {
+      // 	$tgl = date("Y-m-d");
+      //
+      // 	$sql_click = "SELECT sum( jumlah ) AS jclick FROM ".$database.".c_daily_hit_".date("Ym")."
+      //   WHERE 1 AND hit_date='".$tgl."'";
+      //   $tanda1 = 'A';
+      // }
+      // else
+      // {
+      // 	switch( $period ) {
+      // 		case "yesterday" :
+      // 			$date	= mktime(0,0,0,date("m"),date("d")-1,date("Y"));
+      // 			$yesterday	= date("Y-m-d",$date);
+      //
+      // 			$tabel = date("Ym",$date);
+      //
+      // 			$sql_click = "SELECT sum( jumlah ) AS jclick FROM ".$database.".c_daily_hit_".$tabel."
+      //       WHERE 1 AND hit_date='".$yesterday."'";
+      //       $tanda1 = 'B';
+      // 		break;
+      // 		case "last_7d" :
+      // 			$date_awal	= mktime(0,0,0,date("m"),date("d")-6,date("Y"));
+      // 			$tgl_awal	= date("Y-m-d",$date_awal);
+      // 			$tabel_awal	= date("Ym",$date_awal);
+      //
+      // 			$bln_awal = date("m",$date_awal);
+      //
+      // 			$sql_click = "SELECT sum(jumlah) as jclick
+      // 							FROM (
+      // 							SELECT campaign_id, hit_date, jumlah
+      // 							FROM (
+      // 							SELECT campaign_id, hit_date, jumlah
+      // 							FROM ".$database.".c_daily_hit_".$tabel_awal."
+      // 							)x
+      // 							WHERE hit_date
+      // 							BETWEEN '".$tgl_awal."'
+      // 							AND '".date("Y-m-d")."')y";
+      //           $tanda1 = 'C';
+      // 		break;
+      // 		case "last_1m" :
+      // 			$date_awal	= mktime(0,0,0,date("m"),date("d")-30,date("Y"));
+      // 			$tgl_awal	= date("Y-m-d",$date_awal);
+      // 			$tabel_awal	= date("Ym",$date_awal);
+      //
+      // 			$sql_click = "SELECT sum(jumlah) as jclick
+      // 							FROM (
+      // 							SELECT campaign_id, hit_date, jumlah
+      // 							FROM (
+      // 							SELECT campaign_id, hit_date, jumlah
+      // 							FROM ".$database.".c_daily_hit_".$tabel_awal."
+      // 							)x
+      // 							WHERE hit_date
+      // 							BETWEEN '".$tgl_awal."'
+      // 							AND '".date("Y-m-d")."')y";
+      //         $tanda1 = 'C';
+      //
+      // 		break;
+      // 		default :
+      //     $tgl = date("Y-m-d");
+      //     $sql_click = "SELECT sum( jumlah ) AS jclick FROM ".$database.".c_daily_hit_".date("Ym")."
+      //     WHERE 1 AND hit_date='".$tgl."'";
+      //     $tanda1 = 'D';
+      //     break;
+      // 	}
+      // }
+      // $rs_click = $connection->query($sql_click);
+      // $rs_click->setFetchMode(
+      //     \Phalcon\Db::FETCH_ASSOC
+      // );
+      //
+      // $row_click = $rs_click->fetchArray();
+      // if( $row_click['jclick'] == NULL )
+      // {
+      // 	$total_click = 0;
+      // }
+      // else
+      // {
+      //   $total_click = $row_click['jclick'];
+      // }
+      //
+      //  print_r('Total Klik '.$total_click.'<br>');
+      //  print_r('Tanda '.$tanda1.'<br>');
+      //
+      //  $this->view->totalclick = $total_click;
+      //
+      //  ///////////////grafik dibawah angka
+      //  $date_awalg	= mktime(0,0,0,date("m"),date("d")-6,date("Y"));
+      //  $tgl_awalg	= date("Y-m-d",$date_awalg);
+      //  $tabel_awalg	= date("Ym",$date_awalg);
+      //  //click
+      //  $t_click = 0;
+      //  $sql_clickg = "SELECT hit_date as tgl,sum(jumlah) as jclick
+      //  FROM (
+      //  SELECT campaign_id, hit_date, jumlah
+      //  FROM ".$database.".c_daily_hit_".$tabel_awalg."
+      //  )x
+      //  WHERE hit_date
+      //  BETWEEN '".$tgl_awalg."'
+      //  AND '".date("Y-m-d")."'
+      //  GROUP BY tgl";
+      //
+      //  $rs_clickg = $connection->query($sql_clickg);
+      //  $rs_clickg->setFetchMode(
+      //      \Phalcon\Db::FETCH_ASSOC
+      //  );
+      //  $click_label = '';
+      //  $click_result = '';
+      //  while( $row_clickg = $rs_clickg->fetchArray() ) {
+      //  	$t_click += $row_clickg['jclick'];
+      //  	$click_label .= "\"".$row_clickg['tgl']."\",";
+      //  	$click_result .= $row_clickg['jclick'].",";
+      //   print_r('<br> dari Query sql_clickg = '.$t_click);
+      //  }
+      //  $click_label = preg_replace('/,$/','',$click_label);
+      //  $click_result = preg_replace('/,$/','',$click_result);
+      //
+      //  $this->view->clicklabel = $click_label; //ini untuk X Axis ke kanan (tapi di ganti pakai get 7 days di view)
+      //  $this->view->clickresult = $click_result; // ini untuk jumlah click di Y Axis
+      //  $this->view->sql = $sql_clickg;
+      //  ///////////////grafik dibawah angka
+      //
+      //  $tanda = '';
+      //  if(!empty($this->request->getPost("period")))
+      //  {
+      //    $period = $this->request->getPost("period");
+      //  }
+      //
+      //  if( !isset($period) ) {
+      //  $date	= mktime(0,0,0,date("m"),date("d"),date("Y"));
+      //  	$tgl = date("Y-m-d",$date);
+      //  	$tabel = date("Ym",$date);
+      //
+      //  	$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, sum(jumlah) as tcclick
+      //   FROM ".$database.".c_daily_hit_".date("Ym")." d, ".$database.".campaign c WHERE 1=1 AND
+      //   d.campaign_id=c.id AND hit_date='".$tgl."'
+      //   group by campaign_name order by tcclick desc limit 5";
+      //   $tanda = 'A';
+      //
+      //  }
+      //  else {
+      //  	switch( $this->request->getPost("period") ) {
+      //  		case "yesterday" :
+      //  		 $date	= mktime(0,0,0,date("m"),date("d")-1,date("Y"));
+      //  			$yesterday	= date("Y-m-d",$date);
+      //
+      //  			$tabel = date("Ym",$date);
+      //
+      //  			$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, sum(jumlah) as tcclick
+      //       FROM ".$database.".c_daily_hit_".$tabel." d, ".$database.".campaign c WHERE 1=1
+      //       AND d.campaign_id=c.id AND hit_date='".$yesterday."'
+      //       group by campaign_name order by tcclick desc limit 5";
+      //       $tanda = 'B';
+      //  		break;
+      //  		case "last_7d" :
+      //  			$date_awal	= mktime(0,0,0,date("m"),date("d")-6,date("Y"));
+      //  			$tgl_awal	= date("Y-m-d",$date_awal);
+      //
+      //  			$tabel_awal	= date("Ym",$date_awal);
+      //
+      //  			$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, campaign_id, sum( tclick ) AS tcclick FROM (
+      //  							SELECT campaign_id, hit_date,sum(jumlah) as tclick
+      //  							FROM (
+      //  							SELECT campaign_id, hit_date,jumlah
+      //  							FROM ".$database.".c_daily_hit_".$tabel_awal."
+      //  							)x
+      //  							WHERE hit_date
+      //  							BETWEEN '".$tgl_awal."'
+      //  							AND '".date("Y-m-d")."' GROUP BY campaign_id)y
+      //  							INNER JOIN ".$database.".campaign cc ON cc.id = y.campaign_id
+      //  							WHERE 1
+      //  							GROUP BY campaign_name
+      //  							ORDER BY tcclick DESC
+      //  							LIMIT 5";
+      //           $tanda = 'C';
+      //
+      //  		break;
+      //  		case "last_1m" :
+     // 		    $date_awal	= mktime(0,0,0,date("m"),date("d")-30,date("Y"));
+      //  			$tgl_awal	= date("Y-m-d",$date_awal);
+      //  			$bln_awal = date("m",$date_awal);
+      //  			$tabel_awal	= date("Ym",$date_awal);
+      //
+      //  			$sql_topcamcl = "SELECT client_name,cp_name as campaign_name, campaign_id, sum( tclick ) AS tcclick FROM (
+      //  							SELECT campaign_id, hit_date,sum(jumlah) as tclick
+      //  							FROM (
+      //  							SELECT campaign_id, hit_date,jumlah
+      //  							FROM ".$database.".c_daily_hit_".$tabel_awal."
+      //  							)x
+      //  							WHERE hit_date
+      //  							BETWEEN '".$tgl_awal."'
+      //  							AND '".date("Y-m-d")."' GROUP BY campaign_id)y
+      //  							INNER JOIN ".$database.".campaign cc ON cc.id = y.campaign_id
+      //  							WHERE 1
+      //  							GROUP BY campaign_name
+      //  							ORDER BY tcclick DESC
+      //  							LIMIT 5";
+      //               $tanda = 'D';
+      //  		break;
+      //  		default :
+      //
+      //     $date	= mktime(0,0,0,date("m"),date("d"),date("Y"));
+      //     $tgl = date("Y-m-d",$date);
+      //     $tabel = date("Ym",$date);
+      //
+      //      $sql_topcamcl = "SELECT client_name,cp_name as campaign_name, sum(jumlah) as tcclick
+      //      FROM ".$database.".c_daily_hit_".date("Ym")." d, ".$database.".campaign c WHERE 1=1 AND
+      //      d.campaign_id=c.id AND hit_date='".$tgl."'
+      //      group by campaign_name order by tcclick desc limit 5";
+      //
+     // 			 break;
+      //  	}
+      //  }
+      //
+      //  //top 5 campaign based on click
+      //  $i = 1;
+      //  $rs_topcamcl = $connection->query($sql_topcamcl);
+      //  $rs_topcamcl->setFetchMode(
+      //      \Phalcon\Db::FETCH_ASSOC
+      //  );
+      //  while(   $row_topcamcl = $rs_topcamcl->fetchArray() )
+      //  {
+      //    if( $i == 1 ) {
+      //      $val = ($row_topcamcl['tcclick'] / $row_topcamcl['tcclick']) * 100;
+      //      $val__ = $row_topcamcl['tcclick'];
+      //    }
+      //    else {
+      //      $val = ($row_topcamcl['tcclick'] / $val__) * 100;
+      //    }
+      //    $i++;
+      //   }
 
         $this->view->form = $form;
 
@@ -2213,7 +2190,7 @@ class CampaignController extends ControllerBase
 
       $form = new CampaignForm();
       $request = new Request();
-      $database = 'vokuro';
+      $database = 'cms_lock';
 
       $config = [
         'adapter' => 'Mysql',
@@ -2369,7 +2346,7 @@ class CampaignController extends ControllerBase
 
       $form = new CampaignForm();
       $request = new Request();
-      $database = 'vokuro';
+      $database = 'cms_lock';
 
       $config = [
         'adapter' => 'Mysql',

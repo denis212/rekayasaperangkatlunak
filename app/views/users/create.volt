@@ -22,14 +22,6 @@
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Last Name * </label>
-      <div class="col-md-4">
-        {{ form.render("lastname",['class':'form-control']) }}
-        {{ form.messages('lastname') }}
-      </div>
-    </div>
-
-    <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">E-Mail * </label>
       <div class="col-md-4">
         {{ form.render("email",['class':'form-control']) }}
@@ -45,22 +37,6 @@
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Skype * </label>
-      <div class="col-md-4">
-        {{ form.render('skype',['class':'form-control']) }}
-        {{ form.messages('skype') }}
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Type Account </label>
-      <div class="col-md-4">
-        {{ form.render('type',['class':'form-control']) }}
-        {{ form.messages('type') }}
-      </div>
-    </div>
-
-    <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Phone * </label>
       <div class="col-md-4">
         {{ form.render('phone',['class':'form-control']) }}
@@ -71,8 +47,6 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Country </label>
       <div class="col-md-4">
-        {{ form.render('country',['class':'form-control']) }}
-        {{ form.messages('country') }} <br>
         {{ submit_button("Save", "class": "btn btn-success") }}
       </div>
     </div>

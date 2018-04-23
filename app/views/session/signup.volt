@@ -1,118 +1,83 @@
-<title>SignUp - GamanAds</title>
+<title>SignUp - JPU</title>
 
   <?php $this->assets->outputCss(); ?>
 
 {{ content() }}
 
-<div class="container" style="margin-top:30px;">
-<legend>Create Ad Space</legend>
-<div align="center">
+<div class="register-box">
+  <div class="register-logo">
+    <a><b>Admin</b>JPU</a>
+  </div>
 
-	{{ form('class': 'form-search') }}
+  <div class="register-box-body">
+    <p class="login-box-msg">Register a new membership</p>
 
+    {{ form('class': 'form-search') }}
 
-		<table>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('name') }}</td>
-				<td>
-					{{ form.render('name',['class':'form-control']) }}
-					{{ form.messages('name') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('lastname') }}</td>
-				<td>
-					{{ form.render('lastname',['class':'form-control']) }}
-					{{ form.messages('lastname') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('email') }}</td>
-				<td class="classtd">
-					{{ form.render('email',['class':'form-control']) }}
-					{{ form.messages('email') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('password') }}</td>
-				<td class="classtd">
-					{{ form.render('password',['class':'form-control']) }}
-					{{ form.messages('password') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('confirmPassword') }}</td>
-				<td class="classtd">
-					{{ form.render('confirmPassword',['class':'form-control']) }}
-					{{ form.messages('confirmPassword') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('skype') }}</td>
-				<td>
-					{{ form.render('skype',['class':'form-control']) }}
-					{{ form.messages('skype') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('phone') }}</td>
-				<td class="classtd">
-					{{ form.render('phone',['class':'form-control']) }}
-					{{ form.messages('phone') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('type') }}</td>
-				<td class="classtd">
-					{{ form.render('type',['class':'form-control']) }}
-					{{ form.messages('type') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('company') }}</td>
-				<td class="classtd">
-					{{ form.render('company',['class':'form-control']) }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('address') }}</td>
-				<td class="classtd">
-					{{ form.render('address',['class':'form-control']) }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('city') }}</td>
-				<td>
-					{{ form.render('city',['class':'form-control']) }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd">{{ form.label('country') }}</td>
-				<td>
-					{{ form.render('country',['class':'form-control']) }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd"></td>
-				<td class="classtd">
-					{{ form.render('terms') }} {{ form.label('terms') }}
-					{{ form.messages('terms') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right" class="classtd"></td>
-				<td class="classtd">{{ form.render('Sign Up') }}</td>
-			</tr>
-		</table>
+      <div class="form-group">
+        {{ form.render('name',['class':'form-control','value':request.getQuery('nama')]) }}
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        {{ form.render('email',['class':'form-control','placeholder':'youremail@mail.com']) }}
 
-		<input type="hidden" name="<?php echo $this->security->getTokenKey() ?>" value="<?php echo $this->security->getToken() ?>"/>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        {{ form.render('password',['class':'form-control','placeholder':'Password']) }}
 
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        {{ form.render('confirmPassword',['class':'form-control','placeholder':'Retype Password']) }}
 
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        {{ form.render('phone',['class':'form-control','placeholder':'Your Phone Number','value':request.getQuery('hp')]) }}
 
-		<hr>
+        <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        {{ form.render('no_ktp',['class':'form-control','placeholder':'Nomor KTP/SIM Anda']) }}
 
-	</form>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        {{ form.render('coderef',['class':'form-control','placeholder':'Code Ref','value':request.getQuery('coderef')]) }}
+        {{ form.render('idref',['class':'form-control','value':request.getQuery('idref')]) }}
+        <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+      </div>
 
-</div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            {{ form.render('terms') }} {{ form.label('terms') }}
+
+            <!-- <label>
+              <input type="checkbox"> I agree to the <a href="#">terms</a>
+            </label> -->
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          {{ form.render('Sign Up',['class':'btn btn-primary btn-block btn-flat']) }}
+        </div>
+        <!-- /.col -->
+      </div>
+      <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>" value="<?php echo $this->security->getToken() ?>"/>
+
+    </form>
+
+    <!-- <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
+        Google+</a>
+    </div> -->
+    {{ link_to('session/login', 'I already have a membership') }}
+  </div>
+  <!-- /.form-box -->
 </div>
 <?php $this->assets->outputJs(); ?>

@@ -1,4 +1,4 @@
-<title>Search Users - GamanAds</title>
+<title>Search Users - ADMINJPU</title>
 <?php $this->assets->outputCss(); ?>
 {{ content() }}
 <div class="container" style="background-color:#f5f5f5; margin-right: 25px; margin-left:25px; width:auto;">
@@ -7,7 +7,7 @@
         {{ link_to("users/index", "&larr; Go Back", "class": "btn btn-primary", "style":"background-color:#c52d2f; color: #fff;") }}
     </li>
     <li class="pull-right">
-        {{ link_to("users/create", "Create users", "class": "btn btn-primary", "style":"background-color:#c52d2f; color: #fff;") }}
+        <!-- {{ link_to("users/create", "Create users", "class": "btn btn-primary", "style":"background-color:#c52d2f; color: #fff;") }} -->
     </li>
 </ul>
 
@@ -16,28 +16,31 @@
 <table class="table table-bordered table-striped" align="center">
     <thead>
         <tr>
-            <th>Id</th>
+            <!-- <th>Id</th> -->
             <th>Name</th>
             <th>LastName</th>
             <th>Email</th>
             <th>Profile</th>
-            <th>Banned?</th>
-            <th>Suspended?</th>
-            <th>Confirmed?</th>
-
+            <th>Phone</th>
+            <th>No KTP</th>
+            <th>Code Referal</th>
+            <th>Commision</th>
+            <th>Status</th>
         </tr>
     </thead>
 {% endif %}
     <tbody>
         <tr>
-            <td>{{ user.id }}</td>
+            <!-- <td>{{ user.id }}</td>   -->
             <td>{{ user.name }}</td>
             <td>{{ user.lastname }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.profile.name }}</td>
-            <td>{{ user.banned == 'Y' ? 'Yes' : 'No' }}</td>
-            <td>{{ user.suspended == 'Y' ? 'Yes' : 'No' }}</td>
-            <td>{{ user.active == 'Y' ? 'Yes' : 'No' }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.no_ktp }}</td>
+            <td>{{ user.coderef }}</td>
+            <td>{{ user.commision }}</td>
+            <td>{{ user.active == 'Y' ? 'Active' : 'Inactive' }}</td>
             <td width="12%">{{ link_to("users/edit/" ~ user.id, '<i class="icon-pencil"></i> Edit', "class": "btn") }}</td>
             <td width="12%">{{ link_to("users/delete/" ~ user.id, '<i class="icon-remove"></i> Delete', "class": "btn") }}</td>
         </tr>

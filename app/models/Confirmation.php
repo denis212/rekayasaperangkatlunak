@@ -92,14 +92,14 @@ class Confirmation extends Model
      * @var string
      * @Column(type="string", nullable=false)
      */
-    public $created_at;
+    public $created;
 
     /**
      *
      * @var string
      * @Column(type="string", nullable=false)
      */
-    public $upddate_at;
+    public $updated;
 
     /**
      * Validations and business logic
@@ -108,39 +108,39 @@ class Confirmation extends Model
      */
      public function beforeCreate()
      {
-         $this->created_at =  new RawValue('now()');
-         $this->upddate_at =  new RawValue('now()');
+         $this->created =  new RawValue('now()');
+         $this->updated =  new RawValue('now()');
      }
 
      public function beforeUpdate()
      {
-         $this->upddate_at =  new RawValue('now()');
+         $this->updated =  new RawValue('now()');
      }
 
-     public function afterCreate()
-     {
-         // Only send the confirmation email if emails are turned on in the config
-         $this->getDI()
-             ->getMail()
-             ->send(["denis.setianto@mobiwin.co.id" => "Admin GamanAds"],"New Confirmation Payment", 'confirmpayment',
-                 [ 'emailBody'=> "Payment from Client Id : <b>$this->user_id</b><br>
-                  Client Name: <b>$this->username</b><br>
-                  Bank Name : $this->bankname <br>
-                  Branch : $this->branch <br>
-                  Account Number : $this->accountnumber <br>
-                  Account Name : $this->accountname <br>
-                  Nominal : $this->nominal <br>
-                  Currency : $this->currency <br>
-
-                 "]);
-     }
+    //  public function afterCreate()
+    //  {
+    //      // Only send the confirmation email if emails are turned on in the config
+    //      $this->getDI()
+    //          ->getMail()
+    //          ->send(["denis.setianto@mobiwin.co.id" => "Admin GamanAds"],"New Confirmation Payment", 'confirmpayment',
+    //              [ 'emailBody'=> "Payment from Client Id : <b>$this->user_id</b><br>
+    //               Client Name: <b>$this->username</b><br>
+    //               Bank Name : $this->bankname <br>
+    //               Branch : $this->branch <br>
+    //               Account Number : $this->accountnumber <br>
+    //               Account Name : $this->accountname <br>
+    //               Nominal : $this->nominal <br>
+    //               Currency : $this->currency <br>
+     //
+    //              "]);
+    //  }
 
     /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        $this->setSchema("vokuro");
+        $this->setSchema("cmsjpu");
     }
 
     /**

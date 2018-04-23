@@ -12,7 +12,7 @@ return new Config([
         'host' => '127.0.0.1',
         'username' => 'root',
         'password' => 'adminadmin',
-        'dbname' => 'vokuro'
+        'dbname' => 'cmsjpu'
     ],
     'application' => [
         'controllersDir' => APP_PATH . '/controllers/',
@@ -23,19 +23,20 @@ return new Config([
         'pluginsDir'     => APP_PATH . '/plugins/',
         'cacheDir'       => BASE_PATH . '/cache/',
         'uploaderDir'    => BASE_PATH . '/vendor/stanislav-web/phalcon-uploader/src',
-        'baseUri'        => '/gamanads/',
-        'publicUrl'      => 'localhost/gamanads',
+        'baseUri'        => '/jpu/',
+        'publicUrl'      => 'localhost/jpu',
         'cryptSalt'      => 'eEAfR|_&G&f,+vU]:jFr!!A&+71w1Ms9~8_4L!<@[N@DyaIP_2My|:+.u>/6m,$D'
     ],
     'mail' => [
-        'fromName' => 'GamanAds',
+        'fromName' => 'ADMIN JPU',
         'fromEmail' => 'noreply@gamanads.co.id',
         'smtp' => [
             'server' => 'smtp.gmail.com',
             'port' => 465,
             'security' => 'SSL',
             'username' => 'mobiwin.tester@gmail.com',
-            'password' => 'mobiwin.tester2016',
+            'password' => 'klirwzkftlzbpkix',
+            // 'password' => 'mobiwin.tester2017',
         ]
     ],
     'amazon' => [

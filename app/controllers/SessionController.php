@@ -4,9 +4,17 @@ namespace Vokuro\Controllers;
 use Vokuro\Forms\LoginForm;
 use Vokuro\Forms\SignUpForm;
 use Vokuro\Forms\ForgotPasswordForm;
+use Vokuro\Forms\CekresellerForm;
 use Vokuro\Auth\Exception as AuthException;
 use Vokuro\Models\Users;
+use Vokuro\Models\Cekreseller;
 use Vokuro\Models\ResetPasswords;
+use Phalcon\Validation;
+
+use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
+use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
+use Phalcon\Mvc\Model\Query;
 
 /**
  * Controller used handle non-authenticated session actions like login/logout, user signup, and forgotten passwords
@@ -14,44 +22,13 @@ use Vokuro\Models\ResetPasswords;
 class SessionController extends ControllerBase
 {
 
-  public $extIMG = array(
-        'image/jpeg',
-        'image/png',
-        'image/bmp',
-        'application/pdf',
-    );
 
     /**
      * Default action. Set the public layout (layouts/public.volt)
      */
     public function initialize()
     {
-        // $this->view->setTemplateBefore('public');
-          // $this->view->setTemplateBefore('coba');
-          if ($this->session->has('auth-identity')) {
-              // $this->view->setTemplateBefore('private');
-                $this->view->setTemplateBefore('cobaprivate');
-          }else {
-            // $this->view->setTemplateBefore('public');
-            $this->view->setTemplateBefore('coba');
-          }
 
-          // Add some local CSS resources
-         $this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
-         $this->assets->addCss("css/font-awesome.min.css");
-         $this->assets->addCss("css/animate.min.css");
-         $this->assets->addCss("css/prettyPhoto.css");
-         $this->assets->addCss("css/main.css");
-         $this->assets->addCss("css/responsive.css");
-
-         // And some local JavaScript resources
-         $this->assets->addJs("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
-         $this->assets->addJs("js/jquery.js");
-         $this->assets->addJs("js/bootstrap.min.js");
-         $this->assets->addJs("js/main.js");
-         $this->assets->addJs("js/jquery.prettyPhoto.js");
-         $this->assets->addJs("js/jquery.isotope.min.js");
-         $this->assets->addJs("js/wow.min.js");
     }
 
     public function indexAction()
@@ -62,6 +39,44 @@ class SessionController extends ControllerBase
     /**
      * Allow a user to signup to the system
      */
+    public function cekresellerAction()
+    {
+        $form = new CekresellerForm();
+
+        if ($this->request->isPost()) {
+          $nama = $this->request->getPost('name');
+          $hp = $this->request->getPost('phone');
+          $coderef = $this->request->getPost('coderef');
+
+          $param = " inpt.nama = '$nama' and inpt.no_hp = '$hp' and inpt.coderef = '$coderef' ";
+
+          $query = new Query(
+              "SELECT  inpt.nama,
+              inpt.no_hp,
+              inpt.coderef,
+              usr.id as idref
+              from Vokuro\Models\Cekreseller inpt
+              left join Vokuro\Models\Users usr on inpt.coderef = usr.coderef
+              where $param",
+              $this->getDI()
+          );
+
+          $cek = $query->execute();
+
+          if (count($cek) == 0) {
+              $this->flash->notice("The search did not find any Reseller");
+
+          }
+          foreach ($cek as $cok) {
+            // var_dump($cok->nama." ".$cok->no_hp);
+            $this->response->redirect('session/signup?nama='.$cok->nama.'&hp='.$cok->no_hp.'&coderef='.$coderef.'&idref='.$cok->idref);
+          }
+          // var_dump($param);
+        }
+
+        $this->view->form = $form;
+    }
+
     public function signupAction()
     {
         $form = new SignUpForm();
@@ -69,35 +84,39 @@ class SessionController extends ControllerBase
         if ($this->request->isPost()) {
             if($this->security->checkToken())
             {
-            if ($form->isValid($this->request->getPost()) != false) {
-                $tampemail = $this->request->getPost('email');
-                $user = new Users([
-                    'name' => $this->request->getPost('name', 'striptags'),
-                    'lastname' => $this->request->getPost('lastname', 'striptags'),
-                    'email' => $this->request->getPost('email'),
-                    'password' => $this->security->hash($this->request->getPost('password')),
-                    'profilesId' => 2,
-                    'type' => $this->request->getPost('type'),
-                    'skype' => $this->request->getPost('skype'),
-                    'phone' => $this->request->getPost('phone'),
-                    'company' => $this->request->getPost('company'),
-                    'address' => $this->request->getPost('address'),
-                    'city' => $this->request->getPost('city'),
-                    'country' => $this->request->getPost('country'),
-                ]);
-
-                if ($user->save()) {
-                  $this->flashSess->success("A confirmation mail has been sent to ".$tampemail);
-                  $this->view->disable();
-                  return $this->response->redirect('');
+              if ($form->isValid($this->request->getPost()) == false)
+              {
+                foreach ($form->getMessages() as $message) {
+                    $this->flash->error($message);
                 }
+              }else
+              {
+                  $user = new Users([
+                      'name' => $this->request->getPost('name', 'striptags'),
+                      'email' => $this->request->getPost('email'),
+                      'password' => $this->security->hash($this->request->getPost('password')),
+                      'profilesId' => 5,
+                      'phone' => $this->request->getPost('phone'),
+                      'coderef' => $this->request->getPost('coderef'),
+                      'no_ktp' => $this->request->getPost('no_ktp'),
+                      'active' => 'N',
+                      'status' => 0,
+                      'lev1' => $this->request->getPost('idref'),
+                  ]);
 
-                $this->flash->error($user->getMessages());
+                  if ($user->save()) {
+                    $form->clear();
+                    $this->flash->success("We will check your data first for activation, please check your email If Approved");
+                  }
+
+                  foreach ($form->getMessages() as $message) {
+                      $this->flash->error($message);
+                  }
+              }
             }
-          }
-          else {
-              $this->flash->error('CSRF Validation is Failed');
-          }
+            else {
+                $this->flash->error('CSRF Validation is Failed');
+            }
         }
 
        $this->view->form = $form;
@@ -108,6 +127,9 @@ class SessionController extends ControllerBase
      */
     public function loginAction()
     {
+      if ($this->session->has('auth-identity')) {
+        return $this->response->redirect('users/listref');
+      }
         $form = new LoginForm();
 
         try {
@@ -132,7 +154,8 @@ class SessionController extends ControllerBase
                     ]);
 
                     // return $this->response->redirect('index');
-                    return $this->response->redirect('campaign/dashboardcamp');
+                    return $this->response->redirect('users/welcome');
+
                 }
             }
         } catch (AuthException $e) {

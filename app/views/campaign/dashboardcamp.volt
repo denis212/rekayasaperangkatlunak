@@ -4,17 +4,15 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-
 {{ javascript_include('plugins/jQuery/jquery-3.1.1.min.js') }}
-{{ javascript_include('plugins/flot/jquery.flot.categories.min.js') }}
-{{ javascript_include('plugins/jQuery/jquery-3.1.1.min.js') }}
-{{ javascript_include('plugins/flot/jquery.flot.min.js') }}
 
 
 <!-- <div class="container" style="background-color:#f5f5f5; margin-top: 25px; margin-bottom:20px; border:1px solid #e3e3e3"> -->
 
 <div class="row">
-
+  <div>
+    <ins class="adsbyvserv" style="display: block;text-align: center;" id="[001]" data-adspot-key="e793af65"></ins>
+  </div>
   <div style="margin-left:20px; margin-right:20px;">
     <div class="col-md-12">
       <div class="box box-primary" style="margin-top:20px;">
@@ -199,4 +197,19 @@ var chart = Highcharts.chart('container2', {
 chart.setSize(950, 350);
 </script>
 
+<script>
+(function(){
+VSERVSDK=window.VSERVSDK||(window.VSERVSDK=[]);
+adSpots=document.querySelectorAll("ins.adsbyvserv");
+var a=document.createElement("script");
+a.type="text/javascript";
+a.async=!0;
+a.src="//cdn.vserv.com/vsm/vserv-sdk.js?version=v1.0.0";
+var b=document.getElementsByTagName("script")[0];
+b.parentNode.insertBefore(a,b)
+console.log(b);
+})();
+
+VSERVSDK.push(adSpots);
+</script>
 <!-- <script src="../../plugins/flot/jquery.flot.min.js"></script> -->

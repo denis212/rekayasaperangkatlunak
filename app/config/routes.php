@@ -14,14 +14,11 @@ $router->add('/reset-password/{code}/{email}', [
     'action' => 'resetPassword'
 ]);
 
-$router->add('/hit', [
+$router->add('/penjualan', [
     'controller' => 'hit',
-    'action' => 'hitAds'
+    'action' => 'penjualan'
 ]);
 
-$router->add('/hittest', [
-    'controller' => 'hit',
-    'action' => 'hitTest'
-])->setName('hitTest');
+
 
 return $router;

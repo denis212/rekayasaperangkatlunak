@@ -13,8 +13,13 @@ $loader->registerNamespaces([
     'Vokuro\Forms'       => $config->application->formsDir,
     'Vokuro'             => $config->application->libraryDir,
     'Uploader\Uploader'  => $config->application->uploaderDir,
-
 ]);
+
+$loader->registerDirs(
+    array(
+        $config->application->libraryDir . 'PHPExcel/Classes/',
+    )
+);
 
 $loader->register();
 

@@ -13,7 +13,7 @@
 
 {% for profile in page.items %}
 {% if loop.first %}
-<table class="table table-bordered table-striped" align="center">
+<table class="table table-bordered" align="center">
     <thead>
         <tr>
             <th>Id</th>

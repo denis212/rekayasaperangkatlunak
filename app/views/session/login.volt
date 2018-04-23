@@ -2,7 +2,7 @@
 <?php $this->assets->outputCss(); ?>
 <p><?php $this->flashSess->output() ?></p>
 {{ content() }}
-<div class="container">
+<!-- <div class="container">
 <div class="row">
 
     <div class="col-md-6">
@@ -52,6 +52,49 @@
 
 </div>
 
+</div> -->
+<div class="login-box">
+<div class="login-logo">
+  <a href="#"><b>CMS</b>JPU</a>
 </div>
+<!-- /.login-logo -->
+<div class="login-box-body">
+  <p class="login-box-msg">Sign in to start your session</p>
 
+  {{ form() }}
+    <div class="form-group has-feedback">
+      {{ form.render('email',['class':'form-control']) }}
+      <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    </div>
+    <div class="form-group has-feedback">
+      {{ form.render('password', ['class':'form-control']) }}
+      <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+    </div>
+    <div class="row">
+      <div class="col-xs-8">
+        <div class="checkbox icheck">
+          <!-- <label>
+            <input type="checkbox"> Remember Me
+          </label> -->
+        </div>
+      </div>
+      <!-- /.col -->
+      <div class="col-xs-4">
+        <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button> -->
+        {{ form.render('Login', ['class': 'btn btn-primary btn-block btn-flat']) }}
+      </div>
+      {{ form.render('csrf', ['value': security.getToken()]) }}
+      <!-- /.col -->
+    </div>
+  </form>
+
+  <!-- /.social-auth-links -->
+
+  <!-- <a href="#">I forgot my password</a><br> -->
+	{{ link_to("session/forgotPassword", "Forgot my password") }}
+  <br>
+  {{ link_to('session/cekreseller', 'Register a new membership') }}
+
+</div>
+</div>
  <?php $this->assets->outputJs(); ?>

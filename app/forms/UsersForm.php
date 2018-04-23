@@ -37,23 +37,10 @@ class UsersForm extends Form
 
         $this->add($name);
 
-        $name2 = new Text('lastname', [
-            'placeholder' => 'Last Name'
-        ]);
-        $name2->setLabel('Last Name');
-
-        $name2->addValidators([
-            new PresenceOf([
-                'message' => 'The last name is required'
-            ])
-        ]);
-
-        $this->add($name2);
-
 
         // Email
         $email = new Text('email', [
-            'placeholder' => 'sample@gamanads.com'
+            'placeholder' => 'youremail@email.com'
         ]);
 
         $email->setLabel('E-Mail');
@@ -101,36 +88,6 @@ class UsersForm extends Form
             'N' => 'No'
         ]));
 
-        //type akunnya
-        $type = new Select('type', [
-          'A' => 'Advertiser',
-            'P' => 'Publisher'
-        ]);
-
-        $type->addValidators([
-            new PresenceOf([
-                'message' => 'Type Account is required'
-            ])
-        ]);
-
-        $type->setLabel('Type Account');
-
-        $this->add($type);
-
-        $skype = new Text('skype', [
-            'placeholder' => 'Skype Account'
-        ]);
-
-        $skype->setLabel('Skype Account');
-
-        $skype->addValidators([
-            new PresenceOf([
-                'message' => 'Skype Account is required'
-            ])
-        ]);
-
-        $this->add($skype);
-
         $phone = new Text('phone', [
             'placeholder' => '+6288888'
         ]);
@@ -143,33 +100,6 @@ class UsersForm extends Form
 
         $this->add($phone);
 
-        //company
-        $company = new Text('company', [
-            'placeholder' => 'Company Name'
-        ]);
-        $company->setLabel('Company');
-        $this->add($company);
-
-        //company address
-        $address = new TextArea('address', [
-            'placeholder' => 'Company Address'
-        ]);
-        $address->setLabel('Company Address');
-        $this->add($address);
-
-        //company address
-        $city = new Text('city', [
-            'placeholder' => 'City'
-        ]);
-        $city->setLabel('City');
-        $this->add($city);
-
-        //company address
-        $country = new Text('country', [
-            'placeholder' => 'Country'
-        ]);
-        $country->setLabel('Country');
-        $this->add($country);
     }
 
     public function messages($name)
