@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 GamanAds with phalcon template Vökuró
 ======
 
@@ -57,3 +58,10 @@ Phalcon is an open source project and a volunteer effort. Vökuró does not have
 License
 -------
 Vökuró is open-sourced software licensed under the New BSD License.
+=======
+# Tugas UTS Software Requirement Specification Matakuliah Rekayasa Perangkat Lunak
+Berisikan Tugas, UTS, UAS Matakuliah Rekayasa Perangkat Lunak.
+
+Anggota : 171022000011 - Denis Setianto
+          171022000072 - Diany Anugrah Maulidya
+>>>>>>> 17d9e9682e2d5c9ecd188530c3c99776e15c14e5
